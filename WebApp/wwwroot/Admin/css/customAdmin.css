@@ -1,0 +1,185 @@
+﻿.form-group {
+    margin-bottom: 0.2rem;
+}
+
+    .form-group > div {
+        padding: 0 !important;
+    }
+
+.form-control {
+    padding: 0rem;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+    height: calc(1.2em + .75rem + 2px);
+}
+
+.col-form-label {
+    padding: 0.2rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.form-check-label {
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.form-check {
+    padding-left: 2rem
+}
+
+.form-file {
+    padding: 0.3rem
+}
+/*----------------------Start Sweet Alert Custom css------------------*/
+.swal2-modal {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.swal2-popup {
+    background-color: #ffffffe6 !important;
+    border: 0.11rem solid #6c7ae07d;
+    box-shadow: 0 0 20px 0px #6c7ae042 !important;
+    padding-top: 0.8rem !important;
+}
+
+    .swal2-popup .swal2-title {
+        font-weight: 500;
+        font-size: 1.2rem !important;
+        letter-spacing: 0.1rem;
+        color: black !important;
+        /*background: #0000006e;*/
+        border-radius: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .swal2-popup .swal2-html-container {
+        color: #9C27B0 !important;
+    }
+
+.swal2-container.swal2-backdrop-show {
+    background-color: transparent !important;
+}
+
+div:where(.swal2-container).swal2-backdrop-show {
+    background-color: transparent !important;
+}
+
+.swal2-popup:has(.swal2-html-container .fa) {
+    background-color: transparent !important;
+    border: none;
+    box-shadow: none !important;
+    padding-top: 0 !important;
+}
+/*----------------------End Sweet Alert Custom css------------------*/
+.table th {
+    color: #ffffff;
+    background-color: #3e64d3;
+    border-color: #3e64d3;
+    padding: 0.2rem;
+    text-align: center;
+    font-weight: 400;
+    border: 1px solid #c7c9d8
+}
+
+.table td {
+    padding: 0.19rem;
+    font-size: 0.9rem;
+    color: gray;
+    border: 1px solid #c7c9d8
+}
+
+.table > :not(caption) > * > * {
+    box-shadow: none;
+}
+/*----------------Sticky table Start--------------*/
+.contentSticky table {
+    overflow: scroll;
+}
+
+.table-sticky {
+    overflow: auto !important;
+}
+
+tr.sticky {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 4 !important;
+}
+/*th.sticky {
+    position: sticky;
+    left: 0;
+    z-index: 4;
+}*/
+/*
+td.sticky {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+}
+
+td.sticky {
+    background-color: #ffffff;
+}
+
+.table-view-box tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr.sticky:nth-child(even) {
+    background-color: #f2f2f2 !important;
+}*/
+/*----------------Sticky table end-----------------*/
+/*---------------------------Start Custom Scroll-----------------------*/
+.Content_cScroll {
+    border: 1px solid #dee2e6;
+    border-radius: 5px !important;
+    padding: 0 0 5px;
+    scrollbar-width: thin; /* Thinner scrollbar */
+    scrollbar-color: #6c7ae0 #f1f1f1; /* Thumb color and track color #888 */
+}
+
+    .Content_cScroll::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    .Content_cScroll::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .Content_cScroll::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 10px;
+        border: 2px solid #dee2e6;
+    }
+
+        .Content_cScroll::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+/*---------------------------End Custom Scroll-------------------------*/
+footer.sticky-footer {
+    padding: 1rem 0;
+}
+.topbar {
+    height: 3.375rem
+}
+#DetPView{
+    padding:0.2rem
+}
+.PgTitle {
+    padding-left: 0.2rem;
+    color: #496edb;
+    font-weight: bold;
+}
+@media (min-width: 768px) {
+    .sidebar {
+        width:19rem!important;
+        height: 100vh;
+        overflow-y: scroll;
+        overflow-x:hidden
+    }
+}

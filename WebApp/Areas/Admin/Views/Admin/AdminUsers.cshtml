@@ -1,0 +1,209 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+@{
+	ViewData["Title"] = "AdminUsers";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h5 class="PgTitle">Admin Users:</h5>
+<h5 class="alert-success">@ViewBag.Success</h5>
+<h5 class="alert-danger">@ViewBag.Error</h5>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-body" id="HdrPView">
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-body" id="DetPView">
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+		   document.addEventListener('DOMContentLoaded',function(){
+			   GetHdrPView();
+		   })
+		function GetHdrPView(ID) {
+			Swal.fire({
+				position: "center",
+				html: '<i class="fa fa-spinner fa-spin" style="font-size: 2em;margin-top: 0.8em"></i><br><br>',
+				showConfirmButton: false,
+				allowOutsideClick: false,
+				allowEscapeKey: false,
+			});
+			$.ajax({
+				url: '@Url.Action("GetAdminUsersHdrPView", "Admin")',
+				type: 'GET',
+				data: { ID: ID },
+				success: function (html) {
+					 $("#HdrPView").html("");
+					 $("#HdrPView").html(html);
+					 GetDetPView();
+				},
+				error: function (error) {
+					console.log("Error Get Admin Users Hdr PView");
+					Swal.close();
+				}
+			});
+		}
+		function GetDetPView(ID) {
+			Swal.fire({
+				position: "center",
+				html: '<i class="fa fa-spinner fa-spin" style="font-size: 2em;margin-top: 0.8em"></i><br><br>',
+				showConfirmButton: false,
+				allowOutsideClick: false,
+				allowEscapeKey: false,
+			});
+			$.ajax({
+				url: '@Url.Action("GetAdminUsersDetPView", "Admin")',
+				type: 'GET',
+				data: { ID: ID },
+				success: function (html) {
+					 $("#DetPView").html("");
+					 $("#DetPView").html(html);
+					 Swal.close();
+				},
+				error: function (error) {
+					console.log("Error Get Admin Users det PView");
+					Swal.close();
+				}
+			});
+		}
+		function AdminUserSetUpdate() {
+			var ImageFile = $("#Photo")[0].files[0];
+			var formData = new FormData();
+			if (ImageFile) {
+				formData.append("ImageFile", ImageFile);
+			}
+			var otherData = $('#AdminUserSetUpdateForm').serializeArray();
+			$.each(otherData, function (index, item) {
+				formData.append(item.name, item.value);
+			});
+			var IsRequired = CheckRequiredField();
+			if (IsRequired == "NO") {
+				Swal.fire({
+					position: "center",
+					html: '<i class="fa fa-spinner fa-spin" style="font-size: 2em;margin-top: 0.8em"></i><br><br>',
+					showConfirmButton: false,
+					allowOutsideClick: false,
+					allowEscapeKey: false,
+				});
+				$.ajax({
+					url: '@Url.Action("AdminUserSetUpdate", "Admin")',
+					type: 'POST',
+					data: formData,
+					contentType: false, // Important for FormData
+					processData: false, // Important for FormData
+					success: function (result) {
+						Swal.close();
+						if (result == 0) {
+							Swal.fire({
+								position: "center",
+								icon: "error",
+								title: "Registration not completed successfully.",
+								showConfirmButton: false,
+								timer: 2000
+							});
+						}else if(result == -1){
+							Swal.fire({
+								position: "center",
+								icon: "error",
+								title: "You already have an account with this email. Please log in or try another email.",
+								showConfirmButton: false,
+								timer: 2000
+							});
+						}
+						else if(result == -2){
+							Swal.fire({
+								position: "center",
+								icon: "error",
+								title: "Passwords do not match!.",
+								showConfirmButton: false,
+								timer: 2000
+							});
+						}
+						else {
+							Swal.fire({
+								position: "center",
+								icon: "success",
+								title: "Registration completed successfully!",
+								showConfirmButton: false,
+								timer: 2000
+							});
+							setTimeout(function () {
+								GetDetPView();
+								GetHdrPView(result);
+							}, 2000)
+						}
+					},
+					error: function (result) {
+						console.log(result);
+						Swal.close();
+					}
+				});
+			}
+		}
+		function CheckRequiredField() {
+			var EmpID = document.getElementById("EmpID");
+			var Name = document.getElementById("Name");
+			var Email = document.getElementById("Email");
+			var PhoneNumber = document.getElementById("PhoneNumber");
+			var Password = document.getElementById("Password");
+			var ConfirmPassword = document.getElementById("ConfirmPassword");
+			var Role = document.getElementById("Role");
+			if (EmpID.value == "" || Name.value == "" || Email.value == "" || PhoneNumber.value == "" || Password.value == "" || ConfirmPassword.value == "" || Role.value == "" ) {
+				if (EmpID.value == "") { EmpID.style.border = "0.5px solid #ff00005c"; }
+				if (Name.value == "") { Name.style.border = "0.5px solid #ff00005c"; }
+				if (Email.value == "") { Email.style.border = "0.5px solid #ff00005c"; }
+				if (PhoneNumber.value == "") { PhoneNumber.style.border = "0.5px solid #ff00005c"; }
+				if (Password.value == "") { Password.style.border = "0.5px solid #ff00005c"; }
+				if (ConfirmPassword.value == "") { ConfirmPassword.style.border = "0.5px solid #ff00005c"; }
+				if (Role.value == "") { Role.style.border = "0.5px solid #ff00005c"; }
+
+				Swal.fire({
+					position: "center",
+					icon: "error",
+					title: "Please fill up all required fields.",
+					showConfirmButton: false,
+					timer: 2000
+				});
+				return "YES";
+			} else {
+				return "NO"
+			}
+		}
+	function PhotoPreview() {
+			const PhotoPreview = document.getElementById('PhotoPreview');
+			const file = document.getElementById('Photo').files[0];
+			if (file) {
+				var maxFileSize = 512000; //in bytes
+				if (file.size <= maxFileSize) {
+
+					PhotoPreview.innerHTML = '';
+					const reader = new FileReader();
+					reader.onload = function (e) {
+						const img = document.createElement('img');
+						img.src = e.target.result;
+						img.alt = 'Uploaded Image';
+						img.style.maxWidth = '5rem';
+						img.style.maxHeight = '6rem';
+						img.style.objectFit = 'contain'
+						PhotoPreview.appendChild(img);
+					};
+					reader.readAsDataURL(file);
+				}
+				else {
+					Swal.fire({
+						text: "The file size should be around 500KB.",
+						icon: "error"
+					});
+					document.getElementById('Photo').value = "";
+				}
+			}
+		}
+
+</script>
