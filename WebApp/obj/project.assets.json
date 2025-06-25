@@ -6596,11 +6596,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\WebApp\\WebApp.csproj",
+      "projectUniqueName": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\WebApp.csproj",
       "projectName": "WebApp",
-      "projectPath": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\WebApp\\WebApp.csproj",
+      "projectPath": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\WebApp.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\WebApp\\obj\\",
+      "outputPath": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
