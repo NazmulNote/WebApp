@@ -1,8 +1,7 @@
-﻿using Microsoft.Data.SqlClient;
-using System.Data;
-using WebApp.Helper;
+﻿using System.Data;
+using Microsoft.Data.SqlClient;
 using WebApp.Areas.Admin.Models;
-using Microsoft.AspNetCore.Connections;
+using WebApp.Helper;
 namespace WebApp.Areas.Admin.Data
 {
     public class AdminUserData

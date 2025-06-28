@@ -1,4 +1,8 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
+    var AUserRole = HttpContextAccessor?.HttpContext?.Session.GetString("AUserRole");
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,13 +11,13 @@
     <title>@ViewData["Title"] - WebApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-	<link rel="stylesheet" href="~/WebApp.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebApp.styles.css" asp-append-version="true" />
 
-	<link href="~/admin/vendor/fontawesome/css/all.min.css" rel="stylesheet" />
+    <link href="~/admin/vendor/fontawesome/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-          rel="stylesheet">
-	<link href="~/admin/css/sb-admin-2.min.css" rel="stylesheet" />
-	<link href="~/admin/css/customadmin.css" rel="stylesheet" />
+    rel="stylesheet">
+    <link href="~/admin/css/sb-admin-2.min.css" rel="stylesheet" />
+    <link href="~/admin/css/customadmin.css" rel="stylesheet" />
 </head>
 <body class="">
     <div id="wrapper">
@@ -32,18 +36,18 @@
             <ul style="list-style-type:none;padding-left:0">
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Admin" asp-action="Dashboard">
+                    <a class="nav-link" asp-controller="SPanel1325" asp-action="Dashboard">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
-                 <!-- Divider -->
-            <hr class="sidebar-divider">
+                <!-- Divider -->
+                <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
-            </div>
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Interface
+                </div>
 
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
@@ -54,11 +58,11 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Library Components:</h6>
-                            <a class="collapse-item" href="buttons.html">Category</a>
-                            <a class="collapse-item" href="cards.html">Sub category</a>
-                            <a class="collapse-item" href="cards.html">Sub Child category</a>
-                            <a class="collapse-item" href="cards.html">Brand</a>
-                            <a class="collapse-item" href="cards.html">Product Code</a>
+                            <a class="collapse-item" asp-controller="Library" asp-action="Category">P.Category</a>
+                            <a class="collapse-item" asp-controller="Library" asp-action="SubCat">P.Sub category</a>
+                            <a class="collapse-item" asp-controller="Library" asp-action="SubChildCat">P.Sub Child category</a>
+                            @* <a class="collapse-item" href="cards.html">Brand</a> *@
+                            <a class="collapse-item" asp-controller="Library" asp-action="ServiceCat">Service Category</a>
                         </div>
                     </div>
                 </li>
@@ -71,11 +75,23 @@
                     </a>
                     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Custom People & Access:</h6>
-                            <a class="collapse-item" asp-controller="Admin" asp-action="AdminUsers">Admin Users</a>
-                            <a class="collapse-item" href="clients.html">Client Users</a>
-                            <a class="collapse-item" href="vendors.html">Vendor Users</a>
-                            <a class="collapse-item" href="suppliers.html">Suppliers</a>
+                            @if (AUserRole == "SuperAdmin")
+                            {
+                                <h6 class="collapse-header">Custom People & Access:</h6>
+                                <a class="collapse-item" asp-controller="SPanel1325" asp-action="AdminUsers">Admin Users</a>
+                                <a class="collapse-item" href="#">Client Users</a>
+                                <a class="collapse-item" href="#">Vendor Users</a>
+                                <a class="collapse-item" href="#">Suppliers</a>
+                            }
+                            else
+                            {
+                                <h6 class="collapse-header">Custom People & Access:</h6>
+                                <a class="collapse-item notAllow" href="#">Admin Users</a>
+                                <a class="collapse-item notAllow" href="#">Client Users</a>
+                                <a class="collapse-item notAllow" href="#">Vendor Users</a>
+                                <a class="collapse-item notAllow" href="#">Suppliers</a>
+                            }
+                           
 
                         </div>
                     </div>
@@ -327,7 +343,7 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-controller="Admin" asp-action="Logout" data-target="#logoutModal">
+                                <a class="dropdown-item" asp-controller="SPanel1325" asp-action="Logout" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>

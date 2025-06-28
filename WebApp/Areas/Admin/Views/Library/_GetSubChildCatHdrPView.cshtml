@@ -1,0 +1,118 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using (Html.BeginForm("LibrarySetUpdate", "Library", FormMethod.Post, new { id = "LibrarySetUpdateForm", enctype = "multipart/form-data" }))
+{
+	@Html.HiddenFor(model => model.Library.ID)
+	@Html.HiddenFor(model => model.Library.Item)
+
+	<div class="row">
+		<div class="col-lg-1 col-md-1 col-sm-12 col-12">
+			<div id="PhotoPreview">
+				<img style="width:5rem;height:6rem;object-fit:contain" src="@( Model.Library != null && !string.IsNullOrEmpty(Model.Library.PhotoUrl)? Url.Content("~/" + Model.Library.PhotoUrl): Url.Content("~/Admin/img/avator.png"))" alt="User Image" />
+			</div>
+			@Html.HiddenFor(model => model.Library.PhotoUrl)
+		</div>
+		<div class="col-lg-11 col-md-11 col-sm-12 col-12">
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Library.CategoryId, "Category:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.DropDownListFor(model => model.Library.CategoryId, (IEnumerable<SelectListItem>)ViewBag.CategoryList, "Select Category", new { @class = "form-control", @id = "CategoryId", required = "required" })
+							@Html.ValidationMessageFor(model => model.Library.CategoryId, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Library.SubCatId, "Sub Cat:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.DropDownListFor(model => model.Library.SubCatId, (IEnumerable<SelectListItem>)ViewBag.SubCatList, "Select Sub Category", new { @class = "form-control", @id = "SubCatId", required = "required" })
+							@Html.ValidationMessageFor(model => model.Library.SubCatId, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Library.ItemName, "Item Name:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Library.ItemName, new { htmlAttributes = new { id = "ItemName", @class = "form-control", placeholder = "Enter Item Name", required = "required" } })
+							@Html.ValidationMessageFor(model => model.Library.ItemName, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Library.ItemCode, "Item Code:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Library.ItemCode, new { htmlAttributes = new { id = "ItemCode", @class = "form-control", placeholder = "Enter Item Code" } })
+							@Html.ValidationMessageFor(model => model.Library.ItemCode, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Library.Description, "Description:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.TextAreaFor(model => model.Library.Description, new { @id = "Description", @class = "form-control", placeholder = "Enter Description", required = "required", rows = "2" })
+							@Html.ValidationMessageFor(model => model.Library.Description, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Library.Photo, "Photo:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Library.Photo, new { htmlAttributes = new { id = "Photo", @class = "form-control form-file", placeholder = "Enter Role", Type = "file", onchange = "PhotoPreview()" } })
+							@Html.ValidationMessageFor(model => model.Library.Photo, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-6 col-12 mb-1 form-check" style="text-align:right">
+					<button type="button" class="btn btn-sm btn-primary btn-user" onclick="LibrarySetUpdate()">
+						Save
+					</button>
+					<a class="btn btn-sm btn-outline-primary" asp-controller="Library" asp-action="SubChildCat">Refresh</a>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+}
+<script type="text/javascript">
+	document.getElementById("ItemName").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("ItemCode").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("Description").onchange = function () { this.style.border = "0.5px solid #dee2e6";};
+	document.getElementById("CategoryId").onchange = function(){this.style.border = "0.5px solid #dee2e6";GetSubCatByCatId();}
+	document.getElementById("SubCatId").onchange = function(){this.style.border = "0.5px solid #dee2e6";}
+
+	function GetSubCatByCatId(){
+		var CategoryId = document.getElementById("CategoryId").value;
+		console.log(CategoryId);
+		$.ajax({
+			url: '@Url.Action("GetSubCatByCatId", "Library")',
+			type: 'GET',
+			data: { ID: CategoryId },
+			success: function (subCat) {
+				
+				var subCatDropdown = $('#SubCatId');
+				subCatDropdown.empty();
+				subCatDropdown.append($('<option>').text('Select Sub Category').attr('value', ''));
+				$.each(subCat, function (index, item) {
+					subCatDropdown.append($('<option>', {value: item.value,text: item.text}));
+					// subCatDropdown.append($('<option>').text(item.Text).attr('value', item.Value));
+				});
+			},
+			error: function (error) {
+				if (error.status === 401) location.href = '/SPanel1325/Login';
+				console.log('Error fetching sub Cat');
+			}
+		});
+	}
+
+		
+
+</script>

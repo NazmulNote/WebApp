@@ -1,0 +1,31 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+
+<div class="contentSticky">
+	<div class="table-sticky Content_cScroll" style="height:55vh">
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<tr class="sticky">
+					<th>Image</th></>
+					<th>Item</th>
+					<th>Item Name</th>
+					<th>Item Code</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var library in Model.LibraryList)
+				{
+					<tr>
+						<td class="text-center">
+							<img style="width:2rem;height:2rem;object-fit:cover" src="@( library != null && !string.IsNullOrEmpty(library.PhotoUrl)? Url.Content("~/" + library.PhotoUrl): Url.Content("~/Admin/img/avator.png"))" alt="User Image" />
+						</td>
+						<td>@library.Item</td>
+						<td>@library.ItemName</td>
+						<td>@library.ItemCode</td>
+						<td class="text-center"><button class="btn btn-sm btn-primary" onclick="GetHdrPView(@library.ID)">View</button></td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

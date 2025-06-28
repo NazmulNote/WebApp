@@ -1,0 +1,175 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using (Html.BeginForm("AdminUserSetUpdate", "SPanel1325", FormMethod.Post, new { id = "AdminUserSetUpdateForm", enctype = "multipart/form-data" }))
+{
+	@Html.HiddenFor(model => model.AdminUser.ID)
+
+	<div class="row">
+		<div class="col-lg-1 col-md-1 col-sm-12 col-12">
+			<div id="PhotoPreview">
+				<img style="width:5rem;height:6rem;object-fit:contain" src="@( Model.AdminUser != null && !string.IsNullOrEmpty(Model.AdminUser.PhotoUrl)? Url.Content("~/" + Model.AdminUser.PhotoUrl): Url.Content("~/Admin/img/AdminUsers/avator.png"))" alt="User Image" />
+			</div>
+			@Html.HiddenFor(model => model.AdminUser.PhotoUrl)
+		</div>
+		<div class="col-lg-11 col-md-11 col-sm-12 col-12">
+			<div class="row">
+			<!-- Name -->
+			<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+				<div class="form-group row">
+					@Html.LabelFor(model => model.AdminUser.Name, "Name:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+					<div class="col-sm-9 col-8">
+						@Html.EditorFor(model => model.AdminUser.Name, new { htmlAttributes = new { id = "Name", @class = "form-control", placeholder = "Enter Full Name", required = "required" } })
+						@Html.ValidationMessageFor(model => model.AdminUser.Name, "", new { @class = "text-danger" })
+					</div>
+				</div>
+			</div>
+
+			<!-- UserName -->
+			<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+				<div class="form-group row">
+					@Html.LabelFor(model => model.AdminUser.UserName, "Username:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+					<div class="col-sm-9 col-8">
+						@Html.EditorFor(model => model.AdminUser.UserName, new { htmlAttributes = new { id = "UserName", @class = "form-control", placeholder = "Enter Username" } })
+						@Html.ValidationMessageFor(model => model.AdminUser.UserName, "", new { @class = "text-danger" })
+					</div>
+				</div>
+			</div>
+			<!-- EmpId -->
+			<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+				<div class="form-group row">
+					@Html.LabelFor(model => model.AdminUser.EmpID, "EmpId:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+					<div class="col-sm-9 col-8">
+						@Html.EditorFor(model => model.AdminUser.EmpID, new { htmlAttributes = new { id = "EmpID", @class = "form-control", placeholder = "Enter EmpID", required = "required" } })
+						@Html.ValidationMessageFor(model => model.AdminUser.EmpID, "", new { @class = "text-danger" })
+					</div>
+				</div>
+			</div>
+			<!-- Email -->
+			<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+				<div class="form-group row">
+					@Html.LabelFor(model => model.AdminUser.Email, "Email:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+					<div class="col-sm-9 col-8">
+						@Html.EditorFor(model => model.AdminUser.Email, new { htmlAttributes = new { id = "Email", @class = "form-control", type = "email", placeholder = "Enter Email", required = "required" } })
+						@Html.ValidationMessageFor(model => model.AdminUser.Email, "", new { @class = "text-danger" })
+					</div>
+				</div>
+			</div>
+
+			<!-- PhoneNumber -->
+			<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+				<div class="form-group row">
+					@Html.LabelFor(model => model.AdminUser.PhoneNumber, "Phone:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+					<div class="col-sm-9 col-8">
+						@Html.EditorFor(model => model.AdminUser.PhoneNumber, new { htmlAttributes = new { id = "PhoneNumber", @class = "form-control", placeholder = "Enter Phone Number", required = "required" } })
+						@Html.ValidationMessageFor(model => model.AdminUser.PhoneNumber, "", new { @class = "text-danger" })
+					</div>
+				</div>
+			</div>
+
+			<!-- Password -->
+			<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+				<div class="form-group row">
+					@Html.LabelFor(model => model.AdminUser.Password, "Password:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+					<div class="col-sm-9 col-8">
+						@Html.EditorFor(model => model.AdminUser.Password, new { htmlAttributes = new { id = "Password", @class = "form-control", placeholder = "Enter Password", required = "required", @minLength = "6", @maxLength = "15" } })
+						@Html.ValidationMessageFor(model => model.AdminUser.Password, "", new { @class = "text-danger" })
+					</div>
+				</div>
+			</div>
+
+			<!-- Confirm Password -->
+			<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+				<div class="form-group row">
+					@Html.LabelFor(model => model.AdminUser.ConfirmPassword, "Confirm:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+					<div class="col-sm-9 col-8">
+						@Html.EditorFor(model => model.AdminUser.ConfirmPassword, new { htmlAttributes = new { id = "ConfirmPassword", @class = "form-control", placeholder = "Enter Confirm Password", required = "required" } })
+						@Html.ValidationMessageFor(model => model.AdminUser.ConfirmPassword, "", new { @class = "text-danger" })
+					</div>
+				</div>
+			</div>
+
+			<!-- Role -->
+			<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+				<div class="form-group row">
+					@Html.LabelFor(model => model.AdminUser.Role, "Role:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+					<div class="col-sm-9 col-8">
+						@* @Html.EditorFor(model => model.AdminUser.Role, new { htmlAttributes = new { id = "Role", @class = "form-control", placeholder = "Enter Role", required = "required" } }) *@
+						@Html.DropDownListFor(model => model.AdminUser.Role, new SelectList(new[] { "Admin", "AdminUser" }), "-- Select Role --", new { @class = "form-control", id = "Role", required = "required" })
+
+						@Html.ValidationMessageFor(model => model.AdminUser.Role, "", new { @class = "text-danger" })
+					</div>
+				</div>
+			</div>
+			<!-- Photo -->
+			<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+				<div class="form-group row">
+					@Html.LabelFor(model => model.AdminUser.Photo, "Photo:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+					<div class="col-sm-9 col-8">
+						@Html.EditorFor(model => model.AdminUser.Photo, new { htmlAttributes = new { id = "Photo", @class = "form-control form-file", placeholder = "Enter Role", Type = "file", onchange = "PhotoPreview()" } })
+						@Html.ValidationMessageFor(model => model.AdminUser.Photo, "", new { @class = "text-danger" })
+					</div>
+				</div>
+			</div>
+			<!-- CanInsert -->
+			<div class="col-lg-2 col-md-3 col-sm-6 col-12 mb-1 form-check">
+				<label class="form-check-label">
+					@Html.CheckBoxFor(m => m.AdminUser.CanInsert, new { @class = "form-check-input" }) Can Insert
+				</label>
+			</div>
+
+			<!-- CanUpdate -->
+			<div class="col-lg-2 col-md-3 col-sm-6 col-12 mb-1 form-check">
+				<label class="form-check-label">
+					@Html.CheckBoxFor(m => m.AdminUser.CanUpdate, new { @class = "form-check-input" }) Can Update
+				</label>
+			</div>
+
+			<!-- CanDelete -->
+			<div class="col-lg-2 col-md-3 col-sm-6 col-12 mb-1 form-check">
+				<label class="form-check-label">
+					@Html.CheckBoxFor(m => m.AdminUser.CanDelete, new { @class = "form-check-input" }) Can Delete
+				</label>
+			</div>
+
+			<!-- IsActive -->
+			<div class="col-lg-2 col-md-3 col-sm-6 col-12 mb-1 form-check">
+				<label class="form-check-label">
+					@Html.CheckBoxFor(m => m.AdminUser.IsActive, new { @class = "form-check-input" }) Is Active
+				</label>
+			</div>
+			<div class="col-lg-4 col-md-5 col-sm-6 col-12 mb-1 form-check" style="text-align:right">
+				<button type="button" class="btn btn-sm btn-primary btn-user" onclick="AdminUserSetUpdate()">
+					Save
+				</button>
+				<a class="btn btn-sm btn-outline-primary" asp-controller="SPanel1325" asp-action="AdminUsers">Refresh</a>
+			</div>
+			</div>
+		</div>
+		
+
+	</div>
+
+}
+<script type="text/javascript">
+	document.getElementById("Name").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("EmpID").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("Email").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("PhoneNumber").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("Password").onchange = function () { this.style.border = "0.5px solid #dee2e6";PasswordCheck(); };
+	document.getElementById("ConfirmPassword").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("Role").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	function PasswordCheck() {
+		var value = document.getElementById("Password").value;
+		if (value.length < 6 || value.length > 15) {
+			Swal.fire({
+				position: "center",
+				icon: "error",
+				title: "Password must be between 6 and 15 characters.",
+				showConfirmButton: false,
+				timer: 2000
+			});
+		}
+	}
+
+
+</script>

@@ -28,28 +28,76 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Admin/AdminUsers.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cQWRtaW5Vc2Vycy5jc2h0bWw=
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Library/Category.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGlicmFyeVxDYXRlZ29yeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Admin/Dashboard.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Library/ServiceCat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGlicmFyeVxTZXJ2aWNlQ2F0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Admin/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cTG9naW4uY3NodG1s
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Library/SubCat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGlicmFyeVxTdWJDYXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Admin/Registration.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cUmVnaXN0cmF0aW9uLmNzaHRtbA==
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Library/SubChildCat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGlicmFyeVxTdWJDaGlsZENhdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Admin/_GetAdminUsersDetPView.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cX0dldEFkbWluVXNlcnNEZXRQVmlldy5jc2h0bWw=
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Library/_GetCatDetPView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGlicmFyeVxfR2V0Q2F0RGV0UFZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Admin/_GetAdminUsersPView.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cX0dldEFkbWluVXNlcnNQVmlldy5jc2h0bWw=
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Library/_GetCatHdrPView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGlicmFyeVxfR2V0Q2F0SGRyUFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Library/_GetServiceCatDetPView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGlicmFyeVxfR2V0U2VydmljZUNhdERldFBWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Library/_GetServiceCatHdrPView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGlicmFyeVxfR2V0U2VydmljZUNhdEhkclBWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Library/_GetSubCatDetPView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGlicmFyeVxfR2V0U3ViQ2F0RGV0UFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Library/_GetSubCatHdrPView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGlicmFyeVxfR2V0U3ViQ2F0SGRyUFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Library/_GetSubChildCatDetPView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGlicmFyeVxfR2V0U3ViQ2hpbGRDYXREZXRQVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Library/_GetSubChildCatHdrPView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGlicmFyeVxfR2V0U3ViQ2hpbGRDYXRIZHJQVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/SPanel1325/AdminUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU1BhbmVsMTMyNVxBZG1pblVzZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/SPanel1325/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU1BhbmVsMTMyNVxEYXNoYm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/SPanel1325/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU1BhbmVsMTMyNVxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/SPanel1325/Registration.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU1BhbmVsMTMyNVxSZWdpc3RyYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/SPanel1325/_GetAdminUsersDetPView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU1BhbmVsMTMyNVxfR2V0QWRtaW5Vc2Vyc0RldFBWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/SPanel1325/_GetAdminUsersPView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU1BhbmVsMTMyNVxfR2V0QWRtaW5Vc2Vyc1BWaWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Client/Views/Home/Index.cshtml]

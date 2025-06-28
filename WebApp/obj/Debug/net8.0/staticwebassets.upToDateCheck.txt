@@ -2,10 +2,17 @@ wwwroot\Admin\css\customAdmin.css
 wwwroot\Admin\css\sb-admin-2.css
 wwwroot\Admin\css\sb-admin-2.min.css
 wwwroot\Admin\img\adminUsers\avator.png
+wwwroot\Admin\img\adminUsers\Cat26062025162657.jpg
 wwwroot\Admin\img\adminUsers\Nazmul haque17052025190036.png
 wwwroot\Admin\img\adminUsers\nazmul haque17052025232011.png
 wwwroot\Admin\img\adminUsers\Nazmul17052025173807.jpg
 wwwroot\Admin\img\adminUsers\Nazmul17052025232105.png
+wwwroot\Admin\img\avator.png
+wwwroot\Admin\img\library\Cat26062025163051.png
+wwwroot\Admin\img\library\Cat26062025163136.jpg
+wwwroot\Admin\img\library\Cat26062025165339.jpg
+wwwroot\Admin\img\library\SubCat27062025000249.png
+wwwroot\Admin\img\library\SubChildCat27062025163329.jpg
 wwwroot\Admin\js\demo\chart-area-demo.js
 wwwroot\Admin\js\demo\chart-bar-demo.js
 wwwroot\Admin\js\demo\chart-pie-demo.js
