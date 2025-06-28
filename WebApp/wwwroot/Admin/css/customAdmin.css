@@ -183,3 +183,8 @@ footer.sticky-footer {
         overflow-x:hidden
     }
 }
+.notAllow{
+    color:lightgray!important;
+    cursor:not-allowed;
+    pointer-events:none;
+}
