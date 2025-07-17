@@ -1,0 +1,45 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+
+<div class="contentSticky">
+	<div class="table-sticky Content_cScroll" style="height:51vh">
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<tr class="sticky">
+					<th>SL</th>
+					<th>Name</th>
+					<th>C.Person</th>
+					<th>Phone</th>
+					<th>Email</th>
+					<th>Country</th>
+					<th>District</th>
+					<th>P.S.</th>
+					<th>IsActive</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				@{
+					int i = 1;
+				}
+				@foreach (var vendor in Model.VendorList)
+				{
+					<tr>
+						<td class="text-center">@i</td>
+						<td>@vendor.Name</td>
+						<td>@vendor.ContactPerson</td>
+						<td>@vendor.Phone</td>
+						<td>@vendor.Email</td>
+						<td>@vendor.CountryName</td>
+						<td>@vendor.DistrictName</td>
+						<td>@vendor.PoliceStationName</td>
+						<td class="text-center" style="color:@(vendor.IsActive ? "green" : "red")">
+							@vendor.IsActive
+						</td>
+						<td class="text-center"><button class="btn btn-sm btn-primary" onclick="GetHdrPView(@vendor.ID)">View</button></td>
+					</tr>
+					i++;
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

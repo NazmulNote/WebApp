@@ -1,0 +1,302 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using (Html.BeginForm("TeamMemberSetUpdate", "TeamMember", FormMethod.Post, new { id = "TeamMemberSetUpdateForm", enctype = "multipart/form-data" }))
+{
+	@Html.HiddenFor(model => model.TeamMember.ID)
+
+	<div class="row">
+		<div class="col-lg-1 col-md-1 col-sm-12 col-12">
+			<div id="PhotoPreview">
+				<img style="width:5rem;height:6rem;object-fit:contain" src="@( Model.TeamMember != null && !string.IsNullOrEmpty(Model.TeamMember.PhotoUrl) ? Url.Content("~/" + Model.TeamMember.PhotoUrl) : Url.Content("~/Admin/img/avator.png"))" alt="User Image" />
+			</div>
+			@Html.HiddenFor(model => model.TeamMember.PhotoUrl)
+		</div>
+		<div class="col-lg-11 col-md-11 col-sm-12 col-12">
+			<p class="alert-primary pl-1"><strong>Note:</strong> (Photo size: 400×500 pixels each).</p>
+			<div class="row">
+				@* Existing fields *@
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.TeamMember.Name, "Name:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.TeamMember.Name, new { htmlAttributes = new { id = "Name", @class = "form-control", placeholder = "Enter Name", required = "required" } })
+							@Html.ValidationMessageFor(model => model.TeamMember.Name, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.TeamMember.Designation, "Designation:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.TeamMember.Designation, new { htmlAttributes = new { id = "Designation", @class = "form-control", placeholder = "Enter Designation", required = "required" } })
+							@Html.ValidationMessageFor(model => model.TeamMember.Designation, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.TeamMember.Photo, "Photo:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.TeamMember.Photo, new { htmlAttributes = new { id = "Photo", @class = "form-control form-file", placeholder = "Upload Photo", type = "file", onchange = "PhotoPreview()" } })
+							@Html.ValidationMessageFor(model => model.TeamMember.Photo, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.TeamMember.Email, "Email:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.TeamMember.Email, new { htmlAttributes = new { id = "Email", @class = "form-control", placeholder = "Enter Email", required = "required" } })
+							@Html.ValidationMessageFor(model => model.TeamMember.Email, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.TeamMember.Phone, "Phone:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.TeamMember.Phone, new { htmlAttributes = new { id = "Phone", @class = "form-control", placeholder = "Enter Phone", required = "required" } })
+							@Html.ValidationMessageFor(model => model.TeamMember.Phone, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				@* <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.TeamMember.NID, "NID:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.TeamMember.NID, new { htmlAttributes = new { id = "NID", @class = "form-control", placeholder = "Enter NID", required = "required" } })
+							@Html.ValidationMessageFor(model => model.TeamMember.NID, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div> *@
+				@* <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.TeamMember.EmployeeCode, "EmployeeCode:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.TeamMember.EmployeeCode, new { htmlAttributes = new { id = "EmployeeCode", @class = "form-control", placeholder = "Enter EmployeeCode", required = "required" } })
+							@Html.ValidationMessageFor(model => model.TeamMember.EmployeeCode, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div> *@
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.TeamMember.JoinDate, "JoinDate:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.TeamMember.JoinDate, new { htmlAttributes = new { @type = "date",id = "JoinDate", @class = "form-control", placeholder = "Enter Join Date", required = "required" } })
+							@Html.ValidationMessageFor(model => model.TeamMember.JoinDate, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.TeamMember.DateOfBirth, "DateOfBirth:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.TeamMember.DateOfBirth, new { htmlAttributes = new { @type = "date", id = "DateOfBirth", @class = "form-control", placeholder = "Enter Date Of Birth", required = "required" } })
+							@Html.ValidationMessageFor(model => model.TeamMember.DateOfBirth, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				@* <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.TeamMember.Gender, "Gender:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.DropDownListFor(model => model.TeamMember.Gender,
+																new List<SelectListItem>
+						{
+						new SelectListItem { Text = "Male", Value = "1" },
+						new SelectListItem { Text = "Female", Value = "2" },
+						new SelectListItem { Text = "Other", Value = "3" }
+						},
+																"Select Gender",
+																new { @class = "form-control", id = "Gender", required = "required" })
+							@Html.ValidationMessageFor(model => model.TeamMember.Gender, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div> *@
+				
+				@* <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.TeamMember.BloodGroup, "BloodGroup:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.TeamMember.BloodGroup, new { htmlAttributes = new { id = "BloodGroup", @class = "form-control", placeholder = "Enter Blood Group", required = "required" } })
+							@Html.ValidationMessageFor(model => model.TeamMember.BloodGroup, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div> *@
+				@* <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.TeamMember.MaritalStatus, "Marital Status:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.DropDownListFor(model => model.TeamMember.MaritalStatus,
+																new List<SelectListItem>
+						{
+						new SelectListItem { Text = "Single", Value = "1" },
+						new SelectListItem { Text = "Married", Value = "2" },
+						new SelectListItem { Text = "Divorced", Value = "3" },
+						new SelectListItem { Text = "Widowed", Value = "4" }
+						},
+																"Select Marital Status",
+																new { @class = "form-control", id = "MaritalStatus", required = "required" })
+							@Html.ValidationMessageFor(model => model.TeamMember.MaritalStatus, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div> *@
+				@* <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.TeamMember.Nationality, "Nationality:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.DropDownListFor(model => model.TeamMember.Nationality,
+																new List<SelectListItem>
+						{
+						new SelectListItem { Text = "Bangladeshi", Value = "Bangladeshi" },
+						new SelectListItem { Text = "Indian", Value = "Indian" },
+						new SelectListItem { Text = "Pakistani", Value = "Pakistani" },
+						new SelectListItem { Text = "Other", Value = "Other" }
+						},
+																"Select Nationality",
+																new { @class = "form-control", id = "Nationality", required = "required" })
+							@Html.ValidationMessageFor(model => model.TeamMember.Nationality, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div> *@
+				@* <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.TeamMember.Department, "Department:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.DropDownListFor(model => model.TeamMember.Department,
+																new List<SelectListItem>
+						{
+						new SelectListItem { Text = "HR", Value = "HR" },
+						new SelectListItem { Text = "Finance", Value = "Finance" },
+						new SelectListItem { Text = "Marketing", Value = "Marketing" },
+						new SelectListItem { Text = "IT", Value = "IT" },
+						new SelectListItem { Text = "Sales", Value = "Sales" },
+						new SelectListItem { Text = "Operations", Value = "Operations" }
+						},
+																"Select Department",
+																new { @class = "form-control", id = "Department", required = "required" })
+							@Html.ValidationMessageFor(model => model.TeamMember.Department, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div> *@
+				@* <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.TeamMember.TeamCategory, "Team Category:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.DropDownListFor(model => model.TeamMember.TeamCategory,
+																new List<SelectListItem>
+						{
+						new SelectListItem { Text = "Development", Value = "Development" },
+						new SelectListItem { Text = "Design", Value = "Design" },
+						new SelectListItem { Text = "QA", Value = "QA" },
+						new SelectListItem { Text = "Support", Value = "Support" },
+						new SelectListItem { Text = "Management", Value = "Management" }
+						},
+																"Select Team Category",
+																new { @class = "form-control", id = "TeamCategory", required = "required" })
+							@Html.ValidationMessageFor(model => model.TeamMember.TeamCategory, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div> *@
+				@* <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.TeamMember.Skills, "Skills:", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+						<div class="col-sm-10">
+							@Html.TextAreaFor(model => model.TeamMember.Skills, new { @id = "Skills", @class = "form-control", placeholder = "Enter Skills", rows = "2" })
+							@Html.ValidationMessageFor(model => model.TeamMember.Skills, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div> *@
+				@* <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.TeamMember.ShortBio, "ShortBio:", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+						<div class="col-sm-10">
+							@Html.TextAreaFor(model => model.TeamMember.ShortBio, new { @id = "ShortBio", @class = "form-control", placeholder = "Enter ShortBio", rows = "2" })
+							@Html.ValidationMessageFor(model => model.TeamMember.ShortBio, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div> *@
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.TeamMember.Facebook, "Facebook:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.TeamMember.Facebook, new { htmlAttributes = new { id = "Facebook", @class = "form-control", placeholder = "Enter Facebook", required = "required" } })
+							@Html.ValidationMessageFor(model => model.TeamMember.Facebook, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.TeamMember.LinkedIn, "LinkedIn:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.TeamMember.LinkedIn, new { htmlAttributes = new { id = "LinkedIn", @class = "form-control", placeholder = "Enter LinkedIn", required = "required" } })
+							@Html.ValidationMessageFor(model => model.TeamMember.LinkedIn, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.TeamMember.Twitter, "Twitter:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.TeamMember.Twitter, new { htmlAttributes = new { id = "Twitter", @class = "form-control", placeholder = "Enter Twitter", required = "required" } })
+							@Html.ValidationMessageFor(model => model.TeamMember.Twitter, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+					@Html.LabelFor(model => model.TeamMember.ViewOrder, "View Order:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+					<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.TeamMember.ViewOrder, new { htmlAttributes = new { id = "ViewOrder", @class = "form-control", placeholder = "Enter ViewOrder", required = "required", @style = "border:1px solid blue" } })
+						@Html.ValidationMessageFor(model => model.TeamMember.ViewOrder, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				</div>
+				
+				<div class="col-lg-2 col-md-2 col-sm-6 col-12 mb-1 form-check" style="text-align:right">
+					<div class="form-group row ml-2">
+						<label class="form-check-label">
+							@Html.CheckBoxFor(model => model.TeamMember.IsActive, new { @class = "form-check-input" }) Is Active
+						</label>
+					</div>
+				</div>
+
+				@* <div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.TeamMember.PresentAddress, "Present Address:", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+						<div class="col-sm-10">
+							@Html.TextAreaFor(model => model.TeamMember.PresentAddress, new { @id = "PresentAddress", @class = "form-control", placeholder = "Enter Present Address", rows = "2" })
+							@Html.ValidationMessageFor(model => model.TeamMember.PresentAddress, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div> *@
+
+				@* <div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.TeamMember.PermanentAddress, "Permanent Address:", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+						<div class="col-sm-10">
+							@Html.TextAreaFor(model => model.TeamMember.PermanentAddress, new { @id = "PermanentAddress", @class = "form-control", placeholder = "Enter Permanent Address", rows = "2" })
+							@Html.ValidationMessageFor(model => model.TeamMember.PermanentAddress, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div> *@
+
+				<div class="col-lg-2 col-md-2 col-sm-12 col-12 mb-1" style="text-align:right">
+					<button type="button" class="btn btn-sm btn-primary btn-user" onclick="TeamMemberSetUpdate()">
+						Save
+					</button>
+					<a class="btn btn-sm btn-outline-primary" asp-controller="TeamMember" asp-action="TeamMemberCreate">Refresh</a>
+				</div>
+			</div>
+		</div>
+	</div>
+}
+
+<script type="text/javascript">
+	document.getElementById("Name").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("Designation").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("Email").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("Phone").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+</script>

@@ -1,0 +1,51 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+
+<div class="contentSticky">
+	<div class="table-sticky Content_cScroll" style="height:28vh">
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<tr class="sticky">
+					<th>SL</th>
+					<th>Image</th></>
+					<th>Name</th>
+					<th>Code</th>
+					<th>S.Price</th>
+					<th>O.Percent</th>
+					<th>O.Price</th>
+					<th>IsActive</th>
+					<th>Category</th>
+					<th>Sub Cat</th>
+					<th>Brand</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				@{
+					int i = 1;
+				}
+				@foreach (var product in Model.ProductList)
+				{
+					<tr>
+						<td class="text-center">@i</td>
+						<td class="text-center">
+							<img style="width:2rem;height:2rem;object-fit:cover" src="@( product != null && !string.IsNullOrEmpty(product.PhotoUrl)? Url.Content("~/" + product.PhotoUrl): Url.Content("~/Admin/img/avator.png"))" alt="User Image" />
+						</td>
+						<td>@product.Name</td>
+						<td>@product.Code</td>
+						<td>@product.SellingPrice</td>
+						<td>@product.OfferPercent</td>
+						<td>@product.OfferPrice</td>
+						<td class="text-center" style="color:@(product.IsActive ? "green" : "red")">
+							@product.IsActive
+						</td>
+						<td>@product.CatName</td>
+						<td>@product.SubCatName</td>
+						<td>@product.SubChildCatName</td>
+						<td class="text-center"><button class="btn btn-sm btn-primary" onclick="GetHdrPView(@product.ID)">View</button></td>
+					</tr>
+					i++;
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

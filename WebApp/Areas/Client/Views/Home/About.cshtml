@@ -1,0 +1,190 @@
+﻿@model WebApp.Areas.Client.Models.ClientViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+	ViewData["Title"] = "About";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!--Slider Image-->
+<section class="bg-half" style="background-image: url('@(string.IsNullOrEmpty(Model.AboutPage.SliderPhotoUrl)?"../client/img/default/slider.jpg":Model.AboutPage.SliderPhotoUrl)');">
+	<div class="bg-overlay"></div>
+	<div class="home-center">
+		<div class="home-desc-center">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-12">
+						<div class="page-next-level text-white">
+							<h4 class="text-uppercase">About Us</h4>
+							<div class="page-next"> <a asp-controller="Home" asp-action="Index">Home</a> <i class="mdi mdi-chevron-right"></i> &nbsp;<span>About Us</span> </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--About-->
+<section class="section">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-7 col-md-6">
+				<div class="about-section text-right mr-lg-3">
+					<h4 class="text-uppercase">@(string.IsNullOrEmpty(Model.AboutPage.Title) ? "We're knowledgeable about making benefits higher" : Model.AboutPage.Title)</h4>
+					<div class="spacer-15"></div>
+					@if (string.IsNullOrEmpty(Model.AboutPage.Description))
+					{
+						<p class="text-muted">
+							Why I say old chap that is, spiffing tomfoolery lost the plot plastered starkers tosser, say no biggie brolly bleeding super. The full monty Elizabeth nice one quaint butty give us a bell easy peasy gutted mate smashing, crikey cracking goal bobby James Bond knackered spiffing young delinquent down the pub bodge, bugger all mate old cor blimey guvnor what a load of rubbish.!
+						</p>
+					}
+					else
+					{
+						<p class="text-muted">
+							@Html.Raw(Model.AboutPage.Description)
+						</p>
+					}
+
+
+				</div>
+			</div>
+
+			<div class="col-lg-5 col-md-6">
+				<div class="about-pic mt-sm-30">
+					<img src="@(string.IsNullOrEmpty(Model.AboutPage.AboutPhotoUrl)?"../Client/img/default/Home-about.jpg":Model.AboutPage.AboutPhotoUrl)" class="img-fluid" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--Mision Vission -->
+<section class="section bg-light">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="feature-two p-20">
+					<div class="text-center">
+						<div class="feat-icon">
+							<i class="fas fa-hands"></i>
+						</div>
+					</div>
+
+					<div class="feat-head">
+						<h4 class="text-center">Our Vision</h4>
+						<p class="text-muted mb-0">
+							@(string.IsNullOrEmpty(Model.AboutPage.Vision) ? "Fortunately, the phrase electronic pre-press systems and, when found, an alarm can be raised." : Html.Raw(Model.AboutPage.Vision))
+						</p>
+						@* <div class="feature-hover-icon text-center">
+							<i class="fas fa-hands"></i>
+						</div> *@
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-12">
+				<div class="feature-two p-20">
+					<div class="text-center">
+						<div class="feat-icon">
+							<i class="fab fa-sketch"></i>
+						</div>
+					</div>
+
+					<div class="feat-head">
+						<h4 class="text-center">Our Mission</h4>
+						<p class="text-muted mb-0"> 
+							@(string.IsNullOrEmpty(Model.AboutPage.Mission) ? "Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)." : 
+																												Html.Raw(Model.AboutPage.Mission))
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-12">
+				<div class="feature-two p-20">
+					<div class="text-center">
+						<div class="feat-icon">
+							<i class="fas fa-trophy"></i>
+						</div>
+					</div>
+					<div class="feat-head">
+						<h4 class="text-center">Achievements</h4>
+						<p class="text-muted mb-0">
+							@(string.IsNullOrEmpty(Model.AboutPage.Achievements) ? "The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.":
+																												Html.Raw(Model.AboutPage.Achievements))
+						</p>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--Start Team-->
+<section class="section">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-8 col-md-12">
+				<div class="section-title text-center">
+					<h3>Our Team Members</h3>
+					<div class="spacer-15"></div>
+					<p class="text-muted mb-0">
+						Meet the passionate minds driving <strong>@Model.CompanyInfo.CompanyName</strong> forward.
+						</p>
+					<div class="spacer-30"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			@if(Model.TeamMemberList != null)
+			{
+				foreach(var teamMember in Model.TeamMemberList)
+				{
+					<div class="col-lg-3 col-md-6">
+						<div class="team-box mt-30">
+							<div class="team-box-img">
+								<img src="@(string.IsNullOrEmpty(teamMember.PhotoUrl)?"~/Admin/img/adminUsers/avator.png":teamMember.PhotoUrl)" alt="" class="img-fluid">
+							</div>
+							<div class="team-info text-center">
+								<h3 class="mb-0">@teamMember.Name</h3>
+								<small class="text-muted">@teamMember.Designation</small>
+							</div>
+							<div class="team-members-overlay">
+								<div class="text-center mt-2">
+									<ul class="list-unstyled team-icon">
+										<li class="list-inline-item"><a target="_blank" href="@(string.IsNullOrEmpty(teamMember.Facebook)?"#":teamMember.Facebook)"><i class="fab fa-facebook-f"></i></a></li>
+										<li class="list-inline-item"><a target="_blank" href="@(string.IsNullOrEmpty(teamMember.LinkedIn)?"#":teamMember.LinkedIn)"><i class="fab fa-linkedin"></i></a></li>
+										<li class="list-inline-item"><a target="_blank" href="@(string.IsNullOrEmpty(teamMember.Twitter)?"#":teamMember.Twitter)"><i class="fab fa-twitter"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				}
+			}
+			else
+			{
+				<div class="col-lg-3 col-md-6">
+					<div class="team-box mt-30">
+						<div class="team-box-img">
+							<img src="~/Client/img/default/team-1.jpg" alt="" class="img-fluid">
+						</div>
+						<div class="team-info text-center">
+							<h3 class="mb-0">Patricia Beegle</h3>
+							<small class="text-muted">CEO/Founder</small>
+						</div>
+						<div class="team-members-overlay">
+							<div class="text-center mt-2">
+								<ul class="list-unstyled team-icon">
+									<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+									<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+									<li class="list-inline-item"><a href="#"><i class="fab fa-linkedin"></i></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			}
+			
+		</div>
+	</div>
+</section>
+<!--End Team-->

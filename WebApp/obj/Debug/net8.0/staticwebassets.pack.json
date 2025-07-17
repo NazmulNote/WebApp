@@ -17,6 +17,14 @@
       "PackagePath": "staticwebassets\\Admin\\css\\sb-admin-2.min.css"
     },
     {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\about\\AboutPhoto16072025165750.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\about\\AboutPhoto16072025165750.jpg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\about\\SliderPhoto16072025165719.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\about\\SliderPhoto16072025165719.jpg"
+    },
+    {
       "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\adminUsers\\Cat26062025162657.jpg",
       "PackagePath": "staticwebassets\\Admin\\img\\adminUsers\\Cat26062025162657.jpg"
     },
@@ -49,6 +57,38 @@
       "PackagePath": "staticwebassets\\Admin\\img\\avator.png"
     },
     {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\customer\\Nazmul13072025154227.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\customer\\Nazmul13072025154227.jpg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\home\\CompanyLogo14072025170118.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\home\\CompanyLogo14072025170118.jpg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\home\\ContactSlider17072025190951.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\home\\ContactSlider17072025190951.jpg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\home\\HomeAbout14072025194428.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\home\\HomeAbout14072025194428.jpg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\home\\Slider13072025211658.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\home\\Slider13072025211658.jpg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\home\\Slider13072025211729.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\home\\Slider13072025211729.jpg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\home\\Slider13072025211826.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\home\\Slider13072025211826.jpg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\library\\Cat01072025222542.png",
+      "PackagePath": "staticwebassets\\Admin\\img\\library\\Cat01072025222542.png"
+    },
+    {
       "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\library\\Cat26062025163051.png",
       "PackagePath": "staticwebassets\\Admin\\img\\library\\Cat26062025163051.png"
     },
@@ -65,12 +105,60 @@
       "PackagePath": "staticwebassets\\Admin\\img\\library\\Cat28062025203907.png"
     },
     {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\library\\ServiceCat03072025154919.png",
+      "PackagePath": "staticwebassets\\Admin\\img\\library\\ServiceCat03072025154919.png"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\library\\ServiceCat06072025200735.png",
+      "PackagePath": "staticwebassets\\Admin\\img\\library\\ServiceCat06072025200735.png"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\library\\SubCat15072025140316.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\library\\SubCat15072025140316.jpg"
+    },
+    {
       "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\library\\SubCat27062025000249.png",
       "PackagePath": "staticwebassets\\Admin\\img\\library\\SubCat27062025000249.png"
     },
     {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\library\\SubChildCat03072025232218.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\library\\SubChildCat03072025232218.jpg"
+    },
+    {
       "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\library\\SubChildCat27062025163329.jpg",
       "PackagePath": "staticwebassets\\Admin\\img\\library\\SubChildCat27062025163329.jpg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\product\\305072025194141.png",
+      "PackagePath": "staticwebassets\\Admin\\img\\product\\305072025194141.png"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\product\\LG-26206072025003650.png",
+      "PackagePath": "staticwebassets\\Admin\\img\\product\\LG-26206072025003650.png"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\product\\LG-26208072025180215.png",
+      "PackagePath": "staticwebassets\\Admin\\img\\product\\LG-26208072025180215.png"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\product\\t06072025003040.png",
+      "PackagePath": "staticwebassets\\Admin\\img\\product\\t06072025003040.png"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\product\\transformer 500kva15072025140828.png",
+      "PackagePath": "staticwebassets\\Admin\\img\\product\\transformer 500kva15072025140828.png"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\teamMember\\Md. Manik 17072025171949.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\teamMember\\Md. Manik 17072025171949.jpg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\teamMember\\Nazmul Haque17072025165437.png",
+      "PackagePath": "staticwebassets\\Admin\\img\\teamMember\\Nazmul Haque17072025165437.png"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\js\\ckeditor.js",
+      "PackagePath": "staticwebassets\\Admin\\js\\ckeditor.js"
     },
     {
       "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\js\\demo\\chart-area-demo.js",
@@ -95,6 +183,10 @@
     {
       "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\js\\sb-admin-2.min.js",
       "PackagePath": "staticwebassets\\Admin\\js\\sb-admin-2.min.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\js\\xlsx.full.min.js",
+      "PackagePath": "staticwebassets\\Admin\\js\\xlsx.full.min.js"
     },
     {
       "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\vendor\\bootstrap\\js\\bootstrap.bundle.js",
@@ -6939,6 +7031,318 @@
     {
       "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\vendor\\sweetalert\\sweetalert2@11.js",
       "PackagePath": "staticwebassets\\Admin\\vendor\\sweetalert\\sweetalert2@11.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\AjaxLoader.html",
+      "PackagePath": "staticwebassets\\Client\\css\\AjaxLoader.html"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\Client\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\default.css",
+      "PackagePath": "staticwebassets\\Client\\css\\default.css"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\fontawesome.css",
+      "PackagePath": "staticwebassets\\Client\\css\\fontawesome.css"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\fonts\\slick-2.html",
+      "PackagePath": "staticwebassets\\Client\\css\\fonts\\slick-2.html"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\fonts\\slick.html",
+      "PackagePath": "staticwebassets\\Client\\css\\fonts\\slick.html"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\fonts\\slickd41d.html",
+      "PackagePath": "staticwebassets\\Client\\css\\fonts\\slickd41d.html"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\magnific-popup.css",
+      "PackagePath": "staticwebassets\\Client\\css\\magnific-popup.css"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\materialdesignicons.min.css",
+      "PackagePath": "staticwebassets\\Client\\css\\materialdesignicons.min.css"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\menu-small.css",
+      "PackagePath": "staticwebassets\\Client\\css\\menu-small.css"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\menu.css",
+      "PackagePath": "staticwebassets\\Client\\css\\menu.css"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\owl.carousel.min.css",
+      "PackagePath": "staticwebassets\\Client\\css\\owl.carousel.min.css"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\owl.theme.css",
+      "PackagePath": "staticwebassets\\Client\\css\\owl.theme.css"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\owl.transitions.css",
+      "PackagePath": "staticwebassets\\Client\\css\\owl.transitions.css"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\pe-icon-7-stroke.css",
+      "PackagePath": "staticwebassets\\Client\\css\\pe-icon-7-stroke.css"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\slick-theme.css",
+      "PackagePath": "staticwebassets\\Client\\css\\slick-theme.css"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\slick.css",
+      "PackagePath": "staticwebassets\\Client\\css\\slick.css"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\style.css",
+      "PackagePath": "staticwebassets\\Client\\css\\style.css"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\Pe-icon-7-strokebb1d.eot",
+      "PackagePath": "staticwebassets\\Client\\fonts\\Pe-icon-7-strokebb1d.eot"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\Pe-icon-7-strokebb1d.svg",
+      "PackagePath": "staticwebassets\\Client\\fonts\\Pe-icon-7-strokebb1d.svg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\Pe-icon-7-strokebb1d.ttf",
+      "PackagePath": "staticwebassets\\Client\\fonts\\Pe-icon-7-strokebb1d.ttf"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\Pe-icon-7-strokebb1d.woff",
+      "PackagePath": "staticwebassets\\Client\\fonts\\Pe-icon-7-strokebb1d.woff"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\Pe-icon-7-stroked41d.eot",
+      "PackagePath": "staticwebassets\\Client\\fonts\\Pe-icon-7-stroked41d.eot"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\ajax-loader.gif",
+      "PackagePath": "staticwebassets\\Client\\fonts\\ajax-loader.gif"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\fa-brands-400.eot",
+      "PackagePath": "staticwebassets\\Client\\fonts\\fa-brands-400.eot"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\fa-brands-400.svg",
+      "PackagePath": "staticwebassets\\Client\\fonts\\fa-brands-400.svg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\fa-brands-400.ttf",
+      "PackagePath": "staticwebassets\\Client\\fonts\\fa-brands-400.ttf"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\fa-brands-400.woff",
+      "PackagePath": "staticwebassets\\Client\\fonts\\fa-brands-400.woff"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\fa-brands-400.woff2",
+      "PackagePath": "staticwebassets\\Client\\fonts\\fa-brands-400.woff2"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\fa-brands-400d41d.eot",
+      "PackagePath": "staticwebassets\\Client\\fonts\\fa-brands-400d41d.eot"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\fa-regular-400.eot",
+      "PackagePath": "staticwebassets\\Client\\fonts\\fa-regular-400.eot"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\fa-regular-400.svg",
+      "PackagePath": "staticwebassets\\Client\\fonts\\fa-regular-400.svg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\fa-regular-400.ttf",
+      "PackagePath": "staticwebassets\\Client\\fonts\\fa-regular-400.ttf"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\fa-regular-400.woff",
+      "PackagePath": "staticwebassets\\Client\\fonts\\fa-regular-400.woff"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\fa-regular-400.woff2",
+      "PackagePath": "staticwebassets\\Client\\fonts\\fa-regular-400.woff2"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\fa-regular-400d41d.eot",
+      "PackagePath": "staticwebassets\\Client\\fonts\\fa-regular-400d41d.eot"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\fa-solid-900.eot",
+      "PackagePath": "staticwebassets\\Client\\fonts\\fa-solid-900.eot"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\fa-solid-900.svg",
+      "PackagePath": "staticwebassets\\Client\\fonts\\fa-solid-900.svg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\fa-solid-900.ttf",
+      "PackagePath": "staticwebassets\\Client\\fonts\\fa-solid-900.ttf"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\fa-solid-900.woff",
+      "PackagePath": "staticwebassets\\Client\\fonts\\fa-solid-900.woff"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\fa-solid-900.woff2",
+      "PackagePath": "staticwebassets\\Client\\fonts\\fa-solid-900.woff2"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\fa-solid-900d41d.eot",
+      "PackagePath": "staticwebassets\\Client\\fonts\\fa-solid-900d41d.eot"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\materialdesignicons-webfont2750.eot",
+      "PackagePath": "staticwebassets\\Client\\fonts\\materialdesignicons-webfont2750.eot"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\materialdesignicons-webfont2750.svg",
+      "PackagePath": "staticwebassets\\Client\\fonts\\materialdesignicons-webfont2750.svg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\materialdesignicons-webfont2750.ttf",
+      "PackagePath": "staticwebassets\\Client\\fonts\\materialdesignicons-webfont2750.ttf"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\materialdesignicons-webfont2750.woff",
+      "PackagePath": "staticwebassets\\Client\\fonts\\materialdesignicons-webfont2750.woff"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\materialdesignicons-webfont2750.woff2",
+      "PackagePath": "staticwebassets\\Client\\fonts\\materialdesignicons-webfont2750.woff2"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\materialdesignicons-webfontd41d.eot",
+      "PackagePath": "staticwebassets\\Client\\fonts\\materialdesignicons-webfontd41d.eot"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\slick.ttf",
+      "PackagePath": "staticwebassets\\Client\\fonts\\slick.ttf"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\fonts\\slick.woff",
+      "PackagePath": "staticwebassets\\Client\\fonts\\slick.woff"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\img\\default\\home-about.jpg",
+      "PackagePath": "staticwebassets\\Client\\img\\default\\home-about.jpg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\img\\default\\slider.jpg",
+      "PackagePath": "staticwebassets\\Client\\img\\default\\slider.jpg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\img\\default\\team-1.jpg",
+      "PackagePath": "staticwebassets\\Client\\img\\default\\team-1.jpg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\app.js",
+      "PackagePath": "staticwebassets\\Client\\js\\app.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\Client\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\contact.js",
+      "PackagePath": "staticwebassets\\Client\\js\\contact.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\counter.init.js",
+      "PackagePath": "staticwebassets\\Client\\js\\counter.init.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\isotope.js",
+      "PackagePath": "staticwebassets\\Client\\js\\isotope.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\jquery.countdown.js",
+      "PackagePath": "staticwebassets\\Client\\js\\jquery.countdown.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\jquery.easing.min.js",
+      "PackagePath": "staticwebassets\\Client\\js\\jquery.easing.min.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\jquery.easypiechart.min.js",
+      "PackagePath": "staticwebassets\\Client\\js\\jquery.easypiechart.min.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\jquery.magnific-popup.min.js",
+      "PackagePath": "staticwebassets\\Client\\js\\jquery.magnific-popup.min.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\jquery.mb.YTPlayer.js",
+      "PackagePath": "staticwebassets\\Client\\js\\jquery.mb.YTPlayer.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\jquery.min.js",
+      "PackagePath": "staticwebassets\\Client\\js\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\jquery.simple-text-rotator.js",
+      "PackagePath": "staticwebassets\\Client\\js\\jquery.simple-text-rotator.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\magnific.init.js",
+      "PackagePath": "staticwebassets\\Client\\js\\magnific.init.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\owl.carousel.min.js",
+      "PackagePath": "staticwebassets\\Client\\js\\owl.carousel.min.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\owlcarousel.init.js",
+      "PackagePath": "staticwebassets\\Client\\js\\owlcarousel.init.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\parallax.js",
+      "PackagePath": "staticwebassets\\Client\\js\\parallax.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\particles.app.js",
+      "PackagePath": "staticwebassets\\Client\\js\\particles.app.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\particles.js",
+      "PackagePath": "staticwebassets\\Client\\js\\particles.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\popper.min.js",
+      "PackagePath": "staticwebassets\\Client\\js\\popper.min.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\portfolio-filter.js",
+      "PackagePath": "staticwebassets\\Client\\js\\portfolio-filter.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\scrollspy.min.js",
+      "PackagePath": "staticwebassets\\Client\\js\\scrollspy.min.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\slick.init.js",
+      "PackagePath": "staticwebassets\\Client\\js\\slick.init.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\slick.min.js",
+      "PackagePath": "staticwebassets\\Client\\js\\slick.min.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\typed.init.js",
+      "PackagePath": "staticwebassets\\Client\\js\\typed.init.js"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\js\\typed.js",
+      "PackagePath": "staticwebassets\\Client\\js\\typed.js"
     },
     {
       "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\css\\site.css",

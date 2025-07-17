@@ -1,0 +1,71 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using (Html.BeginForm("SliderSetUpdate", "Slider", FormMethod.Post, new { id = "SliderSetUpdateForm", enctype = "multipart/form-data" }))
+{
+	@Html.HiddenFor(model => model.Slider.ID)
+
+	<div class="row">
+		<div class="col-lg-1 col-md-1 col-sm-12 col-12">
+			<div id="PhotoPreview">
+				<img style="width:5rem;height:6rem;object-fit:contain" src="@( Model.Slider != null && !string.IsNullOrEmpty(Model.Slider.PhotoUrl)? Url.Content("~/" + Model.Slider.PhotoUrl): Url.Content("~/Admin/img/avator.png"))" alt="User Image" />
+			</div>
+			@Html.HiddenFor(model => model.Slider.PhotoUrl)
+		</div>
+		<div class="col-lg-11 col-md-11 col-sm-12 col-12">
+			<p class="alert-primary pl-1"><strong>Note:</strong> Maximum 10 slider images allowed (size: 2000×1333 pixels each).</p>
+			<div class="row">
+				<!-- Name -->
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Slider.Title, "Title:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Slider.Title, new { htmlAttributes = new { id = "Title", @class = "form-control", placeholder = "Enter Title", required = "required" } })
+							@Html.ValidationMessageFor(model => model.Slider.Title, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Slider.Photo, "Photo:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Slider.Photo, new { htmlAttributes = new { id = "Photo", @class = "form-control form-file", placeholder = "Enter Role", Type = "file", onchange = "PhotoPreview()" } })
+							@Html.ValidationMessageFor(model => model.Slider.Photo, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row ml-2">
+						<label class="form-check-label">
+							@Html.CheckBoxFor(model => model.Slider.IsActive, new { @class = "form-check-input" }) Is Active
+						</label>
+					</div>
+				</div>
+				<div class="col-lg-8 col-md-8 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Slider.Description, "Description:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.TextAreaFor(model => model.Slider.Description, new { @id = "Description", @class = "form-control", placeholder = "Enter Description", required = "required", rows = "4" })
+							@Html.ValidationMessageFor(model => model.Slider.Description, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1 form-check" style="text-align:right">
+					<button type="button" class="btn btn-sm btn-primary btn-user" onclick="SliderSetUpdate()">
+						Save
+					</button>
+					<a class="btn btn-sm btn-outline-primary" asp-controller="Slider" asp-action="SliderCreate">Refresh</a>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+}
+<script type="text/javascript">
+	document.getElementById("Title").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("Description").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("Photo").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+</script>

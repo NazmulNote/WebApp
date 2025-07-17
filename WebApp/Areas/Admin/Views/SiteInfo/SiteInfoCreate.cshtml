@@ -1,0 +1,191 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+@{
+	ViewData["Title"] = "Site Info Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h5 class="PgTitle">Site Info:</h5>
+<h5 class="alert-success">@ViewBag.Success</h5>
+<h5 class="alert-danger">@ViewBag.Error</h5>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-body" id="HdrPView">
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	   document.addEventListener('DOMContentLoaded',function(){
+		   GetHdrPView();
+	   })
+	function GetHdrPView() {
+		Swal.fire({
+			position: "center",
+			html: '<i class="fa fa-spinner fa-spin" style="font-size: 2em;margin-top: 0.8em"></i><br><br>',
+			showConfirmButton: false,
+			allowOutsideClick: false,
+			allowEscapeKey: false,
+		});
+		$.ajax({
+			url: '@Url.Action("GetSiteInfoHdrPView", "SiteInfo")',
+			type: 'GET',
+			success: function (html) {
+				 $("#HdrPView").html("");
+				 $("#HdrPView").html(html);
+				Swal.close();
+			},
+			error: function (error) {
+				if (error.status === 401) loSliderion.href = '/SPanel1325/Login';
+				console.log("Error Get Site Info Hdr PView");
+			console.log(error);
+				Swal.close();
+			}
+		});
+	}
+	function SiteInfoSetUpdate() {
+		var HAboutPhotoUrl = $("#HAboutPhoto")[0].files[0];
+		var ContactSliderUrl = $("#ContactSlider")[0].files[0];
+
+		var formData = new FormData();
+
+		if (HAboutPhotoUrl) {
+			formData.append("HAboutPhotoUrl", HAboutPhotoUrl);
+		}
+
+		if (ContactSliderUrl) {
+			formData.append("ContactSliderUrl", ContactSliderUrl);
+		}
+		var otherData = $('#SiteInfoSetUpdateForm').serializeArray();
+		$.each(otherData, function (index, item) {
+			formData.append(item.name, item.value);
+		});
+		var IsRequired = CheckRequiredField();
+		if (IsRequired == "NO") {
+			Swal.fire({
+				position: "center",
+				html: '<i class="fa fa-spinner fa-spin" style="font-size: 2em;margin-top: 0.8em"></i><br><br>',
+				showConfirmButton: false,
+				allowOutsideClick: false,
+				allowEscapeKey: false,
+			});
+			$.ajax({
+				url: '@Url.Action("SiteInfoSetUpdate", "SiteInfo")',
+				type: 'POST',
+				data: formData,
+				contentType: false, // Important for FormData
+				processData: false, // Important for FormData
+				success: function (result) {
+					Swal.close();
+					if (result == 0) {
+						Swal.fire({
+							position: "center",
+							icon: "error",
+							title: "Site Info Not Updated.",
+							showConfirmButton: false,
+							timer: 2000
+						});
+					}
+					else {
+						Swal.fire({
+							position: "center",
+							icon: "success",
+							title: "Site Info Updated!",
+							showConfirmButton: false,
+							timer: 2000
+						});
+						setTimeout(function () {
+							GetHdrPView();
+						}, 2000)
+					}
+				},
+				error: function (error) {
+				if (error.status === 401) loSliderion.href = '/SPanel1325/Login';
+					console.log(error);
+					Swal.close();
+				}
+			});
+		}
+	}
+	function CheckRequiredField() {
+		var AboutTitle = document.getElementById("AboutTitle");
+		var AboutDescription = document.getElementById("AboutDescription");
+		var AboutUrl = document.getElementById("AboutUrl");
+
+		if (AboutTitle.value == "" || AboutDescription.value == "" ||AboutUrl.value == "") {
+			if (AboutTitle.value == "") { AboutTitle.style.border = "0.5px solid #ff00005c"; }
+			if (AboutDescription.value == "") { AboutDescription.style.border = "0.5px solid #ff00005c"; }
+			if (AboutUrl.value == "") { AboutUrl.style.border = "0.5px solid #ff00005c"; }
+			Swal.fire({
+				position: "center",
+				icon: "error",
+				title: "Please fill up all required fields.",
+				showConfirmButton: false,
+				timer: 2000
+			});
+			return "YES";
+		} else {
+			return "NO"
+		}
+	}
+	function HAboutPhotoPreview() {
+		const PhotoPreview = document.getElementById('HAboutPhotoPreview');
+		const file = document.getElementById('HAboutPhoto').files[0];
+		if (file) {
+			var maxFileSize = 512000; //in bytes
+			if (file.size <= maxFileSize) {
+
+				PhotoPreview.innerHTML = '';
+				const reader = new FileReader();
+				reader.onload = function (e) {
+					const img = document.createElement('img');
+					img.src = e.target.result;
+					img.alt = 'Uploaded Image';
+					img.style.maxWidth = '5rem';
+					img.style.maxHeight = '6rem';
+					img.style.objectFit = 'contain'
+					PhotoPreview.appendChild(img);
+				};
+				reader.readAsDataURL(file);
+			}
+			else {
+				Swal.fire({
+					text: "The file size should be around 500KB.",
+					icon: "error"
+				});
+				document.getElementById('Photo').value = "";
+			}
+		}
+	}
+	function ContactSliderPreview() {
+		const PhotoPreview = document.getElementById('ContactSliderPreview');
+		const file = document.getElementById('ContactSlider').files[0];
+		if (file) {
+			var maxFileSize = 512000; //in bytes
+			if (file.size <= maxFileSize) {
+
+				PhotoPreview.innerHTML = '';
+				const reader = new FileReader();
+				reader.onload = function (e) {
+					const img = document.createElement('img');
+					img.src = e.target.result;
+					img.alt = 'Uploaded Image';
+					img.style.maxWidth = '5rem';
+					img.style.maxHeight = '6rem';
+					img.style.objectFit = 'contain'
+					PhotoPreview.appendChild(img);
+				};
+				reader.readAsDataURL(file);
+			}
+			else {
+				Swal.fire({
+					text: "The file size should be around 500KB.",
+					icon: "error"
+				});
+				document.getElementById('Photo').value = "";
+			}
+		}
+	}
+</script>
+
+

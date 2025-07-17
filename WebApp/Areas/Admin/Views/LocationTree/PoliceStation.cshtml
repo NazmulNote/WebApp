@@ -1,0 +1,168 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+
+@{
+    ViewData["Title"] = "Police Station";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h5 class="PgTitle">Police Station:</h5>
+<h5 class="alert-success">@ViewBag.Success</h5>
+<h5 class="alert-danger">@ViewBag.Error</h5>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-body" id="HdrPView">
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-body" id="DetPView">
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	   document.addEventListener('DOMContentLoaded',function(){
+		   GetHdrPView();
+	   })
+	let descriptionEditor, specificationEditor;
+	function GetHdrPView(ID) {
+		Swal.fire({
+			position: "center",
+			html: '<i class="fa fa-spinner fa-spin" style="font-size: 2em;margin-top: 0.8em"></i><br><br>',
+			showConfirmButton: false,
+			allowOutsideClick: false,
+			allowEscapeKey: false,
+		});
+		$.ajax({
+			url: '@Url.Action("GetPoliceStationHdrPView", "LocationTree")',
+			type: 'GET',
+			data: { ID: ID },
+			success: function (html) {
+				 $("#HdrPView").html("");
+				 $("#HdrPView").html(html);
+				 GetDetPView();
+			},
+			error: function (error) {
+				if (error.status === 401) location.href = '/SPanel1325/Login';
+				console.log("Error Get PoliceStation Hdr PView");
+				Swal.close();
+			}
+		});
+	}
+	function GetDetPView() {
+		Swal.fire({
+			position: "center",
+			html: '<i class="fa fa-spinner fa-spin" style="font-size: 2em;margin-top: 0.8em"></i><br><br>',
+			showConfirmButton: false,
+			allowOutsideClick: false,
+			allowEscapeKey: false,
+		});
+		$.ajax({
+			url: '@Url.Action("GetPoliceStationDetPView", "LocationTree")',
+			type: 'GET',
+			success: function (html) {
+				 $("#DetPView").html("");
+				 $("#DetPView").html(html);
+				 Swal.close();
+			},
+			error: function (error) {
+				if (error.status === 401) location.href = '/SPanel1325/Login';
+				console.log("Error Get PoliceStation det PView");
+				Swal.close();
+			}
+		});
+	}
+	function LocationTreeSetUpdate() {
+
+		var formData = new FormData();
+
+		var otherData = $('#LocationTreeSetUpdateForm').serializeArray();
+		$.each(otherData, function (index, item) {
+			formData.append(item.name, item.value);
+		});
+		var IsRequired = CheckRequiredField();
+		if (IsRequired == "NO") {
+			Swal.fire({
+				position: "center",
+				html: '<i class="fa fa-spinner fa-spin" style="font-size: 2em;margin-top: 0.8em"></i><br><br>',
+				showConfirmButton: false,
+				allowOutsideClick: false,
+				allowEscapeKey: false,
+			});
+			$.ajax({
+				url: '@Url.Action("LocationTreeSetUpdate", "LocationTree")',
+				type: 'POST',
+				data: formData,
+				contentType: false, // Important for FormData
+				processData: false, // Important for FormData
+				success: function (result) {
+					Swal.close();
+					if (result == 0) {
+						Swal.fire({
+							position: "center",
+							icon: "error",
+							title: "PoliceStation Not Inserted successfully.",
+							showConfirmButton: false,
+							timer: 2000
+						});
+					}else if(result ==-1){
+						Swal.fire({
+							position: "center",
+							icon: "error",
+							title: "This Police Station name already exists in the database.",
+							showConfirmButton: false,
+							timer: 2000
+						});
+					}
+					else {
+						Swal.fire({
+							position: "center",
+							icon: "success",
+							title: "Police Station Inserted successfully!",
+							showConfirmButton: false,
+							timer: 2000
+						});
+						setTimeout(function () {
+							GetDetPView();
+							GetHdrPView();
+						}, 2000)
+					}
+				},
+				error: function (error) {
+					if (error.status === 401) location.href = '/SPanel1325/Login';
+					console.log(error);
+					Swal.close();
+				}
+			});
+		}
+	}
+	function CheckRequiredField() {
+		var PId = document.getElementById("PId");
+		var Name = document.getElementById("Name");
+		var Code = document.getElementById("Code");
+
+		if (Name.value == "" || Code.value == ""|| PId.value =="") {
+			if (Name.value == "") { Name.style.border = "0.5px solid #ff00005c"; }
+			if (Code.value == "") { Code.style.border = "0.5px solid #ff00005c"; }
+			if (PId.value == "") { PId.style.border = "0.5px solid #ff00005c"; }
+
+			Swal.fire({
+				position: "center",
+				icon: "error",
+				title: "Please fill up all required fields.",
+				showConfirmButton: false,
+				timer: 2000
+			});
+			return "YES";
+		} else {
+			return "NO"
+		}
+	}
+</script>
+
+

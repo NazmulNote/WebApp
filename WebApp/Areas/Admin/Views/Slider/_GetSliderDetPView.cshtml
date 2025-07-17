@@ -1,0 +1,59 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+
+<div class="contentSticky">
+	<div class="table-sticky Content_cScroll" style="height:45vh">
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<tr class="sticky">
+					<th>SL</th>
+					<th>Image</th></>
+					<th>Title</th>
+					<th>IsActive</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				@{
+					int i = 1;
+				}
+				@foreach (var slider in Model.SliderList)
+				{
+					<tr>
+						<td class="text-center">@i</td>
+						<td class="text-center">
+							<img style="width:2rem;height:2rem;object-fit:cover" src="@( slider != null && !string.IsNullOrEmpty(slider.PhotoUrl)? Url.Content("~/" + slider.PhotoUrl): Url.Content("~/Admin/img/avator.png"))" alt="User Image" />
+						</td>
+						<td>@slider.Title</td>
+						<td class="text-center" style="color:@(slider.IsActive ? "green" : "red")">
+							@slider.IsActive
+						</td>
+						<td class="text-center">
+							<button class="btn btn-sm btn-primary" onclick="GetHdrPView(@slider.ID)">View</button>
+							@* <button class="btn btn-sm btn-denger" onclick="SliderDelete(@slider.ID)">Delete</button> *@
+							<button class="btn btn-sm btn-danger" onclick="
+								Swal.fire({
+								title: 'Are you sure?' ,
+								text: 'Do you want to delete this slider?' ,
+								icon: 'warning' ,
+								showCancelButton: true,
+								confirmButtonColor: '#d33' ,
+								cancelButtonColor: '#3085d6' ,
+								confirmButtonText: 'Yes, delete it!' ,
+								cancelButtonText: 'Cancel'
+								}).then((result)=>
+							{
+							if (result.isConfirmed) {
+							SliderDelete(@slider.ID);
+							}
+							});
+								">Delete
+							</button>
+
+						</td>
+					</tr>
+					i++;
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

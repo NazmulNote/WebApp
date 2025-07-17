@@ -1,0 +1,177 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+
+@{
+    ViewData["Title"] = "Product Purchase Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h5 class="PgTitle">Product Purchase:</h5>
+<h5 class="alert-success">@ViewBag.Success</h5>
+<h5 class="alert-danger">@ViewBag.Error</h5>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-body" id="HdrPView">
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-body" id="DetPView">
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	   document.addEventListener('DOMContentLoaded',function(){
+		   GetHdrPView();
+	   })
+	let descriptionEditor, specificationEditor;
+	function GetHdrPView(ID) {
+		Swal.fire({
+			position: "center",
+			html: '<i class="fa fa-spinner fa-spin" style="font-size: 2em;margin-top: 0.8em"></i><br><br>',
+			showConfirmButton: false,
+			allowOutsideClick: false,
+			allowEscapeKey: false,
+		});
+		$.ajax({
+			url: '@Url.Action("GetProductPurchaseHdrPView", "ProductPurchase")',
+			type: 'GET',
+			data: { ID: ID },
+			success: function (html) {
+				 $("#HdrPView").html("");
+				 $("#HdrPView").html(html);
+				 GetDetPView();
+			},
+			error: function (error) {
+				if (error.status === 401) location.href = '/SPanel1325/Login';
+				console.log("Error Get Product Purchase Hdr PView");
+				Swal.close();
+			}
+		});
+	}
+	function GetDetPView() {
+		Swal.fire({
+			position: "center",
+			html: '<i class="fa fa-spinner fa-spin" style="font-size: 2em;margin-top: 0.8em"></i><br><br>',
+			showConfirmButton: false,
+			allowOutsideClick: false,
+			allowEscapeKey: false,
+		});
+		$.ajax({
+			url: '@Url.Action("GetProductPurchaseDetPView", "ProductPurchase")',
+			type: 'GET',
+			success: function (html) {
+				 $("#DetPView").html("");
+				 $("#DetPView").html(html);
+				 Swal.close();
+			},
+			error: function (error) {
+				if (error.status === 401) location.href = '/SPanel1325/Login';
+				console.log("Error Get Product Purchase det PView");
+				Swal.close();
+			}
+		});
+	}
+	function ProductPurchaseSetUpdate() {
+
+		var formData = new FormData();
+
+		var otherData = $('#ProductPurchaseSetUpdateForm').serializeArray();
+		$.each(otherData, function (index, item) {
+			formData.append(item.name, item.value);
+		});
+		var IsRequired = CheckRequiredField();
+		if (IsRequired == "NO") {
+			Swal.fire({
+				position: "center",
+				html: '<i class="fa fa-spinner fa-spin" style="font-size: 2em;margin-top: 0.8em"></i><br><br>',
+				showConfirmButton: false,
+				allowOutsideClick: false,
+				allowEscapeKey: false,
+			});
+			$.ajax({
+				url: '@Url.Action("ProductPurchaseSetUpdate", "ProductPurchase")',
+				type: 'POST',
+				data: formData,
+				contentType: false, // Important for FormData
+				processData: false, // Important for FormData
+				success: function (result) {
+					Swal.close();
+					if (result == 0) {
+						Swal.fire({
+							position: "center",
+							icon: "error",
+							title: "Product Purchase Not Inserted successfully.",
+							showConfirmButton: false,
+							timer: 2000
+						});
+					}else if(result ==-1){
+						Swal.fire({
+							position: "center",
+							icon: "error",
+							title: "This Product Purchase already exists in the database.",
+							showConfirmButton: false,
+							timer: 2000
+						});
+					}
+					else {
+						Swal.fire({
+							position: "center",
+							icon: "success",
+							title: "Product Purchase Inserted successfully!",
+							showConfirmButton: false,
+							timer: 2000
+						});
+						setTimeout(function () {
+							GetDetPView();
+							GetHdrPView();
+						}, 2000)
+					}
+				},
+				error: function (error) {
+					if (error.status === 401) location.href = '/SPanel1325/Login';
+					console.log(error);
+					Swal.close();
+				}
+			});
+		}
+	}
+	function CheckRequiredField() {
+		var ProductId = document.getElementById("ProductId");
+		var VendorId = document.getElementById("VendorId");
+		var Qty = document.getElementById("Qty");
+		var PurchasePrice = document.getElementById("PurchasePrice");
+		var PurchaseDate = document.getElementById("PurchaseDate");
+		var InvoiceNo = document.getElementById("InvoiceNo");
+
+		if (ProductId.value == "" || VendorId.value == ""|| Number(Qty.value) == 0 || Number(PurchasePrice.value) == 0 ||PurchaseDate.value == ""||InvoiceNo.value =="" ) {
+			if (ProductId.value == "") { ProductId.style.border = "0.5px solid #ff00005c"; }
+			if (VendorId.value == "") { VendorId.style.border = "0.5px solid #ff00005c"; }
+			if (Number(Qty.value) == 0) { Qty.style.border = "0.5px solid #ff00005c"; }
+			if (Number(PurchasePrice.value) == 0) { PurchasePrice.style.border = "0.5px solid #ff00005c"; }
+			if (PurchaseDate.value == "") { PurchaseDate.style.border = "0.5px solid #ff00005c"; }
+			if (InvoiceNo.value == "") { InvoiceNo.style.border = "0.5px solid #ff00005c"; }		
+
+			Swal.fire({
+				position: "center",
+				icon: "error",
+				title: "Please fill up all required fields.",
+				showConfirmButton: false,
+				timer: 2000
+			});
+			return "YES";
+		} else {
+			return "NO"
+		}
+	}
+</script>
+
+
+
+
+

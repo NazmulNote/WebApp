@@ -1,0 +1,110 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@using (Html.BeginForm("SiteInfoSetUpdate", "SiteInfo", FormMethod.Post, new { id = "SiteInfoSetUpdateForm", enctype = "multipart/form-data" }))
+{
+	@Html.HiddenFor(model => model.SiteInfo.ID)
+
+	<div class="row">
+		<div class="col-lg-1 col-md-1 col-sm-12 col-12">
+			<div id="HAboutPhotoPreview">
+				<span style="font-size:0.7rem">Home About</span>
+				<img style="width:5rem;height:6rem;object-fit:contain"
+					 src="@( Model.SiteInfo != null && !string.IsNullOrEmpty(Model.SiteInfo.HAboutPhotoUrl) ? Url.Content("~/" + Model.SiteInfo.HAboutPhotoUrl) : Url.Content("~/Admin/img/avator.png"))"
+					 alt="About Image" />
+			</div>
+			<div id="ContactSliderPreview">
+				<span style="font-size:0.7rem">Contact Slider</span>
+				<img style="width:5rem;height:6rem;object-fit:contain"
+					 src="@( Model.SiteInfo != null && !string.IsNullOrEmpty(Model.SiteInfo.ContactSliderUrl) ? Url.Content("~/" + Model.SiteInfo.ContactSliderUrl) : Url.Content("~/Admin/img/avator.png"))"
+					 alt="About Image" />
+			</div>
+			@Html.HiddenFor(model => model.SiteInfo.HAboutPhotoUrl)
+			@Html.HiddenFor(model => model.SiteInfo.ContactSliderUrl)
+		</div>
+
+		<div class="col-lg-11 col-md-11 col-sm-12 col-12">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.SiteInfo.HAboutTitle, "Home About Title:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.SiteInfo.HAboutTitle, new { htmlAttributes = new { id = "AboutTitle", @class = "form-control", placeholder = "Enter About Title", required = "required" } })
+							@Html.ValidationMessageFor(model => model.SiteInfo.HAboutTitle, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.SiteInfo.HAboutUrl, "Home About V.URL:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.SiteInfo.HAboutUrl, new { htmlAttributes = new { id = "AboutUrl", @class = "form-control", placeholder = "Enter About URL" } })
+							@Html.ValidationMessageFor(model => model.SiteInfo.HAboutUrl, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.SiteInfo.HAboutDescription, "Home About Description:", htmlAttributes: new { @class = "col-sm-2 col-2 col-form-label" })
+						<div class="col-sm-10 col-10">
+							@Html.TextAreaFor(model => model.SiteInfo.HAboutDescription, new { @id = "AboutDescription", @class = "form-control", placeholder = "Enter About Description", rows = "4", required = "required" })
+							@Html.ValidationMessageFor(model => model.SiteInfo.HAboutDescription, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.SiteInfo.HAboutPhotoUrl, "Home About Photo:1200×1000px", htmlAttributes: new { @class = "col-sm-6 col-6 col-form-label" })
+						<div class="col-sm-6 col-6">
+							<input type="file" id="HAboutPhoto" name="ImageFile" class="form-control form-file" onchange="HAboutPhotoPreview()" />
+							@Html.ValidationMessageFor(model => model.SiteInfo.HAboutPhotoUrl, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<strong style="padding: 0;border-bottom: 2px solid lightgray;margin-bottom: 0.3rem;">Contact Page info</strong>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.SiteInfo.ContactSliderUrl, "Contact Slider:2000×1333px", htmlAttributes: new { @class = "col-sm-6 col-6 col-form-label" })
+						<div class="col-sm-6 col-6">
+							<input type="file" id="ContactSlider" name="ImageFile" class="form-control form-file" onchange="ContactSliderPreview()" />
+							@Html.ValidationMessageFor(model => model.SiteInfo.ContactSliderUrl, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.SiteInfo.ContactMap, "Contact Map:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.SiteInfo.ContactMap, new { htmlAttributes = new { id = "ContactMap", @class = "form-control", placeholder = "Enter Contact Map", required = "required" } })
+							@Html.ValidationMessageFor(model => model.SiteInfo.ContactMap, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.SiteInfo.ContactShortDesc, "Contact Short Desc:", htmlAttributes: new { @class = "col-sm-2 col-2 col-form-label" })
+						<div class="col-sm-10 col-10">
+							@Html.TextAreaFor(model => model.SiteInfo.ContactShortDesc, new { @id = "ContactShortDesc", @class = "form-control", placeholder = "Enter Contact Short Desc", rows = "2", required = "required" })
+							@Html.ValidationMessageFor(model => model.SiteInfo.ContactShortDesc, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-1 form-check" style="text-align:right">
+					<button type="button" class="btn btn-sm btn-primary btn-user" onclick="SiteInfoSetUpdate()">
+						Save
+					</button>
+					<a class="btn btn-sm btn-outline-primary" asp-controller="SiteInfo" asp-action="SiteInfoCreate">Refresh</a>
+				</div>
+			</div>
+		</div>
+	</div>
+}
+
+<script type="text/javascript">
+	document.getElementById("AboutTitle").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("AboutDescription").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("AboutUrl").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+</script>

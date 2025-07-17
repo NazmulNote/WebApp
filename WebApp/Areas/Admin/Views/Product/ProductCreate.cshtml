@@ -1,0 +1,211 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+@{
+    ViewData["Title"] = "Product Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+	.card-body {
+		padding-bottom: 0px;
+	}
+</style>
+<h5 class="PgTitle">Product:</h5>
+<h5 class="alert-success">@ViewBag.Success</h5>
+<h5 class="alert-danger">@ViewBag.Error</h5>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-body" id="HdrPView">
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-body" id="DetPView">
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+		   document.addEventListener('DOMContentLoaded',function(){
+			   GetHdrPView();
+		   })
+	    let descriptionEditor, specificationEditor;
+		function GetHdrPView(ID) {
+			Swal.fire({
+				position: "center",
+				html: '<i class="fa fa-spinner fa-spin" style="font-size: 2em;margin-top: 0.8em"></i><br><br>',
+				showConfirmButton: false,
+				allowOutsideClick: false,
+				allowEscapeKey: false,
+			});
+			$.ajax({
+				url: '@Url.Action("GetProductHdrPView", "Product")',
+				type: 'GET',
+				data: { ID: ID },
+				success: function (html) {
+					 $("#HdrPView").html("");
+					 $("#HdrPView").html(html);
+					 GetDetPView();
+				},
+				error: function (error) {
+					if (error.status === 401) location.href = '/SPanel1325/Login';
+					console.log("Error Get Product Hdr PView");
+					Swal.close();
+				}
+			});
+		}
+		function GetDetPView() {
+			Swal.fire({
+				position: "center",
+				html: '<i class="fa fa-spinner fa-spin" style="font-size: 2em;margin-top: 0.8em"></i><br><br>',
+				showConfirmButton: false,
+				allowOutsideClick: false,
+				allowEscapeKey: false,
+			});
+			$.ajax({
+				url: '@Url.Action("GetProductDetPView", "Product")',
+				type: 'GET',
+				success: function (html) {
+					 $("#DetPView").html("");
+					 $("#DetPView").html(html);
+					 Swal.close();
+				},
+				error: function (error) {
+					if (error.status === 401) location.href = '/SPanel1325/Login';
+					console.log("Error Get Product det PView");
+					Swal.close();
+				}
+			});
+		}
+		function ProductSetUpdate() {
+			var ImageFile = $("#Photo")[0].files[0];
+			var formData = new FormData();
+			if (ImageFile) {
+				formData.append("ImageFile", ImageFile);
+			}
+			var otherData = $('#ProductSetUpdateForm').serializeArray();
+			$.each(otherData, function (index, item) {
+				formData.append(item.name, item.value);
+			});
+			formData.set("Product.Description", descriptionEditor.getData());
+			formData.set("Product.Specification", specificationEditor.getData());
+
+			var IsRequired = CheckRequiredField();
+			if (IsRequired == "NO") {
+				Swal.fire({
+					position: "center",
+					html: '<i class="fa fa-spinner fa-spin" style="font-size: 2em;margin-top: 0.8em"></i><br><br>',
+					showConfirmButton: false,
+					allowOutsideClick: false,
+					allowEscapeKey: false,
+				});
+				$.ajax({
+					url: '@Url.Action("ProductSetUpdate", "Product")',
+					type: 'POST',
+					data: formData,
+					contentType: false, // Important for FormData
+					processData: false, // Important for FormData
+					success: function (result) {
+						Swal.close();
+						if (result == 0) {
+							Swal.fire({
+								position: "center",
+								icon: "error",
+								title: "Product Not Inserted successfully.",
+								showConfirmButton: false,
+								timer: 2000
+							});
+						}else if(result ==-1){
+							Swal.fire({
+								position: "center",
+								icon: "error",
+								title: "This item name already exists in the database.",
+								showConfirmButton: false,
+								timer: 2000
+							});
+						}
+						else {
+							Swal.fire({
+								position: "center",
+								icon: "success",
+								title: "Product Inserted successfully!",
+								showConfirmButton: false,
+								timer: 2000
+							});
+							setTimeout(function () {
+								GetDetPView();
+								GetHdrPView();
+							}, 2000)
+						}
+					},
+					error: function (error) {
+						if (error.status === 401) location.href = '/SPanel1325/Login';
+						console.log(error);
+						Swal.close();
+					}
+				});
+			}
+		}
+		function CheckRequiredField() {
+			var CatId = document.getElementById("CatId");
+			var SubCatId = document.getElementById("SubCatId");
+			var SubChildCatId = document.getElementById("SubChildCatId");
+			var Name = document.getElementById("Name");
+			var Code = document.getElementById("Code")
+			var Description = document.getElementById("Description")
+			var Specification = document.getElementById("Specification")
+
+			if (CatId.value == "" || SubCatId.value == "" || SubChildCatId.value == ""||Name.value ==""|| Code.value =="") {
+				if (CatId.value == "") { CatId.style.border = "0.5px solid #ff00005c"; }
+				if (SubCatId.value == "") { SubCatId.style.border = "0.5px solid #ff00005c"; }
+				if (SubChildCatId.value == "") { SubChildCatId.style.border = "0.5px solid #ff00005c"; }
+				if (Name.value == "") { Name.style.border = "0.5px solid #ff00005c"; }
+				if (Code.value == "") { Code.style.border = "0.5px solid #ff00005c"; }
+
+				Swal.fire({
+					position: "center",
+					icon: "error",
+					title: "Please fill up all required fields.",
+					showConfirmButton: false,
+					timer: 2000
+				});
+				return "YES";
+			} else {
+				return "NO"
+			}
+		}
+	function PhotoPreview() {
+			const PhotoPreview = document.getElementById('PhotoPreview');
+			const file = document.getElementById('Photo').files[0];
+			if (file) {
+				var maxFileSize = 512000; //in bytes
+				if (file.size <= maxFileSize) {
+
+					PhotoPreview.innerHTML = '';
+					const reader = new FileReader();
+					reader.onload = function (e) {
+						const img = document.createElement('img');
+						img.src = e.target.result;
+						img.alt = 'Uploaded Image';
+						img.style.maxWidth = '5rem';
+						img.style.maxHeight = '6rem';
+						img.style.objectFit = 'contain'
+						PhotoPreview.appendChild(img);
+					};
+					reader.readAsDataURL(file);
+				}
+				else {
+					Swal.fire({
+						text: "The file size should be around 500KB.",
+						icon: "error"
+					});
+					document.getElementById('Photo').value = "";
+				}
+			}
+		}
+
+</script>
+
+

@@ -7,9 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Client\Data\" />
-    <Folder Include="Areas\Client\Models\" />
     <Folder Include="wwwroot\Admin\img\library\" />
+    <Folder Include="wwwroot\Admin\img\customer\" />
+    <Folder Include="wwwroot\Admin\img\home\" />
+    <Folder Include="wwwroot\Admin\img\about\" />
+    <Folder Include="wwwroot\Admin\img\product\" />
+    <Folder Include="wwwroot\Client\img\home\" />
+    <Folder Include="wwwroot\Client\js\" />
   </ItemGroup>
 
   <ItemGroup>

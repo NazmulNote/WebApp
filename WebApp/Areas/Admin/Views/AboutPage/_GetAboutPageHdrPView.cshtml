@@ -1,0 +1,145 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@using (Html.BeginForm("AboutPageSetUpdate", "AboutPage", FormMethod.Post, new { id = "AboutPageSetUpdateForm", enctype = "multipart/form-data" }))
+{
+	@Html.HiddenFor(model => model.AboutPage.ID)
+	@Html.HiddenFor(model => model.AboutPage.AboutPhotoUrl)
+	@Html.HiddenFor(model => model.AboutPage.SliderPhotoUrl)
+
+	<div class="row">
+
+		<div class="col-lg-1 col-md-1 col-sm-12 col-12">
+			<!-- Slider Photo Preview -->
+			<div id="SliderPhotoPreview">
+				<span>Slider:</span>
+				<img style="width:5rem;height:6rem;object-fit:contain"
+					 src="@(Model.AboutPage != null && !string.IsNullOrEmpty(Model.AboutPage.SliderPhotoUrl) ? Url.Content("~/" + Model.AboutPage.SliderPhotoUrl) : Url.Content("~/Admin/img/avator.png"))"
+					 alt="Slider Image" />
+			</div>
+			<!-- About Photo Preview -->
+			<div id="AboutPhotoPreview">
+				<span>About:</span>
+				<img style="width:5rem;height:6rem;object-fit:contain"
+					 src="@(Model.AboutPage != null && !string.IsNullOrEmpty(Model.AboutPage.AboutPhotoUrl) ? Url.Content("~/" + Model.AboutPage.AboutPhotoUrl) : Url.Content("~/Admin/img/avator.png"))"
+					 alt="About Image" />
+			</div>
+		</div>
+		<div class="col-lg-10 col-md-10 col-sm-12 col-12">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.AboutPage.Title, "Title:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.AboutPage.Title, new { htmlAttributes = new { id = "Title", @class = "form-control", placeholder = "Enter Title", required = "required" } })
+							@Html.ValidationMessageFor(model => model.AboutPage.Title, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-1">
+					@Html.LabelFor(model => model.AboutPage.Description, "Description:", htmlAttributes: new { @class = "", @style = "margin:0;padding:0" })
+					<div class="form-group row">
+						<div class="col-sm-12 col-12">
+							@Html.TextAreaFor(model => model.AboutPage.Description, new { @id = "Description", @class = "form-control", placeholder = "Enter Description", rows = "4", required = "required" })
+							@Html.ValidationMessageFor(model => model.AboutPage.Description, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-1">
+					@Html.LabelFor(model => model.AboutPage.Description, "Vision:", htmlAttributes: new { @class = "", @style = "margin:0;padding:0" })
+					<div class="form-group row">
+						<div class="col-sm-12 col-12">
+							@Html.TextAreaFor(model => model.AboutPage.Vision, new { @id = "Vision", @class = "form-control", placeholder = "Enter Vision", rows = "4", required = "required" })
+							@Html.ValidationMessageFor(model => model.AboutPage.Vision, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-1">
+					@Html.LabelFor(model => model.AboutPage.Description, "Mission:", htmlAttributes: new { @class = "", @style = "margin:0;padding:0" })
+					<div class="form-group row">
+						<div class="col-sm-12 col-12">
+							@Html.TextAreaFor(model => model.AboutPage.Mission, new { @id = "Mission", @class = "form-control", placeholder = "Enter Mission", rows = "4", required = "required" })
+							@Html.ValidationMessageFor(model => model.AboutPage.Mission, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-1">
+					@Html.LabelFor(model => model.AboutPage.Description, "Achievements:", htmlAttributes: new { @class = "", @style = "margin:0;padding:0" })
+					<div class="form-group row">
+						<div class="col-sm-12 col-12">
+							@Html.TextAreaFor(model => model.AboutPage.Achievements, new { @id = "Achievements", @class = "form-control", placeholder = "Enter Achievements", rows = "4", required = "required" })
+							@Html.ValidationMessageFor(model => model.AboutPage.Achievements, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<!-- Slider Photo Upload -->
+				<div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.AboutPage.SliderPhotoUrl, "Slider Photo: size: 2000×1333 px", htmlAttributes: new { @class = "col-sm-6 col-5 col-form-label" })
+						<div class="col-sm-6 col-7">
+							<input type="file" id="SliderPhoto" name="SliderPhoto" class="form-control form-file" onchange="SliderPhotoPreview()" />
+							@Html.ValidationMessageFor(model => model.AboutPage.SliderPhotoUrl, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+
+				<!-- About Photo Upload -->
+				<div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.AboutPage.AboutPhotoUrl, "About Photo: size: 800×700 px", htmlAttributes: new { @class = "col-sm-6 col-5 col-form-label" })
+						<div class="col-sm-6 col-7">
+							<input type="file" id="AboutPhoto" name="AboutPhoto" class="form-control form-file" onchange="AboutPhotoPreview()" />
+							@Html.ValidationMessageFor(model => model.AboutPage.AboutPhotoUrl, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-1 form-check" style="text-align:right">
+					<button type="button" class="btn btn-sm btn-primary btn-user" onclick="AboutPageSetUpdate()">
+						Save
+					</button>
+					<a class="btn btn-sm btn-outline-primary" asp-controller="AboutPage" asp-action="AboutPageCreate">Refresh</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+}
+
+<script type="text/javascript">
+	ClassicEditor
+		.create(document.getElementById('Description'))
+		.then(editor => {
+			 descriptionEditor = editor;
+		})
+		.catch(error => {
+			console.error('Description Editor Error:', error);
+		});
+
+	ClassicEditor
+		.create(document.getElementById('Vision'))
+		.then(editor => {
+			 visionEditor = editor;
+		})
+		.catch(error => {
+			console.error('Vision Editor Error:', error);
+		});
+	ClassicEditor
+		   .create(document.getElementById('Mission'))
+		   .then(editor => {
+				missionEditor = editor;
+		   })
+		   .catch(error => {
+			   console.error('mission Editor Error:', error);
+		   });
+	ClassicEditor
+			  .create(document.getElementById('Achievements'))
+			  .then(editor => {
+				   achievementsEditor = editor;
+			  })
+			  .catch(error => {
+				  console.error('Achievements Editor Error:', error);
+			  });
+	document.getElementById("Title").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+</script>

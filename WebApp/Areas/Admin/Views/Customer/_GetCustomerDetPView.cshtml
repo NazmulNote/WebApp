@@ -1,0 +1,47 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+
+<div class="contentSticky">
+	<div class="table-sticky Content_cScroll" style="height:51vh">
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<tr class="sticky">
+					<th>SL</th>
+					<th>Image</th></>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Phone</th>
+					<th>Country</th>
+					<th>District</th>
+					<th>P.S.</th>
+					<th>IsActive</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				@{
+					int i = 1;
+				}
+				@foreach (var customer in Model.CustomerList)
+				{
+					<tr>
+						<td class="text-center">@i</td>
+						<td class="text-center">
+							<img style="width:2rem;height:2rem;object-fit:cover" src="@( customer != null && !string.IsNullOrEmpty(customer.PhotoUrl)? Url.Content("~/" + customer.PhotoUrl): Url.Content("~/Admin/img/AdminUsers/avator.png"))" alt="User Image" />
+						</td>
+						<td>@customer.Name</td>
+						<td>@customer.Email</td>
+						<td>@customer.Phone</td>
+						<td>@customer.CountryName</td>
+						<td>@customer.DistrictName</td>
+						<td>@customer.PoliceStationName</td>
+						<td class="text-center" style="color:@(customer.IsActive ? "green" : "red")">
+							@customer.IsActive
+						</td>
+						<td class="text-center"><button class="btn btn-sm btn-primary" onclick="GetHdrPView(@customer.ID)">View</button></td>
+					</tr>
+					i++;
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

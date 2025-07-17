@@ -1,0 +1,41 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+
+<div class="contentSticky">
+	<div class="table-sticky Content_cScroll" style="height:58vh">
+		<table class="table table-bordered table-striped table-hover" id="DataTable">
+			<thead>
+				<tr class="sticky">
+					<th>SL</th>
+					<th>P.Id</th>
+					<th>Product</th>
+					<th>Quantity</th>
+					<th>Avg Price</th>
+					<th>Category</th>
+					<th>SubCategory</th>
+					<th>Brand</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				@{
+					int i = 1;
+				}
+				@foreach (var product in Model.ProductStockList)
+				{
+					<tr>
+						<td class="text-center">@i</td>
+						<td>@product.ProductId</td>
+						<td>@product.ProductName</td>
+						<td>@product.Quantity</td>
+						<td>@product.AveragePrice</td>
+						<td>@product.CatName</td>
+						<td>@product.SubCatName</td>
+						<td>@product.SubChildCatName</td>
+						<td class="text-center"><button class="btn btn-sm btn-primary" onclick="GetHdrPView(@product.ID)">View</button></td>
+					</tr>
+					i++;
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

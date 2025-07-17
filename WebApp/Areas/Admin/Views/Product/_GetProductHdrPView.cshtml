@@ -1,0 +1,255 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using (Html.BeginForm("ProductSetUpdate", "Product", FormMethod.Post, new { id = "ProductSetUpdateForm", enctype = "multipart/form-data" }))
+{
+	@Html.HiddenFor(model => model.Product.ID)
+
+	<div class="row">
+		<div class="col-lg-1 col-md-1 col-sm-12 col-12">
+			<div id="PhotoPreview">
+				<img style="width:5rem;height:6rem;object-fit:contain" src="@( Model.Product != null && !string.IsNullOrEmpty(Model.Product.PhotoUrl)? Url.Content("~/" + Model.Product.PhotoUrl): Url.Content("~/Admin/img/avator.png"))" alt="User Image" />
+			</div>
+			@Html.HiddenFor(model => model.Product.PhotoUrl)
+		</div>
+		<div class="col-lg-11 col-md-11 col-sm-12 col-12">
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Product.CatId, "Category:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.DropDownListFor(model => model.Product.CatId, (IEnumerable<SelectListItem>)ViewBag.CategoryList, "Select Category", new { @class = "form-control", @id = "CatId", required = "required" })
+							@Html.ValidationMessageFor(model => model.Product.CatId, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Product.SubCatId, "Sub Cat:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.DropDownListFor(model => model.Product.SubCatId, (IEnumerable<SelectListItem>)ViewBag.SubCatList, "Select Sub Category", new { @class = "form-control", @id = "SubCatId", required = "required" })
+							@Html.ValidationMessageFor(model => model.Product.SubCatId, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Product.SubChildCatId, "Brand:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.DropDownListFor(model => model.Product.SubChildCatId, (IEnumerable<SelectListItem>)ViewBag.subChildCatList, "Select Brand", new { @class = "form-control", @id = "SubChildCatId", required = "required" })
+							@Html.ValidationMessageFor(model => model.Product.SubChildCatId, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Product.Name, "Name:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Product.Name, new { htmlAttributes = new { id = "Name", @class = "form-control", placeholder = "Enter Name", required = "required" } })
+							@Html.ValidationMessageFor(model => model.Product.Name, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Product.Code, "Code:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Product.Code, new { htmlAttributes = new { id = "Code", @class = "form-control", placeholder = "Enter Code" } })
+							@Html.ValidationMessageFor(model => model.Product.Code, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Product.SellingPrice, "S.Price:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Product.SellingPrice, new { htmlAttributes = new { @type = "number", @step = "0.001", id = "SellingPrice", @class = "form-control", placeholder = "Enter Selling Price" } })
+							@Html.ValidationMessageFor(model => model.Product.SellingPrice, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Product.OfferPercent, "O.Prcnt:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Product.OfferPercent, new { htmlAttributes = new { @type = "number", @step = "0.001", id = "OfferPercent", @class = "form-control", placeholder = "Enter Offer Percent" } })
+							@Html.ValidationMessageFor(model => model.Product.OfferPercent, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Product.OfferPrice, "O.Price:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Product.OfferPrice, new { htmlAttributes = new { @type = "number", @step = "0.001", id = "OfferPrice", @class = "form-control", placeholder = "Enter Offer Price" } })
+							@Html.ValidationMessageFor(model => model.Product.OfferPrice, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-1">
+					<div class="form-group row ml-2">
+						<label class="form-check-label">
+							@Html.CheckBoxFor(model => model.Product.IsActive, new { @class = "form-check-input" }) Is Active
+						</label>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Product.Photo, "Photo:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Product.Photo, new { htmlAttributes = new { id = "Photo", @class = "form-control form-file", placeholder = "Enter Role", Type = "file", onchange = "PhotoPreview()" } })
+							@Html.ValidationMessageFor(model => model.Product.Photo, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-12 mb-1 form-check" style="text-align:right">
+					<button type="button" class="btn btn-sm btn-primary btn-user" onclick="ProductSetUpdate()">
+						Save
+					</button>
+					<a class="btn btn-sm btn-outline-primary" asp-controller="Product" asp-action="ProductCreate">Refresh</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-6 col-12 mb-1">
+			<div class="form-group row">
+				@Html.LabelFor(model => model.Product.Description, "Description:", htmlAttributes: new { @class = "", @style = "margin:0;padding:0" })
+				<div class="col-sm-12 col-12">
+					@Html.TextAreaFor(model => model.Product.Description, new { @id = "Description", @class = "form-control", placeholder = "Enter Description", required = "required", rows = "2" })
+					@Html.ValidationMessageFor(model => model.Product.Description, "", new { @class = "text-danger" })
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-6 col-12 mb-1">
+			<div class="form-group row">
+				@Html.LabelFor(model => model.Product.Specification, "Specification:", htmlAttributes: new { @class = "", @style = "margin:0;padding:0" })
+				<div class="col-sm-12 col-12">
+					@Html.TextAreaFor(model => model.Product.Specification, new { @id = "Specification", @class = "form-control", placeholder = "Enter Specification", required = "required", rows = "2" })
+					@Html.ValidationMessageFor(model => model.Product.Specification, "", new { @class = "text-danger" })
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+}
+<script type="text/javascript">
+
+	ClassicEditor
+		.create(document.getElementById('Description'))
+		.then(editor => {
+			 descriptionEditor = editor;
+		})
+		.catch(error => {
+			console.error('Description Editor Error:', error);
+		});
+
+	ClassicEditor
+		.create(document.getElementById('Specification'))
+		.then(editor => {
+			 specificationEditor = editor;
+		})
+		.catch(error => {
+			console.error('Specification Editor Error:', error);
+		});
+
+	document.getElementById("CatId").onchange = function () { this.style.border = "0.5px solid #dee2e6";GetSubCatByCatId(); };
+	document.getElementById("SubCatId").onchange = function () { this.style.border = "0.5px solid #dee2e6";GetSubChildCatByCatId(); };
+	document.getElementById("SubChildCatId").onchange = function () { this.style.border = "0.5px solid #dee2e6";};
+	document.getElementById("Name").onchange = function(){this.style.border = "0.5px solid #dee2e6";}
+	document.getElementById("Code").onchange = function(){this.style.border = "0.5px solid #dee2e6";}
+	document.getElementById("Description").onchange = function(){this.style.border = "0.5px solid #dee2e6";}
+	document.getElementById("Specification").onchange = function(){this.style.border = "0.5px solid #dee2e6";}
+
+
+	function GetSubCatByCatId(){
+		var CategoryId = document.getElementById("CatId").value;
+		$.ajax({
+			url: '@Url.Action("GetSubCatByCatId", "Product")',
+			type: 'GET',
+			data: { ID: CategoryId },
+			success: function (subCat) {
+
+				var subCatDropdown = $('#SubCatId');
+				subCatDropdown.empty();
+				subCatDropdown.append($('<option>').text('Select Sub Category').attr('value', ''));
+				$.each(subCat, function (index, item) {
+					subCatDropdown.append($('<option>', {value: item.value,text: item.text}));
+					// subCatDropdown.append($('<option>').text(item.Text).attr('value', item.Value));
+				});
+			},
+			error: function (error) {
+				if (error.status === 401) location.href = '/SPanel1325/Login';
+				console.log('Error fetching sub Cat');
+			}
+		});
+	}
+	function GetSubChildCatByCatId(){
+		var SubCatId = document.getElementById("SubCatId").value;
+		$.ajax({
+			url: '@Url.Action("GetSubChildCatBySubCatId", "Product")',
+			type: 'GET',
+			data: { ID: SubCatId },
+			success: function (subChildCat) {
+
+				var subChildCatDropdown = $('#SubChildCatId');
+				subChildCatDropdown.empty();
+				subChildCatDropdown.append($('<option>').text('Select Brand').attr('value', ''));
+				$.each(subChildCat, function (index, item) {
+					subChildCatDropdown.append($('<option>', {value: item.value,text: item.text}));
+					// subCatDropdown.append($('<option>').text(item.Text).attr('value', item.Value));
+				});
+			},
+			error: function (error) {
+				if (error.status === 401) location.href = '/SPanel1325/Login';
+				console.log('Error fetching sub child Cat');
+			}
+		});
+	}
+	document.getElementById("OfferPercent").onchange = ()=>{
+		var SellingPrice = document.getElementById("SellingPrice");
+		if(Number(SellingPrice.value !=0)){
+			var OfferPercent = document.getElementById("OfferPercent");
+			var OfferPrice = document.getElementById("OfferPrice");
+
+			var PercentPrice  = SellingPrice.value - (SellingPrice.value * (OfferPercent.value / 100) )
+			OfferPrice.value = PercentPrice;
+		}else{
+			Swal.fire({
+					position: "center",
+					icon: "error",
+					title: "Please fill up selling Price.",
+					showConfirmButton: false,
+					timer: 2000
+				});
+		}
+	}
+	document.getElementById("OfferPrice").onchange = ()=>{
+		var SellingPrice = document.getElementById("SellingPrice");
+		if(Number(SellingPrice.value !=0)){
+			var OfferPercent = document.getElementById("OfferPercent");
+			var OfferPrice = document.getElementById("OfferPrice");
+
+			var Percent = (((SellingPrice.value - OfferPrice.value) / SellingPrice.value) * 100 )
+			OfferPercent.value = Percent;
+		}else{
+			Swal.fire({
+					position: "center",
+					icon: "error",
+					title: "Please fill up selling Price.",
+					showConfirmButton: false,
+					timer: 2000
+				});
+		}
+	}
+	document.getElementById("SellingPrice").onchange = ()=>{
+		var OfferPercent = document.getElementById("OfferPercent");
+		var OfferPrice = document.getElementById("OfferPrice");
+		OfferPercent.value = 0;
+		OfferPrice.value = 0;
+	}
+</script>

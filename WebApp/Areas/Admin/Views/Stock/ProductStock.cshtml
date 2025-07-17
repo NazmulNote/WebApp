@@ -1,0 +1,106 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+@{
+	ViewData["Title"] = "Product Stock";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h5 class="PgTitle">Product Stock:</h5>
+<h5 class="alert-success">@ViewBag.Success</h5>
+<h5 class="alert-danger">@ViewBag.Error</h5>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-body" id="HdrPView">
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-body" id="DetPView">
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+		   document.addEventListener('DOMContentLoaded',function(){
+			   GetHdrPView();
+		   })
+		function GetHdrPView(ID) {
+			Swal.fire({
+				position: "center",
+				html: '<i class="fa fa-spinner fa-spin" style="font-size: 2em;margin-top: 0.8em"></i><br><br>',
+				showConfirmButton: false,
+				allowOutsideClick: false,
+				allowEscapeKey: false,
+			});
+			$.ajax({
+				url: '@Url.Action("GetProductStockHdrPView", "Stock")',
+				type: 'GET',
+				data: { ID: ID },
+				success: function (html) {
+					 $("#HdrPView").html("");
+					 $("#HdrPView").html(html);
+					 GetDetPView();
+				},
+				error: function (error) {
+					if (error.status === 401) location.href = '/SPanel1325/Login';
+					console.log("Error Get Product Stock Hdr PView");
+				console.log(error);
+					Swal.close();
+				}
+			});
+		}
+		function GetDetPView() {
+			var FromDate =document.getElementById("FromDate").value;
+			var ToDate = document.getElementById("ToDate").value;
+			var CatId = document.getElementById("CatId").value;
+			var SubCatId = document.getElementById("SubCatId").value;
+			var SubChildCatId = document.getElementById("SubChildCatId").value;
+			var ProductId = document.getElementById("ProductId").value;
+
+			Swal.fire({
+				position: "center",
+				html: '<i class="fa fa-spinner fa-spin" style="font-size: 2em;margin-top: 0.8em"></i><br><br>',
+				showConfirmButton: false,
+				allowOutsideClick: false,
+				allowEscapeKey: false,
+			});
+			$.ajax({
+				url: '@Url.Action("GetProductStockDetPView", "Stock")',
+				type: 'GET',
+				data:{
+					FromDate:FromDate,
+					ToDate:ToDate,
+					CatId: CatId,
+					SubCatId:SubCatId,
+					SubChildCatId : SubChildCatId,
+					ProductId : ProductId
+				},
+				success: function (html) {
+					 $("#DetPView").html("");
+					 $("#DetPView").html(html);
+					 Swal.close();
+				},
+				error: function (error) {
+					if (error.status === 401) location.href = '/SPanel1325/Login';
+					console.log("Error Get Product Stock det PView");
+					Swal.close();
+				}
+			});
+		}
+	function ExportExcel() {
+		const table = document.getElementById('DataTable');
+		const wb = XLSX.utils.table_to_book(table, { sheet: "Report" });
+
+		const now = new Date();
+		const dateTimeString = now.toISOString().slice(0, 19).replace(/:/g, '_').replace('T', '_');
+		const fileName = `ProductStock_Report_${dateTimeString}.xlsx`;
+
+		XLSX.writeFile(wb, fileName);
+	}
+</script>
+
+
+

@@ -1,8 +1,159 @@
-﻿
+﻿@model WebApp.Areas.Client.Models.ClientViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    
-}
 
-<h1>Index From Client</h1>
+}
+<!-- Slide START-->
+<section class="home-slider">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 p-0">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+
+                        @if(Model.SliderList.Count != 0)
+                        { int i = 1;
+                            @foreach (var slider in Model.SliderList)
+                            {
+                                <div class="carousel-item @(i==1?"active":"null")" style="background-image:url('@(slider.PhotoUrl.ToString())');">
+                                    <div class="bg-overlay"></div>
+                                    <div class="home-center">
+                                        <div class="home-desc-center">
+                                            <div class="container">
+                                                <div class="row justify-content-start">
+                                                    <div class="col-lg-8">
+                                                        <div class="title-heading text-left">
+                                                            <h1 class="">@slider.Title</h1>
+                                                            <p class="text-white-50 ml-auto">@slider.Description</p>
+                                                            <div class="mt-3">
+                                                                <a asp-controller="Home" asp-action="Contact" class="btn btn-custom mr-3">Contact Us</a>
+                                                                <a asp-controller="Home" asp-action="About" class="btn btn-outline-white">Learn More</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                i++;
+                            }
+                        }
+                        else
+                        {
+                            <div class="carousel-item active" style="background-image:url('Client/img/default/slider.jpg');">
+                                <div class="bg-overlay"></div>
+                                <div class="home-center">
+                                    <div class="home-desc-center">
+                                        <div class="container">
+                                            <div class="row justify-content-start">
+                                                <div class="col-lg-8">
+                                                    <div class="title-heading text-left">
+                                                        <h1 class="">We Provide Business Solutions</h1>
+                                                        <p class="text-white-50 ml-auto">On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire.</p>
+                                                        <div class="mt-3">
+                                                            <a asp-controller="Home" asp-action="Contact" class="btn btn-custom mr-3">Contact Us</a>
+                                                            <a asp-controller="Home" asp-action="About" class="btn btn-outline-white">Learn More</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Slide END-->
+<!--Start Home About-->
+<section class="section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5 col-md-6">
+                <div class="about-pic">
+                    <img src="@Url.Content(string.IsNullOrEmpty(Model.SiteInfo?.HAboutPhotoUrl) ? "~/Client/img/default/Home-about.jpg" : "~/" + Model.SiteInfo.HAboutPhotoUrl)" class="img-fluid" alt="">
+                    <div class="watch-video about-video text-center">
+                        <div class="project-video">
+                            <div class="project-video-border">
+                                <div class="project-video-icon">
+                                    <a href="@(string.IsNullOrEmpty(Model.SiteInfo.HAboutUrl)?"https://www.youtube.com/watch?v=3rTyi3oEziU":Model.SiteInfo.HAboutUrl)" class="video-play-icon text-white text-center" title="Watch Now"><i class="mdi mdi-play play-icon play h2 mb-0 mx-auto"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 col-md-6">
+                <div class="about-section ml-lg-3 mt-sm-30">
+                    <h4 class="text-uppercase">@(string.IsNullOrEmpty(Model.SiteInfo.HAboutTitle) ? "Welcome to " : Model.SiteInfo.HAboutTitle)</h4>
+                    <div class="spacer-15"></div>
+                    @if (string.IsNullOrEmpty(Model.SiteInfo.HAboutDescription))
+                    {
+                        <p class="text-muted">Why I say old chap that is, spiffing tomfoolery lost the plot plastered starkers tosser, say no biggie brolly bleeding super. The full monty Elizabeth nice one quaint butty give us a bell easy peasy gutted mate smashing, crikey cracking goal bobby James Bond knackered spiffing young delinquent down the pub bodge, bugger all mate old cor blimey guvnor what a load of rubbish.!</p>
+                    }
+                    else
+                    {
+                        <p class="text-muted">@Model.SiteInfo.HAboutDescription</p>
+                    }
+                    <div class="mt-30">
+                        <a asp-controller="Home" asp-action="About" class="btn btn-custom">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End Home About-->
+<!--Start Subscribe --->
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-12">
+                <h5 class="text-center text-uppercase">Subscribe To Get In Touch</h5>
+                <div class="spacer-15"></div>
+                <p class="text-muted text-center">Tell us about your project story and project brief</p>
+                <div class="text-center subcribe-form">
+                    <form action="#">
+                        <input name="email" type="email" placeholder="Email" id="email" required="">
+                        <button type="submit" class="btn btn-custom">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End Subscribe-->
+<!--Start Contact-->
+<section class="section-two bg-custom">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-12">
+                <div class="text-center">
+                    <h5 class="text-light text-uppercase font-22">Do You Want To Work With RMAT ?</h5>
+                    <div class="spacer-30"></div>
+                    <div>
+                        <a asp-controller="Home" asp-action="Contact" class="btn btn-custom-white">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End Contact-->

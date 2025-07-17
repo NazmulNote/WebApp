@@ -1,0 +1,43 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+
+<div class="contentSticky">
+	<div class="table-sticky Content_cScroll" style="height:51vh">
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<tr class="sticky">
+					<th>SL</th>
+					<th>Product</th>
+					<th>Qty</th>
+					<th>Price</th>
+					<th>Purchase Date</th>
+					<th>Invoice</th>
+					<th>Vendor</th>
+					<th>IsActive</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				@{
+					int i = 1;
+				}
+				@foreach (var productPurchase in Model.ProductPurchaseList)
+				{
+					<tr>
+						<td class="text-center">@i</td>
+						<td>@productPurchase.ProductName</td>
+						<td>@productPurchase.Qty</td>
+						<td>@productPurchase.PurchasePrice</td>
+						<td>@productPurchase.PurchaseDate</td>
+						<td>@productPurchase.InvoiceNo</td>
+						<td>@productPurchase.VendorName</td>
+						<td class="text-center" style="color:@(productPurchase.IsActive ? "green" : "red")">
+							@productPurchase.IsActive
+						</td>
+						<td class="text-center"><button class="btn btn-sm btn-primary" onclick="GetHdrPView(@productPurchase.ID)">View</button></td>
+					</tr>
+					i++;
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

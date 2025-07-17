@@ -1,0 +1,202 @@
+﻿@model WebApp.Areas.Client.Models.ClientViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+	ViewData["Title"] = "Contact";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="bg-half" style="background-image: url('@(string.IsNullOrEmpty(Model.SiteInfo.ContactSliderUrl)?"../Client/img/default/slider.jpg":Model.SiteInfo.ContactSliderUrl)');">
+	<div class="bg-overlay"></div>
+	<div class="home-center">
+		<div class="home-desc-center">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-12">
+						<div class="page-next-level text-white">
+							<h4 class="text-uppercase">Get In Touch</h4>
+							<div class="page-next"> <a asp-controller="Home" asp-action="Index">Home</a> <i class="mdi mdi-chevron-right"></i> &nbsp;<span>Contact Us</span> </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-8 col-md-12">
+				<div class="section-title text-center">
+					<h3>Get In Touch</h3>
+					<div class="spacer-15"></div>
+					<p class="text-muted mb-0">
+						@(string.IsNullOrEmpty(Model.SiteInfo.ContactShortDesc) ? "Donec sodales sagittis magna. Excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi." :
+													Model.SiteInfo.ContactShortDesc)
+					</p>
+					<div class="spacer-30"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="map video-app-box mt-30">
+					<iframe src="@(string.IsNullOrEmpty(Model.SiteInfo.ContactMap)?"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d233667.49930571613!2d90.25487531119137!3d23.78106723705999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563bbdd5904c2!2sDhaka!5e0!3m2!1sen!2sbd!4v1752758298555!5m2!1sen!2sbd":
+                     Model.SiteInfo.ContactMap)" style="border: 0" allowfullscreen=""></iframe>
+				</div>
+			</div>
+			<!-- col end -->
+			<div class="col-md-6">
+				<div class="custom-form mt-30">
+					<div id="message"></div>
+					@using (Html.BeginForm("MessageSetUpdate", "Home", FormMethod.Post, new { id = "MessageSetUpdateForm", enctype = "multipart/form-data" }))
+					{
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group app-label">
+									@Html.EditorFor(model => model.Message.Name, new { htmlAttributes = new { @type = "text", @id = "Name", @class = "form-control", @placeholder = "Your Name..." } })
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group app-label">
+									@Html.EditorFor(model => model.Message.Email, new { htmlAttributes = new { @type = "email", @id = "Email", @class = "form-control", @placeholder = "Your Email..." } })
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group app-label">
+									@Html.EditorFor(model => model.Message.Subject, new { htmlAttributes = new { @type = "text", @id = "Subject", @class = "form-control", @placeholder = "Your Subject..." } })
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group app-label">
+									@Html.TextAreaFor(model => model.Message.Body, new { @type = "text", @id = "Body", @class = "form-control", @placeholder = "Your Message..." })
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<input type="button" id="submit" name="send" class="submitBnt btn btn-custom w-100" value="Send Message" onclick="MessageSetUpdate()">
+								<div id="msg" style="color:green;font:bold"></div>
+							</div>
+						</div>
+					}
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-lg-5 mt-md-3 mt-sm-30">
+			<div class="col-lg-3 col-md-6">
+				<div class="contact-details text-center mt-30 p-20">
+					<div class="contact-icon">
+						<i class="fas fa-map-marker-alt"></i>
+					</div>
+					<div class="spacer-15"></div>
+					<div class="contact-head">
+						<p class="mb-0 info-title">Location</p>
+						<p class="mb-0"><a href="#" class="text-muted">@Model.CompanyInfo.Address</a></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-3 col-md-6">
+				<div class="contact-details text-center mt-30 p-20">
+					<div class="contact-icon">
+						<i class="fas fa-envelope"></i>
+					</div>
+					<div class="spacer-15"></div>
+					<div class="contact-head">
+						<p class="mb-0 info-title">Email</p>
+						<p class="mb-0"><a href="#" class="text-muted">@Model.CompanyInfo.Email</a></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-3 col-md-6">
+				<div class="contact-details text-center mt-30 p-20">
+					<div class="contact-icon">
+						<i class="fas fa-globe"></i>
+					</div>
+					<div class="spacer-15"></div>
+					<div class="contact-head">
+						<p class="mb-0 info-title">Website</p>
+						<p class="mb-0"><a href="@(Model.CompanyInfo.Website)" class="text-muted">@Model.CompanyInfo.Website</a></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-3 col-md-6">
+				<div class="contact-details text-center mt-30 p-20">
+					<div class="contact-icon">
+						<i class="fas fa-phone"></i>
+					</div>
+					<div class="spacer-15"></div>
+					<div class="contact-head">
+						<p class="mb-0 info-title">Call</p>
+						<p class="mb-0">@Model.CompanyInfo.Phone</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script type="text/javascript">
+	function MessageSetUpdate() {
+			var formData = new FormData();
+
+			var otherData = $('#MessageSetUpdateForm').serializeArray();
+			$.each(otherData, function (index, item) {
+				formData.append(item.name, item.value);
+			});
+			var IsRequired = CheckRequiredField();
+			if (IsRequired == "NO") {
+				$.ajax({
+					url: '@Url.Action("MessageSetUpdate", "Home")',
+					type: 'POST',
+					data: formData,
+					contentType: false, // Important for FormData
+					processData: false, // Important for FormData
+					success: function (result) {
+						if (result == 0) {
+							var msg = document.getElementById("msg");
+							msg.innerText="";
+							msg.innerText = "Message Not Sent."
+						}
+						else {
+							var msg = document.getElementById("msg");
+							msg.innerText="";
+							msg.innerText = "Message sent. Our team will contact you soon. Thank you."
+							document.getElementById("Name").value ="";
+							document.getElementById("Email").value = "";
+							document.getElementById("Subject").value = "";
+							document.getElementById("Body").value = "";
+
+						}
+					},
+					error: function (error) {
+					if (error.status === 401) loMessageion.href = '/SPanel1325/Login';
+						console.log(error);
+					}
+				});
+			}
+		}
+	function CheckRequiredField() {
+			var Name = document.getElementById("Name");
+			var Email = document.getElementById("Email");
+			var Subject = document.getElementById("Subject");
+			if (Name.value == "" || Email.value == "" || Subject.value=="" ) {
+				if (Name.value == "") { Name.style.border = "0.5px solid #ff00005c"; }
+				if (Email.value == "") { Email.style.border = "0.5px solid #ff00005c"; }
+				if (Subject.value == "") { Subject.style.border = "0.5px solid #ff00005c"; }
+
+				var msg = document.getElementById("msg");
+				msg.innerText="";
+				msg.innerText = "Please fill in all required fields."
+					return "YES";
+			} else {
+				return "NO"
+			}
+		}
+	document.getElementById("Name").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("Email").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("Subject").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+</script>

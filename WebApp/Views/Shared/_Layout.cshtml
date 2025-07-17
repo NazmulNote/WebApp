@@ -1,52 +1,276 @@
-﻿<!DOCTYPE html>
+﻿@model WebApp.Areas.Client.Models.ClientViewModel;
+@using WebApp.Areas.Client.Data
+@using WebApp.Areas.Admin.Data
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
+	HomeData homeData = new HomeData();
+	LibraryData libraryData = new LibraryData();
+	var CompanyInfo = homeData.GetCompanyInfo();
+	var Category = libraryData.GetLibraryList("Cat", null, null);
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebApp</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/WebApp.styles.css" asp-append-version="true" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - @CompanyInfo.CompanyCode</title>
+	<link rel="shortcut icon" href="@(CompanyInfo.PhotoUrl)">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins" rel="stylesheet">
+	<!-- Bootstrap core CSS -->
+	<link href="~/Client/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Magnificpopup Css -->
+	<link rel="stylesheet" type="text/css" href="~/Client/css/magnific-popup.css">
+
+	<!-- Bootstrap core CSS -->
+	<link href="~/Client/css/materialdesignicons.min.css" rel="stylesheet">
+	<link href="~/Client/css/fontawesome.css" rel="stylesheet">
+	<link href="~/Client/css/pe-icon-7-stroke.css" rel="stylesheet">
+
+	<!--Slider-->
+	<link rel="stylesheet" href="~/Client/css/owl.carousel.min.css" />
+	<link rel="stylesheet" href="~/Client/css/owl.theme.css" />
+	<link rel="stylesheet" href="~/Client/css/owl.transitions.css" />
+	<link rel="stylesheet" href="~/Client/css/slick.css" />
+	<link rel="stylesheet" href="~/Client/css/slick-theme.css" />
+
+	<!-- Custom styles for this template -->
+	<link href="~/Client/css/style.css" rel="stylesheet">
+	<link href="~/Client/css/menu.css" rel="stylesheet">
+	<link href="~/Client/css/default.css" rel="stylesheet">
+
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebApp</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark"  asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="SPanel1325" asp-action="Index">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="SPanel1325" asp-action="Dashboard">Dashboard</a>
-                        </li>
-                    </ul>
-                </div>
+	<!-- Loader -->
+	@*     <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container-fluid">
-            &copy; 2025 - WebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    </div> *@
+	<!-- Navigation Bar-->
+	<div class="tagline hidden-md">
+		<div class="container">
+			<div class="float-left">
+				<div class="phone">
+					<i class="fas fa-phone"></i> @CompanyInfo.Phone
+				</div>
+			</div>
+			<div class="float-right">
+				<ul class="top_socials">
+					<li><a target="_blank" href="@(CompanyInfo.FacebookUrl)"><i class="fab fa-facebook-f"></i></a></li>
+					<li><a target="_blank" href="@(CompanyInfo.TwitterUrl)"><i class="fab fa-twitter"></i></a></li>
+					<li><a target="_blank" href="@(CompanyInfo.LinkedInUrl)"><i class="fab fa-linkedin"></i></a></li>
+					<li><a target="_blank" href="@(CompanyInfo.YouTubeUrl)"><i class="fab fa-youtube"></i></a></li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- Navigation Bar-->
+	<header id="topnav" class="defaultscroll fixed-top navbar-sticky sticky">
+		<div class="container">
+			<!-- Logo container-->
+			<div>
+				<a asp-controller="Home" asp-action="Index" class="logo">
+					@* <img src="images/logo.png" alt="missing_logo" height="20"> *@
+					<h3 style="margin-top:0.7rem" height="20">RMAT</h3>
+				</a>
+			</div>
+			<!-- End Logo container-->
+			<div class="menu-extras">
+				<div class="menu-item">
+					<!-- Mobile menu toggle-->
+					<a class="navbar-toggle">
+						<div class="lines">
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+					</a>
+					<!-- End mobile menu toggle-->
+				</div>
+			</div>
+
+			<div id="navigation">
+				<!-- Navigation Menu-->
+				<ul class="navigation-menu">
+					<li class="has-submenu">
+						<a asp-controller="Home" asp-action="Index">Home</a>
+					</li>
+					<li class="has-submenu">
+						<a asp-controller="Home" asp-action="About">About</a>
+					</li>
+					<li class="has-submenu">
+						<a href="javascript:void(0)">Product</a>
+						<span class="menu-arrow"></span>
+						<ul class="submenu">
+							@if (Category != null && Category.Any())
+							{
+								foreach (var item in Category)
+								{
+									<li><a asp-controller="Home" asp-action="Product" asp-route-ID="@item.ID">@item.ItemName</a></li>
+								}
+							}
+						</ul>
+					</li>
+					<li class="has-submenu">
+						<a asp-controller="Home" asp-action="Service">Service</a>
+					</li>
+					<li class="has-submenu">
+						<a asp-controller="Home" asp-action="Client">Client</a>
+					</li>
+					<li class="has-submenu">
+						<a asp-controller="Home" asp-action="Contact">Contact</a>
+					</li>
+					<li class="dropdown d-none d-md-inline-block">
+						<a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button"
+						   aria-haspopup="false" aria-expanded="false">
+							<i class="fas fa-search noti-icon"></i>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right dropdown-menu-search">
+							<div>
+								<form role="search" class="navbar-form">
+									<input type="text" placeholder="Search..." name="s" class="form-control search-bar">
+									<a href="#" class="btn-search"><i class="fa fa-search"></i></a>
+								</form>
+							</div>
+
+						</div>
+					</li>
+				</ul>
+				<!-- End navigation menu-->
+			</div>
+		</div>
+	</header>
+	<!-- End Navigation Bar-->
+	<div class="">
+		<main role="main" class="">
+			@RenderBody()
+		</main>
+	</div>
+
+	<!-- FOOTER START -->
+	<footer class="footer">
+		<div class="section-two">
+			<div class="container">
+				<!--Footer Info -->
+				<div class="row footer-info">
+					<div class="col-lg-3 col-md-12 col-sm-12">
+						<div class="">
+							<a asp-controller="Home" asp-action="Index" class="logo">
+								<img src="@(CompanyInfo.PhotoUrl)" alt="missing_logo" height="40">
+								<h5>@CompanyInfo.CompanyCode</h5>
+							</a>
+						</div>
+						<p class="text-footer-clr mt-3">@CompanyInfo.Description</p>
+						<div>
+							<ul class="list-unstyled social-icon">
+								<li class="list-inline-item"><a target="_blank" href="@(CompanyInfo.FacebookUrl)"><i class="fab fa-facebook-f"></i></a></li>
+								<li class="list-inline-item"><a target="_blank" href="@(CompanyInfo.TwitterUrl)"><i class="fab fa-twitter"></i></a></li>
+								<li class="list-inline-item"><a target="_blank" href="@(CompanyInfo.LinkedInUrl)"><i class="fab fa-linkedin"></i></a></li>
+								<li class="list-inline-item"><a target="_blank" href="@(CompanyInfo.YouTubeUrl)"><i class="fab fa-youtube"></i></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-4 col-sm-4">
+						@* <div class="footer-head">
+                            <h5 class="text-light">Company</h5>
+                        </div> *@
+						<div class="footer-item mt-3">
+							<ul class="list-unstyled">
+								<li><a asp-controller="Home" asp-action="Index"><i class="fas fa-chevron-right mr-2"></i> Home</a></li>
+								<li><a asp-controller="Home" asp-action="About"><i class="fas fa-chevron-right mr-2"></i> About</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-4 col-sm-4">
+						<div class="footer-item mt-3">
+							<ul class="list-unstyled">
+								<li><a href="#"><i class="fas fa-chevron-right mr-2"></i>Software</a></li>
+								<li><a href="#"><i class="fas fa-chevron-right mr-2"></i>hardware</a></li>
+								<li><a href="#"><i class="fas fa-chevron-right mr-2"></i>Service</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-4 col-sm-4">
+
+						<div class="footer-item mt-3">
+							<ul class="list-unstyled">
+								<li><a href="#"><i class="fas fa-chevron-right mr-2"></i>Client</a></li>
+								<li><a asp-controller="Home" asp-action="Contact"><i class="fas fa-chevron-right mr-2"></i>Contact us</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 col-sm-12">
+						<div class="footer-head">
+							<h5 class="text-light">Newsletter</h5>
+						</div>
+						<div class="footer-news mt-3">
+							<p class="text-footer-clr">Subscribe to our email newsletter to receive useful articles and special offers.</p>
+							<div class="subscribed-form">
+								<div class="subcribed-form">
+									<form action="#">
+										<input name="email" type="email" placeholder="Your Email" id="email" required="">
+										<button type="submit" class=""><span class="fab fa-telegram-plane"></span></button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Footer Info -->
+			</div>
+		</div>
+		<hr>
+
+		<!-- Copyright Bar -->
+		<section class="section-30">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-12">
+						<div class="text-center">
+							<p class="copy-rights text-white mb-0">&copy; @DateTime.Now.Year - This site is reserved by <a href="#" target="_blank">RMAT</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Copyright Bar -->
+	</footer>
+	<!-- FOOTER END -->
+	<!-- Back to top -->
+	<a href="#" class="back-to-top" id="back-to-top">
+		<i class="mdi mdi-chevron-up"> </i>
+	</a>
+	<!-- Back to top -->
+	<!-- js placed at the end of the document so the pages load faster -->
+	<script src="~/Client/js/jquery.min.js" type="text/javascript"></script>
+	<script src="~/Client/js/popper.min.js" type="text/javascript"></script>
+	<script src="~/Client/js/bootstrap.min.js" type="text/javascript"></script>
+	<!-- Portfolio -->
+	<script src="~/Client/js/jquery.magnific-popup.min.js" type="text/javascript"></script>
+	<script src="~/Client/js/isotope.js" type="text/javascript"></script>
+	<script src="~/Client/js/portfolio-filter.js" type="text/javascript"></script>
+	<!-- Carousel -->
+	<script src="~/Client/js/owl.carousel.min.js" type="text/javascript"></script>
+	<script src="~/Client/js/owlcarousel.init.js" type="text/javascript"></script>
+	<script src="~/Client/js/slick.min.js" type="text/javascript"></script>
+	<script src="~/Client/js/slick.init.js" type="text/javascript"></script>
+	<!-- Typed -->
+	<script src="~/Client/js/typed.js" type="text/javascript"></script>
+	<script src="~/Client/js/typed.init.js" type="text/javascript"></script>
+	<!-- VIDEO ICON -->
+	<script src="~/Client/js/magnific.init.js" type="text/javascript"></script>
+	<!-- COUNTER -->
+	@*  <script src="~/js/counter.init.js" type="text/javascript"></script> *@
+	<!--custom script-->
+	<script src="~/Client/js/app.js"></script>
+	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

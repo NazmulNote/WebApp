@@ -1,0 +1,37 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+
+<div class="contentSticky">
+	<div class="table-sticky Content_cScroll" style="height:59vh">
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<tr class="sticky">
+					<th>SL</th>
+					<th>Name</th>
+					<th>Code</th>
+					<th>Country</th>
+					<th>IsActive</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				@{
+					int i = 1;
+				}
+				@foreach (var district in Model.LocationTreeList)
+				{
+					<tr>
+						<td class="text-center">@i</td>
+						<td>@district.Name</td>
+						<td>@district.Code</td>
+						<td>@district.CountryName</td>
+						<td class="text-center" style="color:@(district.IsActive ? "green" : "red")">
+							@district.IsActive
+						</td>
+						<td class="text-center"><button class="btn btn-sm btn-primary" onclick="GetHdrPView(@district.ID)">View</button></td>
+					</tr>
+					i++;
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

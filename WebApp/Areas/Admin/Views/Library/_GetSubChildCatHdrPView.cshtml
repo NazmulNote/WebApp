@@ -91,7 +91,6 @@
 
 	function GetSubCatByCatId(){
 		var CategoryId = document.getElementById("CategoryId").value;
-		console.log(CategoryId);
 		$.ajax({
 			url: '@Url.Action("GetSubCatByCatId", "Library")',
 			type: 'GET',

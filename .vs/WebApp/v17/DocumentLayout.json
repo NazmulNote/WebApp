@@ -3,24 +3,60 @@
   "WorkspaceRootPath": "D:\\Nazmul PC\\Projects\\WebApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|d:\\nazmul pc\\projects\\webapp\\webapp\\areas\\admin\\views\\spanel1325\\adminusers.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|solutionrelative:webapp\\areas\\admin\\views\\spanel1325\\adminusers.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|d:\\nazmul pc\\projects\\webapp\\webapp\\areas\\client\\views\\home\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|solutionrelative:webapp\\areas\\client\\views\\home\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|d:\\nazmul pc\\projects\\webapp\\webapp\\areas\\admin\\views\\library\\_getsubchildcatdetpview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|solutionrelative:webapp\\areas\\admin\\views\\library\\_getsubchildcatdetpview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|d:\\nazmul pc\\projects\\webapp\\webapp\\areas\\admin\\views\\message\\_getmessagehdrpview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|solutionrelative:webapp\\areas\\admin\\views\\message\\_getmessagehdrpview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|d:\\nazmul pc\\projects\\webapp\\webapp\\areas\\admin\\controllers\\spanel1325controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|solutionrelative:webapp\\areas\\admin\\controllers\\spanel1325controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|d:\\nazmul pc\\projects\\webapp\\webapp\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|solutionrelative:webapp\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|d:\\nazmul pc\\projects\\webapp\\webapp\\areas\\admin\\data\\librarydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|solutionrelative:webapp\\areas\\admin\\data\\librarydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|d:\\nazmul pc\\projects\\webapp\\webapp\\areas\\admin\\views\\message\\messagecreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|solutionrelative:webapp\\areas\\admin\\views\\message\\messagecreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|d:\\nazmul pc\\projects\\webapp\\webapp\\areas\\admin\\controllers\\librarycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|solutionrelative:webapp\\areas\\admin\\controllers\\librarycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|d:\\nazmul pc\\projects\\webapp\\webapp\\areas\\client\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|solutionrelative:webapp\\areas\\client\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|d:\\nazmul pc\\projects\\webapp\\webapp\\areas\\client\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|solutionrelative:webapp\\areas\\client\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|d:\\nazmul pc\\projects\\webapp\\webapp\\areas\\client\\data\\homedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|solutionrelative:webapp\\areas\\client\\data\\homedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|d:\\nazmul pc\\projects\\webapp\\webapp\\areas\\admin\\data\\messagedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|solutionrelative:webapp\\areas\\admin\\data\\messagedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|d:\\nazmul pc\\projects\\webapp\\webapp\\areas\\admin\\controllers\\messagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|solutionrelative:webapp\\areas\\admin\\controllers\\messagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|d:\\nazmul pc\\projects\\webapp\\webapp\\areas\\admin\\views\\message\\_getmessagedetpview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|solutionrelative:webapp\\areas\\admin\\views\\message\\_getmessagedetpview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|d:\\nazmul pc\\projects\\webapp\\webapp\\areas\\admin\\models\\messagemdl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|solutionrelative:webapp\\areas\\admin\\models\\messagemdl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|d:\\nazmul pc\\projects\\webapp\\webapp\\areas\\client\\models\\clientviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|solutionrelative:webapp\\areas\\client\\models\\clientviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|d:\\nazmul pc\\projects\\webapp\\webapp\\areas\\client\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|solutionrelative:webapp\\areas\\client\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|d:\\nazmul pc\\projects\\webapp\\webapp\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{937ABF75-0F52-417C-A263-05CE1BF21ADF}|WebApp\\WebApp.csproj|solutionrelative:webapp\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -29,8 +65,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 315,
-          "SelectedChildIndex": 2,
+          "DockedWidth": 178,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,64 +74,191 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "_GetSubChildCatDetPView.cshtml",
-              "DocumentMoniker": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Admin\\Views\\Library\\_GetSubChildCatDetPView.cshtml",
-              "RelativeDocumentMoniker": "WebApp\\Areas\\Admin\\Views\\Library\\_GetSubChildCatDetPView.cshtml",
-              "ToolTip": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Admin\\Views\\Library\\_GetSubChildCatDetPView.cshtml",
-              "RelativeToolTip": "WebApp\\Areas\\Admin\\Views\\Library\\_GetSubChildCatDetPView.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAgAAAAAAAAAA==",
+              "DocumentIndex": 11,
+              "Title": "ClientViewModel.cs",
+              "DocumentMoniker": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Client\\Models\\ClientViewModel.cs",
+              "RelativeDocumentMoniker": "WebApp\\Areas\\Client\\Models\\ClientViewModel.cs",
+              "ToolTip": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Client\\Models\\ClientViewModel.cs",
+              "RelativeToolTip": "WebApp\\Areas\\Client\\Models\\ClientViewModel.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAiwAsAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T11:10:31.55Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HomeData.cs",
+              "DocumentMoniker": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Client\\Data\\HomeData.cs",
+              "RelativeDocumentMoniker": "WebApp\\Areas\\Client\\Data\\HomeData.cs",
+              "ToolTip": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Client\\Data\\HomeData.cs",
+              "RelativeToolTip": "WebApp\\Areas\\Client\\Data\\HomeData.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAA3wBwBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T15:20:44.841Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "About.cshtml",
+              "DocumentMoniker": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Client\\Views\\Home\\About.cshtml",
+              "RelativeDocumentMoniker": "WebApp\\Areas\\Client\\Views\\Home\\About.cshtml",
+              "ToolTip": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Client\\Views\\Home\\About.cshtml",
+              "RelativeToolTip": "WebApp\\Areas\\Client\\Views\\Home\\About.cshtml",
+              "ViewState": "AgIAAIkAAAAAAAAAAAAYwJoAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-27T18:10:17.311Z"
+              "WhenOpened": "2025-07-13T12:16:21.204Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AdminUsers.cshtml",
-              "DocumentMoniker": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Admin\\Views\\SPanel1325\\AdminUsers.cshtml",
-              "RelativeDocumentMoniker": "WebApp\\Areas\\Admin\\Views\\SPanel1325\\AdminUsers.cshtml",
-              "ToolTip": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Admin\\Views\\SPanel1325\\AdminUsers.cshtml",
-              "RelativeToolTip": "WebApp\\Areas\\Admin\\Views\\SPanel1325\\AdminUsers.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAGAAAAAAAAAA==",
+              "Title": "Contact.cshtml",
+              "DocumentMoniker": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Client\\Views\\Home\\Contact.cshtml",
+              "RelativeDocumentMoniker": "WebApp\\Areas\\Client\\Views\\Home\\Contact.cshtml",
+              "ToolTip": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Client\\Views\\Home\\Contact.cshtml",
+              "RelativeToolTip": "WebApp\\Areas\\Client\\Views\\Home\\Contact.cshtml",
+              "ViewState": "AgIAAJQAAAAAAAAAAADwv58AAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-27T18:09:49.475Z",
+              "WhenOpened": "2025-07-13T12:15:47.665Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Client\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "WebApp\\Areas\\Client\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Client\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "WebApp\\Areas\\Client\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-17T12:49:21.064Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Client\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "WebApp\\Areas\\Client\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Client\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "WebApp\\Areas\\Client\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwDUAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T10:46:11.449Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "WebApp\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "WebApp\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAAwHoAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-13T10:52:22.857Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 33,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_GetMessageDetPView.cshtml",
+              "DocumentMoniker": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Admin\\Views\\Message\\_GetMessageDetPView.cshtml",
+              "RelativeDocumentMoniker": "WebApp\\Areas\\Admin\\Views\\Message\\_GetMessageDetPView.cshtml",
+              "ToolTip": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Admin\\Views\\Message\\_GetMessageDetPView.cshtml",
+              "RelativeToolTip": "WebApp\\Areas\\Admin\\Views\\Message\\_GetMessageDetPView.cshtml",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAACwAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-17T15:07:53.874Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "SPanel1325Controller.cs",
-              "DocumentMoniker": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Admin\\Controllers\\SPanel1325Controller.cs",
-              "RelativeDocumentMoniker": "WebApp\\Areas\\Admin\\Controllers\\SPanel1325Controller.cs",
-              "ToolTip": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Admin\\Controllers\\SPanel1325Controller.cs",
-              "RelativeToolTip": "WebApp\\Areas\\Admin\\Controllers\\SPanel1325Controller.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAYwIEAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T17:54:51.826Z"
+              "Title": "_AdminLayout.cshtml",
+              "DocumentMoniker": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Views\\Shared\\_AdminLayout.cshtml",
+              "RelativeDocumentMoniker": "WebApp\\Views\\Shared\\_AdminLayout.cshtml",
+              "ToolTip": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Views\\Shared\\_AdminLayout.cshtml",
+              "RelativeToolTip": "WebApp\\Views\\Shared\\_AdminLayout.cshtml",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-17T15:02:11.003Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "LibraryController.cs",
-              "DocumentMoniker": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Admin\\Controllers\\LibraryController.cs",
-              "RelativeDocumentMoniker": "WebApp\\Areas\\Admin\\Controllers\\LibraryController.cs",
-              "ToolTip": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Admin\\Controllers\\LibraryController.cs",
-              "RelativeToolTip": "WebApp\\Areas\\Admin\\Controllers\\LibraryController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-25T18:08:59.535Z"
+              "DocumentIndex": 1,
+              "Title": "_GetMessageHdrPView.cshtml",
+              "DocumentMoniker": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Admin\\Views\\Message\\_GetMessageHdrPView.cshtml",
+              "RelativeDocumentMoniker": "WebApp\\Areas\\Admin\\Views\\Message\\_GetMessageHdrPView.cshtml",
+              "ToolTip": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Admin\\Views\\Message\\_GetMessageHdrPView.cshtml",
+              "RelativeToolTip": "WebApp\\Areas\\Admin\\Views\\Message\\_GetMessageHdrPView.cshtml",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAEYAAABqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-17T14:58:41.046Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "LibraryData.cs",
-              "DocumentMoniker": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Admin\\Data\\LibraryData.cs",
-              "RelativeDocumentMoniker": "WebApp\\Areas\\Admin\\Data\\LibraryData.cs",
-              "ToolTip": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Admin\\Data\\LibraryData.cs",
-              "RelativeToolTip": "WebApp\\Areas\\Admin\\Data\\LibraryData.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAzwBoAAAA7AAAAAAAAAA==",
+              "Title": "MessageCreate.cshtml",
+              "DocumentMoniker": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Admin\\Views\\Message\\MessageCreate.cshtml",
+              "RelativeDocumentMoniker": "WebApp\\Areas\\Admin\\Views\\Message\\MessageCreate.cshtml",
+              "ToolTip": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Admin\\Views\\Message\\MessageCreate.cshtml",
+              "RelativeToolTip": "WebApp\\Areas\\Admin\\Views\\Message\\MessageCreate.cshtml",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAIQAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-17T14:46:52.34Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MessageController.cs",
+              "DocumentMoniker": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Admin\\Controllers\\MessageController.cs",
+              "RelativeDocumentMoniker": "WebApp\\Areas\\Admin\\Controllers\\MessageController.cs",
+              "ToolTip": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Admin\\Controllers\\MessageController.cs",
+              "RelativeToolTip": "WebApp\\Areas\\Admin\\Controllers\\MessageController.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAArwGoAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-25T18:09:34.664Z"
+              "WhenOpened": "2025-07-17T14:04:01.036Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MessageData.cs",
+              "DocumentMoniker": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Admin\\Data\\MessageData.cs",
+              "RelativeDocumentMoniker": "WebApp\\Areas\\Admin\\Data\\MessageData.cs",
+              "ToolTip": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Admin\\Data\\MessageData.cs",
+              "RelativeToolTip": "WebApp\\Areas\\Admin\\Data\\MessageData.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAIEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T14:03:36.026Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MessageMDL.cs",
+              "DocumentMoniker": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Admin\\Models\\MessageMDL.cs",
+              "RelativeDocumentMoniker": "WebApp\\Areas\\Admin\\Models\\MessageMDL.cs",
+              "ToolTip": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\Areas\\Admin\\Models\\MessageMDL.cs",
+              "RelativeToolTip": "WebApp\\Areas\\Admin\\Models\\MessageMDL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T14:03:01.776Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -1,0 +1,63 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+
+<div class="contentSticky">
+	<div class="table-sticky Content_cScroll" style="height:41vh">
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<tr class="sticky">
+					<th>SL</th>
+					<th>Image</th></>
+					<th>Name</th>
+					<th>Designation</th>
+					<th>View Order</th>
+					<th>IsActive</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				@{
+					int i = 1;
+				}
+				@foreach (var teamMember in Model.TeamMemberList)
+				{
+					<tr>
+						<td class="text-center">@i</td>
+						<td class="text-center">
+							<img style="width:2rem;height:2rem;object-fit:cover" src="@( teamMember != null && !string.IsNullOrEmpty(teamMember.PhotoUrl)? Url.Content("~/" + teamMember.PhotoUrl): Url.Content("~/Admin/img/avator.png"))" alt="User Image" />
+						</td>
+						<td>@teamMember.Name</td>
+						<td>@teamMember.Designation</td>
+						<td class="text-center">@teamMember.ViewOrder</td>
+						<td class="text-center" style="color:@(teamMember.IsActive ? "green" : "red")">
+							@teamMember.IsActive
+						</td>
+						<td class="text-center">
+							<button class="btn btn-sm btn-primary" onclick="GetHdrPView(@teamMember.ID)">View</button>
+							@* <button class="btn btn-sm btn-denger" onclick="teamMemberDelete(@teamMember.ID)">Delete</button> *@
+							<button class="btn btn-sm btn-danger" onclick="
+								Swal.fire({
+								title: 'Are you sure?' ,
+								text: 'Do you want to delete this teamMember?' ,
+								icon: 'warning' ,
+								showCancelButton: true,
+								confirmButtonColor: '#d33' ,
+								cancelButtonColor: '#3085d6' ,
+								confirmButtonText: 'Yes, delete it!' ,
+								cancelButtonText: 'Cancel'
+								}).then((result)=>
+							{
+							if (result.isConfirmed) {
+							TeamMemberDelete(@teamMember.ID);
+							}
+							});
+								">Delete
+							</button>
+
+						</td>
+					</tr>
+					i++;
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

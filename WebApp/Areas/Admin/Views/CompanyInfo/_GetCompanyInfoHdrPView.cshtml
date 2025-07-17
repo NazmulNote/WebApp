@@ -1,0 +1,143 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using (Html.BeginForm("CompanyInfoSetUpdate", "CompanyInfo", FormMethod.Post, new { id = "CompanyInfoSetUpdateForm", enctype = "multipart/form-data" }))
+{
+	@Html.HiddenFor(model => model.CompanyInfo.ID)
+
+	<div class="row">
+		<div class="col-lg-1 col-md-1 col-sm-12 col-12">
+			<div id="PhotoPreview">
+				<img style="width:5rem;height:6rem;object-fit:contain" src="@( Model.CompanyInfo != null && !string.IsNullOrEmpty(Model.CompanyInfo.PhotoUrl)? Url.Content("~/" + Model.CompanyInfo.PhotoUrl): Url.Content("~/Admin/img/avator.png"))" alt="User Image" />
+			</div>
+			@Html.HiddenFor(model => model.CompanyInfo.PhotoUrl)
+		</div>
+		<div class="col-lg-11 col-md-11 col-sm-12 col-12">
+			<p class="alert-primary pl-1"><strong>Note:</strong>Images allowed (size: #×# pixels each).</p>
+			<div class="row">
+				<!-- Name -->
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.CompanyInfo.CompanyName, "Company:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.CompanyInfo.CompanyName, new { htmlAttributes = new { id = "CompanyName", @class = "form-control", placeholder = "Enter Company Name", required = "required" } })
+							@Html.ValidationMessageFor(model => model.CompanyInfo.CompanyName, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.CompanyInfo.CompanyCode, "Short Name:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.CompanyInfo.CompanyCode, new { htmlAttributes = new { id = "CompanyCode", @class = "form-control", placeholder = "Enter Short Name", required = "required" } })
+							@Html.ValidationMessageFor(model => model.CompanyInfo.CompanyCode, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.CompanyInfo.Description, "Description:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.TextAreaFor(model => model.CompanyInfo.Description, new { @id = "Description", @class = "form-control", placeholder = "Enter Description maxlength-150", required = "required", rows = "2", maxlength = "150" })
+							@Html.ValidationMessageFor(model => model.CompanyInfo.Description, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.CompanyInfo.Photo, "Logo:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.CompanyInfo.Photo, new { htmlAttributes = new { id = "Photo", @class = "form-control form-file", placeholder = "Enter Role", Type = "file", onchange = "PhotoPreview()" } })
+							@Html.ValidationMessageFor(model => model.CompanyInfo.Photo, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.CompanyInfo.Address, "Address:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.TextAreaFor(model => model.CompanyInfo.Address, new { @id = "Address", @class = "form-control", placeholder = "Enter Address", required = "required", rows = "2" })
+							@Html.ValidationMessageFor(model => model.CompanyInfo.Address, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.CompanyInfo.Email, "Email:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.CompanyInfo.Email, new { htmlAttributes = new { id = "Email", @class = "form-control", placeholder = "Enter Email", required = "required" } })
+							@Html.ValidationMessageFor(model => model.CompanyInfo.Email, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.CompanyInfo.Phone, "Phone:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.CompanyInfo.Phone, new { htmlAttributes = new { id = "Phone", @class = "form-control", placeholder = "Enter Phone", required = "required" } })
+							@Html.ValidationMessageFor(model => model.CompanyInfo.Phone, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.CompanyInfo.FacebookUrl, "FacebookUrl:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.CompanyInfo.FacebookUrl, new { htmlAttributes = new { id = "FacebookUrl", @class = "form-control", placeholder = "Enter FacebookUrl", required = "required" } })
+							@Html.ValidationMessageFor(model => model.CompanyInfo.FacebookUrl, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.CompanyInfo.TwitterUrl, "TwitterUrl:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.CompanyInfo.TwitterUrl, new { htmlAttributes = new { id = "TwitterUrl", @class = "form-control", placeholder = "Enter TwitterUrl", required = "required" } })
+							@Html.ValidationMessageFor(model => model.CompanyInfo.TwitterUrl, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.CompanyInfo.LinkedInUrl, "LinkedInUrl:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.CompanyInfo.LinkedInUrl, new { htmlAttributes = new { id = "LinkedInUrl", @class = "form-control", placeholder = "Enter LinkedInUrl", required = "required" } })
+							@Html.ValidationMessageFor(model => model.CompanyInfo.LinkedInUrl, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.CompanyInfo.YouTubeUrl, "YouTubeUrl:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.CompanyInfo.YouTubeUrl, new { htmlAttributes = new { id = "YouTubeUrl", @class = "form-control", placeholder = "Enter YouTubeUrl", required = "required" } })
+							@Html.ValidationMessageFor(model => model.CompanyInfo.YouTubeUrl, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.CompanyInfo.Website, "Website:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.CompanyInfo.Website, new { htmlAttributes = new { id = "Website", @class = "form-control", placeholder = "Enter Website", required = "required" } })
+							@Html.ValidationMessageFor(model => model.CompanyInfo.Website, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1 form-check" style="text-align:right">
+					<button type="button" class="btn btn-sm btn-primary btn-user" onclick="CompanyInfoSetUpdate()">
+						Save
+					</button>
+					<a class="btn btn-sm btn-outline-primary" asp-controller="CompanyInfo" asp-action="CompanyInfoCreate">Refresh</a>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+}
+<script type="text/javascript">
+	document.getElementById("CompanyName").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("CompanyCode").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+</script>

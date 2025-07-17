@@ -188,3 +188,15 @@ footer.sticky-footer {
     cursor:not-allowed;
     pointer-events:none;
 }
+
+.ck-editor__editable_inline {
+    min-height: 7rem;
+    max-height: 7rem;
+    overflow-y: auto;
+}
+.ck-powered-by{
+    display:none;
+}
+.collapse{
+    z-index: 10!important;
+}
