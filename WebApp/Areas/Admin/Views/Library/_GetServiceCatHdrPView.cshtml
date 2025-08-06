@@ -8,7 +8,7 @@
 	<div class="row">
 		<div class="col-lg-1 col-md-1 col-sm-12 col-12">
 			<div id="PhotoPreview">
-				<img style="width:5rem;height:6rem;object-fit:contain" src="@( Model.Library != null && !string.IsNullOrEmpty(Model.Library.PhotoUrl)? Url.Content("~/" + Model.Library.PhotoUrl): Url.Content("~/Admin/img/avator.png"))" alt="User Image" />
+				<img style="width:5rem;height:6rem;object-fit:contain" src="@( Model.Library != null && !string.IsNullOrEmpty(Model.Library.PhotoUrl)? Url.Content(Model.Library.PhotoUrl): Url.Content("/Admin/img/avator.png"))" alt="User Image" />
 			</div>
 			@Html.HiddenFor(model => model.Library.PhotoUrl)
 		</div>

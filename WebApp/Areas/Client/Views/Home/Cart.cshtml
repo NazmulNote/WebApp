@@ -1,0 +1,430 @@
+﻿@model WebApp.Areas.Client.Models.ClientViewModel;
+@using WebApp.Areas.Client.Data;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
+	ViewData["Title"] = "Cart";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	CustomerData _customerData = new CustomerData();
+	var customerId = HttpContextAccessor.HttpContext?.Session.GetString("CustomerID");
+	var customerData = _customerData.GetCustomer(null, Convert.ToInt32(customerId));
+	var customerName = customerData.Name;
+	var customerPhone = customerData.Phone;
+	var customerAddress = customerData.PoliceStationName + ", " + customerData.DistrictName + ", " + customerData.CountryName + "; " + customerData.Address;
+}
+<link href="/admin/css/customadmin.css" rel="stylesheet" />
+<style>
+	.cHidden {
+		display: none;
+	}
+
+	.alert.fade {
+		opacity: 0;
+		transition: opacity 0.3s ease-in-out;
+	}
+
+	.alert.show {
+		opacity: 1;
+	}
+
+	.table th{
+		background-color: #a3c85e;
+		border-color: #a3c85e;
+	}
+
+	.Content_cScroll{
+		scrollbar-color: gray #f1f1f1;
+	}
+</style>
+<div id="alertContainer" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1055;"></div>
+<section class="section" id="cartSection">
+	<div class="container" style="margin-top: 4rem!important;">
+		<h3 class="mt-30">Checkout Preview</h3>
+		<span class="bar"></span>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="contentSticky">
+					<div class="table-sticky Content_cScroll" @* style="height:51vh" *@>
+						<table id="cartTable" class="table table-bordered table-striped table-hover">
+							<thead>
+								<tr class="text-center">
+									<th>Product</th>
+									<th>Price</th>
+									<th>Qty</th>
+									<th>Total</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<h4 class="text-right">Grand Total: <span id="grandTotal">0</span></h4>
+			</div>
+			<div class="col-md-6">
+				@if (customerId != null)
+				{
+					<div class="OrderInfo">
+						<p><strong>Name:</strong> @customerName</p>
+						<p><strong>Address:</strong> @customerAddress</p>
+						<p><strong>Phone:</strong> @customerPhone</p>
+						<div class="form-group">
+							<label>
+								<input type="radio" value="Pickup From Office" name="pickupMethod" onclick="togglePickupMethod(this.value)" /> Pick Up from Office
+							</label><br />
+							<label>
+								<input type="radio" value="Courier Service" name="pickupMethod" onclick="togglePickupMethod(this.value)" /> Deliver via Courier Service
+							</label>
+						</div>
+						<div id="officeMethod" class="cHidden">
+							<div class="mt-2 alert alert-info">
+								You have selected to pick up your order from our office.
+							</div>
+						</div>
+						<div id="courierMethod" class="cHidden">
+							<div class="form-group mt-2">
+								<label><strong>Delivery Address:</strong></label>
+								<input class="form-control" id="deliveryAddress" placeholder="Enter Delivery Address.." />
+							</div>
+
+							<div class="mt-2">
+								<select class="form-control" name="courierChargeId" id="courierChargeId">
+									<option value="">-- Select Location --</option>
+									@foreach (var courierCharge in ViewBag.CourierCharge as List<SelectListItem>)
+									{
+										<option value="@courierCharge.Value">@courierCharge.Text</option>
+									}
+								</select>
+							</div>
+
+							<div class="mt-2">
+								<div class="mt-3">
+									<p><strong>Product Amount:</strong> <span id="ProductAmount">0</span> Tk</p>
+									<p><strong>Courier Charge:</strong> <span id="ChargeAmount">0</span> Tk</p>
+									<p><strong>Estimated Delivery Days:</strong> <span id="EstimatedDays">0</span> day(s)</p>
+									<hr />
+									<p><strong>Total Amount:</strong> <span id="TotalAmount">0</span> Tk</p>
+								</div>
+
+							</div>
+						</div>
+						<div class="mt-2">
+							<button class="btn btn-custom cHidden" id="submitBtn" onclick="submitOrder()">Submit Order</button>
+							<div class="not-found-card shadow-lg rounded-3 p-4 text-center cHidden" id="emptyAlert">
+								<h4 style="color:red">Your shopping cart is empty.</h4>
+								<h5>Start shopping to add items to your cart.</h5>
+							</div>
+						</div>
+					</div>
+				}
+				else
+				{
+					<div class="alert alert-danger text-center p-3 rounded shadow-sm">
+						<h5 class="mb-2">Please sign in to continue with your order.</h5>
+						<a asp-controller="Cstmr" asp-action="SignIn" class="btn btn-custom mt-2">Sign In</a>
+					</div>
+				}
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section" style="padding-top:0">
+	<div class="container-flouid">
+		<h4 style="font-size: 24px; font-weight: 600; color: #2c3e50;padding-left: 10px;text-align:center">
+			🛒 Explore Our Product Categories
+		</h4>
+
+		<div class="row">
+			@if (Model.CatList != null)
+			{
+				foreach (var cat in Model.CatList)
+				{
+					<div class="col-lg-3 col-md-3">
+						<article class="post mt-30">
+							<div class="post-preview">
+								<a asp-controller="Home" asp-action="Product" asp-route-CatId="@cat.ID" class="productImgCon"><img src="@(string.IsNullOrEmpty(cat.PhotoUrl)?"/Client/img/default/default.png":Url.Content(cat.PhotoUrl))" alt="" class="img-fluid mx-auto d-block"></a>
+							</div>
+
+							<div class="post-header">
+								<h4 class="post-title"><a href="#">@cat.Name</a></h4>
+								<ul class="post-meta">
+								</ul>
+								<span class="bar"></span>
+								<div class="post-footer mb-0">
+									<p class="mb-0">@cat.Description</p>
+								</div>
+							</div>
+						</article>
+					</div>
+				}
+			}
+		</div>
+	</div>
+</section>
+<script>
+	 document.addEventListener('DOMContentLoaded', function (){
+	 loadCart();
+	 });
+	 let grandTotal = 0;
+	 let chargeAmount = 0;
+	document.getElementById("courierChargeId").onchange = function(){
+		this.style.border = "0.5px solid #dee2e6";
+		getCourierChargeAmountDays();
+	}
+	function checkCartCount(){
+		const cart = JSON.parse(localStorage.getItem("cd_temp")) || [];
+		const count = cart.reduce((total, item) => total + item.qty, 0);
+
+		const submitBtn = document.getElementById("submitBtn");
+		const emptyAlert = document.getElementById("emptyAlert");
+		if (count === 0) {
+			submitBtn.classList.add("cHidden");
+			emptyAlert.classList.remove("cHidden");
+		} else {
+			submitBtn.classList.remove("cHidden");
+			emptyAlert.classList.add("cHidden");
+		}
+	}
+
+	function validatePickupMethod() {
+		const pickupRadios = document.getElementsByName('pickupMethod');
+		let selected = false;
+		for (let i = 0; i < pickupRadios.length; i++) {
+			if (pickupRadios[i].checked) {
+				selected = true;
+				break;
+			}
+		}
+		if (!selected) {
+			showAlert("error","Please select a Pickup Method.",1000)
+			return false;
+		}
+
+		return true;
+	}
+
+	function submitOrder(){
+		const pickupRadios = document.getElementsByName('pickupMethod');
+		let isValid = validatePickupMethod();
+		if(isValid){
+			let selectedValue = null;
+			pickupRadios.forEach(radio =>{
+				if(radio.checked){
+					selectedValue = radio.value;
+				}
+			})
+			if(selectedValue === 'Courier Service')
+			{
+				let deliveryAddress = document.getElementById("deliveryAddress").value;
+				let courierChargeId = document.getElementById("courierChargeId").value;
+				const cart = JSON.parse(localStorage.getItem("cd_temp")) || [];
+				let isRequired = CheckRequiredField();
+				if(isRequired == "NO"){
+					$.ajax({
+					url:'@Url.Action("Submit", "CstmrOrder")',
+					type:"POST",
+					contentType: "application/json",
+					data:JSON.stringify({grandTotal:grandTotal,deliveryAddress:deliveryAddress,courierChargeId:courierChargeId,cart:cart}),
+					success:(data)=>{
+						if(data.success){
+							localStorage.removeItem("cd_temp");
+							document.getElementById("deliveryAddress").value = "";
+							document.getElementById("courierChargeId").value = "";
+							showAlert("success",data.message,2000)
+							loadCart();
+						}
+					},
+					error:(error)=>{
+						console.log(error.message)
+					}
+				});
+				}
+				
+				loadCart();
+			}
+			else if(selectedValue === 'Pickup From Office')
+			{
+				const cart = JSON.parse(localStorage.getItem("cd_temp")) || [];
+				$.ajax({
+					url:'@Url.Action("Submit", "CstmrOrder")',
+					type:"POST",
+					contentType: "application/json",
+					data:JSON.stringify({grandTotal:grandTotal,cart:cart}),
+					success:(data)=>{
+						if(data.success){
+							localStorage.removeItem("cd_temp");
+							showAlert("success",data.message,2000)
+							loadCart();
+						}
+					},
+					error:(error)=>{
+						console.log(error)
+					}
+				});
+			   loadCart();
+			}else
+			{
+				showAlert("error","Your selected pickup method is not valid.");
+			}
+		}
+	}
+
+	function togglePickupMethod(value) {
+		const courierDiv = document.getElementById('courierMethod');
+		const officeDiv = document.getElementById('officeMethod');
+
+		if (value === 'Courier Service') {
+			courierDiv.classList.remove('cHidden');
+			officeDiv.classList.add('cHidden');
+		} else if (value === 'Pickup From Office') {
+			courierDiv.classList.add('cHidden');
+			officeDiv.classList.remove('cHidden');
+			// Reset courier-related values
+			document.getElementById("deliveryAddress").value = "";
+			document.getElementById("courierChargeId").value = "";
+			document.getElementById('ChargeAmount').textContent = '0';
+			document.getElementById('EstimatedDays').textContent = '0';
+			document.getElementById('TotalAmount').textContent = grandTotal;
+
+		}
+	}
+	function getCourierChargeAmountDays(){
+		var courierChargeId = document.getElementById("courierChargeId").value;
+		if(courierChargeId !=""){
+			 $.ajax({
+			url:'@Url.Action("GetCourierChargeAmountDay", "Home")',
+			type:"GET",
+			data:{ID:courierChargeId},
+			success: function(data){
+				chargeAmount = data.chargeAmount;
+				var chargeAmountEl = document.getElementById("ChargeAmount");
+				chargeAmountEl.innerText = "";
+				chargeAmountEl.innerText = chargeAmount;
+				var estimatedDays = document.getElementById("EstimatedDays");
+				estimatedDays.innerText = "";
+				estimatedDays.innerText = data.estimatedDays;
+
+				updateAmount();
+			},
+			error:function(error){
+			console.log(error);
+			}
+		});
+		}
+		else{
+				var chargeAmountEl = document.getElementById("ChargeAmount");
+				chargeAmountEl.innerText = "";
+				var estimatedDays = document.getElementById("EstimatedDays");
+				estimatedDays.innerText = "";
+				var totalAmount = document.getElementById("TotalAmount");
+				totalAmount.innerText = "";
+		}
+	}
+	function updateAmount(){
+		 var productAmount = document.getElementById("ProductAmount");
+				productAmount.innerText = "";
+				productAmount.innerText = grandTotal;
+				var totalAmount = document.getElementById("TotalAmount");
+				totalAmount.innerText = "";
+				totalAmount.innerText = grandTotal + chargeAmount;
+	}
+	function loadCart() {
+		let cart = JSON.parse(localStorage.getItem("cd_temp")) || [];
+		let tbody = document.querySelector("#cartTable tbody");
+		tbody.innerHTML = "";
+
+		grandTotal = 0;
+
+		cart.forEach((item, index) => {
+			let total = item.qty * item.price;
+			grandTotal += total;
+
+			let row = `
+				<tr>
+					<td>${item.name}</td>
+					<td class="text-center">${item.price}</td>
+					<td class="text-center">
+						<button onclick="updateQty('${item.id}', -1)">-</button>
+						<span id="qty-${item.id}">${item.qty}</span>
+						<button onclick="updateQty('${item.id}', 1)">+</button>
+					</td>
+					<td class="text-center" id="total-${item.id}">${total}</td>
+					<td class="text-center"><button class="text-danger"" onclick="removeItem('${item.id}')"><i style="font-size: 1rem;" class="mdi mdi-delete-forever"></i></button></td>
+				</tr>
+			`;
+			tbody.innerHTML += row;
+		});
+
+		document.getElementById("grandTotal").innerText = grandTotal.toFixed(2);
+		updateAmount();
+		updateCartCount();
+		checkCartCount();
+	}
+
+	function updateQty(id, change) {
+		let cart = JSON.parse(localStorage.getItem("cd_temp")) || [];
+		let index = cart.findIndex(item => item.id == id);
+		if (index !== -1) {
+			cart[index].qty += change;
+			if (cart[index].qty < 1) cart[index].qty = 1;
+
+			localStorage.setItem("cd_temp", JSON.stringify(cart));
+			loadCart();
+		}
+	}
+
+	function removeItem(id) {
+		let cart = JSON.parse(localStorage.getItem("cd_temp")) || [];
+		cart = cart.filter(item => item.id != id);
+		localStorage.setItem("cd_temp", JSON.stringify(cart));
+		loadCart();
+	}
+
+	function updateCartCount() {
+		let cart = JSON.parse(localStorage.getItem("cd_temp")) || [];
+		let count = cart.reduce((total, item) => total + item.qty, 0);
+		let elms = document.querySelectorAll(".cartCount"); // Multiple cartCount if needed
+		elms.forEach(el => el.innerText = count);
+	}
+
+	 function showAlert(type, message,time) {
+		const alertDiv = document.createElement('div');
+		const alertType = type === 'success' ? 'alert-success' : 'alert-danger';
+		alertDiv.className = `alert ${alertType} alert-dismissible fade show shadow`;
+		alertDiv.setAttribute('role', 'alert');
+		alertDiv.style.position = 'fixed';
+		alertDiv.style.top = '50%';
+		alertDiv.style.left = '50%';
+		alertDiv.style.transform = 'translate(-50%, -50%)';
+		alertDiv.style.zIndex = '1050';
+		alertDiv.style.minWidth = '320px';
+		alertDiv.style.maxWidth = '90%';
+		alertDiv.style.textAlign = 'center';
+		alertDiv.innerHTML = `
+			<strong>${type === 'success' ? 'Success!' : 'Error!'}</strong> ${message}
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="mdi mdi-close-circle"></i></button>
+		`;
+		document.body.appendChild(alertDiv);
+		setTimeout(() => {
+			alertDiv.classList.remove('show');
+			setTimeout(() => alertDiv.remove(), 150);
+		}, time);
+	}
+
+	function CheckRequiredField() {
+			var deliveryAddress = document.getElementById("deliveryAddress");
+			var courierChargeId = document.getElementById("courierChargeId");
+			if (deliveryAddress.value == "" || courierChargeId.value == "" ) {
+				if (deliveryAddress.value == "") { deliveryAddress.style.border = "0.5px solid #ff00005c"; }
+				if (courierChargeId.value == "") { courierChargeId.style.border = "0.5px solid #ff00005c"; }
+
+				showAlert("error","Please fill in all required fields.",1000);
+					return "YES";
+			} else {
+				return "NO"
+			}
+     }
+	 document.getElementById("deliveryAddress").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+
+</script>

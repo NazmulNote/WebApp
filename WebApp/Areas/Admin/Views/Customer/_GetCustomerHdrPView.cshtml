@@ -7,7 +7,7 @@
 	<div class="row">
 		<div class="col-lg-1 col-md-1 col-sm-12 col-12">
 			<div id="PhotoPreview">
-				<img style="width:5rem;height:6rem;object-fit:contain" src="@( Model.Customer != null && !string.IsNullOrEmpty(Model.Customer.PhotoUrl)? Url.Content("~/" + Model.Customer.PhotoUrl): Url.Content("~/Admin/img/AdminUsers/avator.png"))" alt="User Image" />
+				<img style="width:5rem;height:6rem;object-fit:contain" src="@( Model.Customer != null && !string.IsNullOrEmpty(Model.Customer.PhotoUrl)? Url.Content(Model.Customer.PhotoUrl): Url.Content("/Admin/img/AdminUsers/avator.png"))" alt="User Image" />
 			</div>
 		@Html.HiddenFor(model => model.Customer.PhotoUrl)
 		</div>

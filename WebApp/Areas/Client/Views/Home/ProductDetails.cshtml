@@ -1,0 +1,162 @@
+﻿@model WebApp.Areas.Client.Models.ClientViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Product Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="/client/css/product.css" rel="stylesheet" />
+<style>
+    .productImgCon {
+    height: 15.3rem;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+</style>
+<section class="section pb-4">
+    <div class="container">
+        <div class="row" style="margin-top:5rem">
+            <div class="col-md-5">
+                <div class="single-service">
+                    <div class="portfolio-box mt-0 mb-0">
+                        <a class="mfp-image pDetailsImg" href="@(string.IsNullOrEmpty(Model.Product.PhotoUrl)?"/Client/img/default/default.png":Url.Content(Model.Product.PhotoUrl))" title="@Model.Product.Name">
+                            <img src="@(string.IsNullOrEmpty(Model.Product.PhotoUrl)?"/Client/img/default/default.png":Url.Content(Model.Product.PhotoUrl))" class="img-fluid" alt="mPost Iage">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <a class="btn c_btn_small" asp-controller="Home" asp-action="Product" asp-route-CatId="@Model.Product.CatId">Back to All @Model.Product.CatName Products</a>
+                <h3 class="mt-30">@Model.Product.Name</h3>
+                <ul class="list-unstyled">
+                    <li><span class="font-weight-bold">Brand :</span> @Model.Product.SubChildCatName</li>
+                    <li><span class="font-weight-bold">Item :</span> @Model.Product.SubCatName</li>
+                    <li><span class="font-weight-bold">Category :</span> @Model.Product.CatName</li>
+                    <li><h4><span class="font-weight-bold">Price :</span> @(Model.Product.Price == 0 ? "Ask for Price" : "৳ " + Model.Product.Price)</h4></li>
+                </ul>
+
+                <a class="btn btn-custom " style="cursor:pointer" onclick="AddToCart(@Model.Product.ID,'@Model.Product.Name',@Model.Product.Price)"><i class="mdi mdi-cart-plus"></i><small>Add Cart</small></a>
+                <h3 class="mt-3">Description:</h3>
+                <span class="bar"></span>
+                <div class="descSpec">
+                    @Html.Raw(Model.Product.Description)
+                </div>
+            </div>
+            <div class="col-md-12 img-thumbnail mt-4">
+                <h3>Specification:</h3>
+                <span class="bar"></span>
+                <div class="descSpec">
+                    @Html.Raw(Model.Product.Specification)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="pt-4 pb-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-12">
+                @if (Model.ProductList.Count() !=0)
+                {
+                    <div class="section-title text-center">
+                        <h3>You May Also Like</h3>
+                        <div class="spacer-15"></div>
+                        <p class="text-muted mb-0">You may also be interested in these related services that complement your current selection.</p>
+                        <div class="spacer-30"></div>
+                    </div>
+                }
+			</div>
+		</div>
+	</div>
+    <div class="container">
+       <div class="row">
+            @if (Model.ProductList != null)
+            {
+                foreach (var product in Model.ProductList)
+                {
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-6">
+                        <article class="post mt-30">
+                            <div class="post-preview">
+                                <a asp-controller="Home" asp-action="ProductDetails" asp-route-ID="@product.ID" class="productImgCon"><img src="@(string.IsNullOrEmpty(product.PhotoUrl)?"/Client/img/default/default.png":Url.Content(product.PhotoUrl))" alt="" class="img-fluid mx-auto d-block"></a>
+                            </div>
+
+                            <div class="post-header">
+                                <h4 class="post-title"><a href="#">@product.Name</a></h4>
+                                <ul class="post-meta">
+                                    <li><i class="mdi mdi-calendar"></i> <small>@product.SubChildCatName</small></li>
+                                    <li>
+                                        <i class="mdi mdi-tag-text-outline"></i>
+                                        <small>
+                                            @(product.Price == 0 ? "Ask for Price" : "৳ " + product.Price)
+                                        </small>
+                                    </li>
+                                </ul>
+                                <span class="bar"></span>
+                                <div class="post-footer">
+                                    <div class="likes">
+                                        <ul class="post-meta">
+                                            <li><a style="cursor:pointer" onclick="AddToCart(@product.ID,'@product.Name',@product.Price)"><i class="mdi mdi-cart-plus"></i><small>Add Cart</small></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="post-more"><a asp-controller="Home" asp-action="ProductDetails" asp-route-ID="@product.ID">Details <i class="mdi mdi-arrow-right"></i></a></div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-md-4">
+                    <article class="post mt-30">
+                        <div class="post-preview">
+                            <a href="#"><img src="/Client/img/default/service.jpg" alt="" class="img-fluid mx-auto d-block"></a>
+                        </div>
+
+                        <div class="post-header">
+                            <h4 class="post-title"><a href="#"> The business woman hard work</a></h4>
+                            <ul class="post-meta">
+                                <li><i class="mdi mdi-calendar"></i> <small>Fab 01, 2019</small></li>
+                                <li>
+                                    <i class="mdi mdi-tag-text-outline"></i>
+                                    <a href="#"> <small>Branding</small></a>
+                                </li>
+                            </ul>
+
+                            <div class="post-content">
+                                <p class="text-muted">These cases are perfectly simple and easy to distinguish. In a free hour, when nothing prevents our being able to do what we like best.</p>
+                            </div>
+
+                            <span class="bar"></span>
+
+                            <div class="post-footer">
+                                <div class="likes">
+                                    <ul class="post-meta">
+                                        <li><a href="#"><i class="far fa-heart mr-1"></i> <small>29</small></a></li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="far fa-comment mr-1"></i>
+                                                <small>40</small>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="post-more"><a href="#">Read More <i class="mdi mdi-arrow-right"></i></a></div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            }
+
+	   </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    function AddToCart(ID,name,price)
+    {
+       console.log(ID,name,price);
+    }
+</script>

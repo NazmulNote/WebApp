@@ -43,7 +43,8 @@ namespace WebApp.Areas.Admin.Controllers
             return PartialView("_GetSiteInfoHdrPView", viewModel);
         }
         [HttpPost]
-        public IActionResult SiteInfoSetUpdate(AdminViewModel viewModel, IFormFile HAboutPhotoUrl,IFormFile ContactSliderUrl)
+        public IActionResult SiteInfoSetUpdate(AdminViewModel viewModel, IFormFile HAboutPhotoUrl,IFormFile ContactSliderUrl,
+            IFormFile ClientSliderUrl,IFormFile ServiceSliderUrl)
         {
             try
             {
@@ -59,6 +60,15 @@ namespace WebApp.Areas.Admin.Controllers
                         SiteInfo.HAboutUrl = viewModel.SiteInfo.HAboutUrl;
                         SiteInfo.ContactShortDesc = viewModel.SiteInfo.ContactShortDesc;
                         SiteInfo.ContactMap = viewModel.SiteInfo.ContactMap;
+                        SiteInfo.ClientSliderTitle = viewModel.SiteInfo.ClientSliderTitle;
+                        SiteInfo.ClientSliderDesc = viewModel.SiteInfo.ClientSliderDesc;
+                        SiteInfo.ClientTitle = viewModel.SiteInfo.ClientTitle;
+                        SiteInfo.ClientDesc = viewModel.SiteInfo.ClientDesc;
+                        SiteInfo.ServiceSliderTitle = viewModel.SiteInfo.ServiceSliderTitle;
+                        SiteInfo.ServiceSliderDesc = viewModel.SiteInfo.ServiceSliderDesc;
+                        SiteInfo.ServiceTitle = viewModel.SiteInfo.ServiceTitle;
+                        SiteInfo.ServiceDesc = viewModel.SiteInfo.ServiceDesc;
+                        SiteInfo.ServiceDetailsDesc = viewModel.SiteInfo.ServiceDetailsDesc;
                         SiteInfo.IsActive = true;
 
                         #region HAboutPhotoUrl-------------------------------
@@ -71,6 +81,18 @@ namespace WebApp.Areas.Admin.Controllers
                         if (ContactSliderUrl != null && ContactSliderUrl.Length > 0)
                         {
                             SiteInfo.ContactSliderUrl = UploadImage("ContactSlider", ContactSliderUrl);
+                        }
+                        #endregion
+                        #region ClientSliderUrl------------------------------
+                        if (ClientSliderUrl != null && ClientSliderUrl.Length > 0)
+                        {
+                            SiteInfo.ClientSliderUrl = UploadImage("ClientSlider", ClientSliderUrl);
+                        }
+                        #endregion
+                        #region ServiceSliderUrl------------------------------
+                        if (ServiceSliderUrl != null && ServiceSliderUrl.Length > 0)
+                        {
+                            SiteInfo.ServiceSliderUrl = UploadImage("ServiceSlider", ServiceSliderUrl);
                         }
                         #endregion
 
@@ -86,14 +108,23 @@ namespace WebApp.Areas.Admin.Controllers
                         SiteInfo.HAboutUrl = viewModel.SiteInfo.HAboutUrl;
                         SiteInfo.ContactShortDesc = viewModel.SiteInfo.ContactShortDesc;
                         SiteInfo.ContactMap = viewModel.SiteInfo.ContactMap;
+                        SiteInfo.ClientSliderTitle = viewModel.SiteInfo.ClientSliderTitle;
+                        SiteInfo.ClientSliderDesc = viewModel.SiteInfo.ClientSliderDesc;
+                        SiteInfo.ClientTitle = viewModel.SiteInfo.ClientTitle;
+                        SiteInfo.ClientDesc = viewModel.SiteInfo.ClientDesc;
+                        SiteInfo.ServiceSliderTitle = viewModel.SiteInfo.ServiceSliderTitle;
+                        SiteInfo.ServiceSliderDesc = viewModel.SiteInfo.ServiceSliderDesc;
+                        SiteInfo.ServiceTitle = viewModel.SiteInfo.ServiceTitle;
+                        SiteInfo.ServiceDesc = viewModel.SiteInfo.ServiceDesc;
+                        SiteInfo.ServiceDetailsDesc = viewModel.SiteInfo.ServiceDetailsDesc;
                         SiteInfo.IsActive = true;
 
-                        #region HAboutPhotoUrl-------------------------
+                        #region HAboutPhotoUrl-----------------------------------1
                         if (HAboutPhotoUrl != null && HAboutPhotoUrl.Length > 0)
                         {
                             if (!string.IsNullOrEmpty(viewModel.SiteInfo.HAboutPhotoUrl))
                             {
-                                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", viewModel.SiteInfo.HAboutPhotoUrl);
+                                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", "../" + viewModel.SiteInfo.HAboutPhotoUrl);
                                 if (System.IO.File.Exists(imagePath))
                                 {
                                     System.IO.File.Delete(imagePath);
@@ -106,12 +137,12 @@ namespace WebApp.Areas.Admin.Controllers
                             SiteInfo.HAboutPhotoUrl = viewModel.SiteInfo.HAboutPhotoUrl;
                         }
                         #endregion
-                        #region ContactSliderUrl--------------------------------
+                        #region ContactSliderUrl--------------------------------2
                         if (ContactSliderUrl != null && ContactSliderUrl.Length > 0)
                         {
                             if (!string.IsNullOrEmpty(viewModel.SiteInfo.ContactSliderUrl))
                             {
-                                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", viewModel.SiteInfo.ContactSliderUrl);
+                                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", "../" + viewModel.SiteInfo.ContactSliderUrl);
                                 if (System.IO.File.Exists(imagePath))
                                 {
                                     System.IO.File.Delete(imagePath);
@@ -124,7 +155,42 @@ namespace WebApp.Areas.Admin.Controllers
                             SiteInfo.ContactSliderUrl = viewModel.SiteInfo.ContactSliderUrl;
                         }
                         #endregion
-
+                        #region ClientSliderUrl--------------------------------3
+                        if (ClientSliderUrl != null && ClientSliderUrl.Length > 0)
+                        {
+                            if (!string.IsNullOrEmpty(viewModel.SiteInfo.ClientSliderUrl))
+                            {
+                                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", "../" + viewModel.SiteInfo.ClientSliderUrl);
+                                if (System.IO.File.Exists(imagePath))
+                                {
+                                    System.IO.File.Delete(imagePath);
+                                }
+                            }
+                            SiteInfo.ClientSliderUrl = UploadImage("ClientSlider", ClientSliderUrl);
+                        }
+                        else
+                        {
+                            SiteInfo.ClientSliderUrl = viewModel.SiteInfo.ClientSliderUrl;
+                        }
+                        #endregion
+                        #region ServiceSliderUrl--------------------------------4
+                        if (ServiceSliderUrl != null && ServiceSliderUrl.Length > 0)
+                        {
+                            if (!string.IsNullOrEmpty(viewModel.SiteInfo.ServiceSliderUrl))
+                            {
+                                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", "../" + viewModel.SiteInfo.ServiceSliderUrl);
+                                if (System.IO.File.Exists(imagePath))
+                                {
+                                    System.IO.File.Delete(imagePath);
+                                }
+                            }
+                            SiteInfo.ServiceSliderUrl = UploadImage("ServiceSlider", ServiceSliderUrl);
+                        }
+                        else
+                        {
+                            SiteInfo.ServiceSliderUrl = viewModel.SiteInfo.ServiceSliderUrl;
+                        }
+                        #endregion
                         SiteInfo.UpdatedBy = Convert.ToInt32(HttpContext.Session.GetString("AUserId"));
                         var result = _SiteInfoData.SiteInfoInsertUpdate(SiteInfo, "Update");
                         return Json(result.ID);
@@ -152,7 +218,7 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 ImageFile.CopyTo(fileStream);
             }
-            imageName = $"../Admin/img/home/{fileName}";
+            imageName = $"/Admin/img/home/{fileName}";
             return imageName;
         }
     }

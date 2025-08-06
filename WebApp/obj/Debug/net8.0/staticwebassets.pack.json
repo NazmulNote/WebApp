@@ -25,44 +25,40 @@
       "PackagePath": "staticwebassets\\Admin\\img\\about\\SliderPhoto16072025165719.jpg"
     },
     {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\adminUsers\\Cat26062025162657.jpg",
-      "PackagePath": "staticwebassets\\Admin\\img\\adminUsers\\Cat26062025162657.jpg"
-    },
-    {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\adminUsers\\Nazmul haque17052025190036.png",
-      "PackagePath": "staticwebassets\\Admin\\img\\adminUsers\\Nazmul haque17052025190036.png"
-    },
-    {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\adminUsers\\Nazmul17052025173807.jpg",
-      "PackagePath": "staticwebassets\\Admin\\img\\adminUsers\\Nazmul17052025173807.jpg"
-    },
-    {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\adminUsers\\Nazmul17052025232105.png",
-      "PackagePath": "staticwebassets\\Admin\\img\\adminUsers\\Nazmul17052025232105.png"
-    },
-    {
       "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\adminUsers\\avator.png",
       "PackagePath": "staticwebassets\\Admin\\img\\adminUsers\\avator.png"
-    },
-    {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\adminUsers\\nazmul haque17052025232011.png",
-      "PackagePath": "staticwebassets\\Admin\\img\\adminUsers\\nazmul haque17052025232011.png"
-    },
-    {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\adminUsers\\nazmul28062025203742.png",
-      "PackagePath": "staticwebassets\\Admin\\img\\adminUsers\\nazmul28062025203742.png"
     },
     {
       "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\avator.png",
       "PackagePath": "staticwebassets\\Admin\\img\\avator.png"
     },
     {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\customer\\Nazmul13072025154227.jpg",
-      "PackagePath": "staticwebassets\\Admin\\img\\customer\\Nazmul13072025154227.jpg"
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\avator_.png",
+      "PackagePath": "staticwebassets\\Admin\\img\\avator_.png"
     },
     {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\home\\CompanyLogo14072025170118.jpg",
-      "PackagePath": "staticwebassets\\Admin\\img\\home\\CompanyLogo14072025170118.jpg"
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\client\\Pran RFL18072025200218.png",
+      "PackagePath": "staticwebassets\\Admin\\img\\client\\Pran RFL18072025200218.png"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\client\\RM Automation & Technologies18072025200159.png",
+      "PackagePath": "staticwebassets\\Admin\\img\\client\\RM Automation & Technologies18072025200159.png"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\client\\SM-Tradin18072025200228.png",
+      "PackagePath": "staticwebassets\\Admin\\img\\client\\SM-Tradin18072025200228.png"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\customer\\Nazmul06082025190929.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\customer\\Nazmul06082025190929.jpg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\home\\ClientSlider18072025225955.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\home\\ClientSlider18072025225955.jpg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\home\\CompanyLogo24072025163329.png",
+      "PackagePath": "staticwebassets\\Admin\\img\\home\\CompanyLogo24072025163329.png"
     },
     {
       "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\home\\ContactSlider17072025190951.jpg",
@@ -71,6 +67,10 @@
     {
       "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\home\\HomeAbout14072025194428.jpg",
       "PackagePath": "staticwebassets\\Admin\\img\\home\\HomeAbout14072025194428.jpg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\home\\ServiceSlider20072025173411.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\home\\ServiceSlider20072025173411.jpg"
     },
     {
       "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\home\\Slider13072025211658.jpg",
@@ -85,68 +85,40 @@
       "PackagePath": "staticwebassets\\Admin\\img\\home\\Slider13072025211826.jpg"
     },
     {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\library\\Cat01072025222542.png",
-      "PackagePath": "staticwebassets\\Admin\\img\\library\\Cat01072025222542.png"
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\library\\Cat05082025164818.png",
+      "PackagePath": "staticwebassets\\Admin\\img\\library\\Cat05082025164818.png"
     },
     {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\library\\Cat26062025163051.png",
-      "PackagePath": "staticwebassets\\Admin\\img\\library\\Cat26062025163051.png"
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\library\\Cat05082025164848.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\library\\Cat05082025164848.jpg"
     },
     {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\library\\Cat26062025163136.jpg",
-      "PackagePath": "staticwebassets\\Admin\\img\\library\\Cat26062025163136.jpg"
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\library\\Cat05082025164902.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\library\\Cat05082025164902.jpg"
     },
     {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\library\\Cat26062025165339.jpg",
-      "PackagePath": "staticwebassets\\Admin\\img\\library\\Cat26062025165339.jpg"
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\service\\Machine Fabrication19072025202714.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\service\\Machine Fabrication19072025202714.jpg"
     },
     {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\library\\Cat28062025203907.png",
-      "PackagePath": "staticwebassets\\Admin\\img\\library\\Cat28062025203907.png"
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\service\\Maintenance & Overhauling19072025202804.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\service\\Maintenance & Overhauling19072025202804.jpg"
     },
     {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\library\\ServiceCat03072025154919.png",
-      "PackagePath": "staticwebassets\\Admin\\img\\library\\ServiceCat03072025154919.png"
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\service\\Mechanical Design Services19072025202848.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\service\\Mechanical Design Services19072025202848.jpg"
     },
     {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\library\\ServiceCat06072025200735.png",
-      "PackagePath": "staticwebassets\\Admin\\img\\library\\ServiceCat06072025200735.png"
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\service\\PLC Programming19072025202027.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\service\\PLC Programming19072025202027.jpg"
     },
     {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\library\\SubCat15072025140316.jpg",
-      "PackagePath": "staticwebassets\\Admin\\img\\library\\SubCat15072025140316.jpg"
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\service\\SCADA & HMI Design19072025202102.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\service\\SCADA & HMI Design19072025202102.jpg"
     },
     {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\library\\SubCat27062025000249.png",
-      "PackagePath": "staticwebassets\\Admin\\img\\library\\SubCat27062025000249.png"
-    },
-    {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\library\\SubChildCat03072025232218.jpg",
-      "PackagePath": "staticwebassets\\Admin\\img\\library\\SubChildCat03072025232218.jpg"
-    },
-    {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\library\\SubChildCat27062025163329.jpg",
-      "PackagePath": "staticwebassets\\Admin\\img\\library\\SubChildCat27062025163329.jpg"
-    },
-    {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\product\\305072025194141.png",
-      "PackagePath": "staticwebassets\\Admin\\img\\product\\305072025194141.png"
-    },
-    {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\product\\LG-26206072025003650.png",
-      "PackagePath": "staticwebassets\\Admin\\img\\product\\LG-26206072025003650.png"
-    },
-    {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\product\\LG-26208072025180215.png",
-      "PackagePath": "staticwebassets\\Admin\\img\\product\\LG-26208072025180215.png"
-    },
-    {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\product\\t06072025003040.png",
-      "PackagePath": "staticwebassets\\Admin\\img\\product\\t06072025003040.png"
-    },
-    {
-      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\product\\transformer 500kva15072025140828.png",
-      "PackagePath": "staticwebassets\\Admin\\img\\product\\transformer 500kva15072025140828.png"
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\service\\Sensor & Actuator Integration19072025202727.jpg",
+      "PackagePath": "staticwebassets\\Admin\\img\\service\\Sensor & Actuator Integration19072025202727.jpg"
     },
     {
       "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Admin\\img\\teamMember\\Md. Manik 17072025171949.jpg",
@@ -7041,6 +7013,10 @@
       "PackagePath": "staticwebassets\\Client\\css\\bootstrap.min.css"
     },
     {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\customClient.css",
+      "PackagePath": "staticwebassets\\Client\\css\\customClient.css"
+    },
+    {
       "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\default.css",
       "PackagePath": "staticwebassets\\Client\\css\\default.css"
     },
@@ -7091,6 +7067,10 @@
     {
       "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\pe-icon-7-stroke.css",
       "PackagePath": "staticwebassets\\Client\\css\\pe-icon-7-stroke.css"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\product.css",
+      "PackagePath": "staticwebassets\\Client\\css\\product.css"
     },
     {
       "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\css\\slick-theme.css",
@@ -7233,8 +7213,28 @@
       "PackagePath": "staticwebassets\\Client\\fonts\\slick.woff"
     },
     {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\img\\default\\avator.png",
+      "PackagePath": "staticwebassets\\Client\\img\\default\\avator.png"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\img\\default\\default.png",
+      "PackagePath": "staticwebassets\\Client\\img\\default\\default.png"
+    },
+    {
       "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\img\\default\\home-about.jpg",
       "PackagePath": "staticwebassets\\Client\\img\\default\\home-about.jpg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\img\\default\\man.jpg",
+      "PackagePath": "staticwebassets\\Client\\img\\default\\man.jpg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\img\\default\\product.jpg",
+      "PackagePath": "staticwebassets\\Client\\img\\default\\product.jpg"
+    },
+    {
+      "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\img\\default\\service.jpg",
+      "PackagePath": "staticwebassets\\Client\\img\\default\\service.jpg"
     },
     {
       "Id": "D:\\Nazmul PC\\Projects\\WebApp\\WebApp\\wwwroot\\Client\\img\\default\\slider.jpg",

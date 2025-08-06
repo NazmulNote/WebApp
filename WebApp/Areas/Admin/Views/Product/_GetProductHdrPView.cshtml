@@ -7,7 +7,7 @@
 	<div class="row">
 		<div class="col-lg-1 col-md-1 col-sm-12 col-12">
 			<div id="PhotoPreview">
-				<img style="width:5rem;height:6rem;object-fit:contain" src="@( Model.Product != null && !string.IsNullOrEmpty(Model.Product.PhotoUrl)? Url.Content("~/" + Model.Product.PhotoUrl): Url.Content("~/Admin/img/avator.png"))" alt="User Image" />
+				<img style="width:5rem;height:6rem;object-fit:contain" src="@( Model.Product != null && !string.IsNullOrEmpty(Model.Product.PhotoUrl)? Url.Content(Model.Product.PhotoUrl): Url.Content("/Admin/img/avator.png"))" alt="User Image" />
 			</div>
 			@Html.HiddenFor(model => model.Product.PhotoUrl)
 		</div>
@@ -98,16 +98,16 @@
 						</label>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-1">
+				<div class="col-lg-6 col-md-3 col-sm-6 col-12 mb-1">
 					<div class="form-group row">
-						@Html.LabelFor(model => model.Product.Photo, "Photo:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						@Html.LabelFor(model => model.Product.Photo, "Photo: 800*800px", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
 						<div class="col-sm-9 col-8">
 							@Html.EditorFor(model => model.Product.Photo, new { htmlAttributes = new { id = "Photo", @class = "form-control form-file", placeholder = "Enter Role", Type = "file", onchange = "PhotoPreview()" } })
 							@Html.ValidationMessageFor(model => model.Product.Photo, "", new { @class = "text-danger" })
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-6 col-md-6 col-sm-6 col-12 mb-1 form-check" style="text-align:right">
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-1 form-check" style="text-align:right">
 					<button type="button" class="btn btn-sm btn-primary btn-user" onclick="ProductSetUpdate()">
 						Save
 					</button>

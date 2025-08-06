@@ -28,7 +28,7 @@
 					<tr>
 						<td class="text-center">@i</td>
 						<td class="text-center">
-							<img style="width:2rem;height:2rem;object-fit:cover" src="@( product != null && !string.IsNullOrEmpty(product.PhotoUrl)? Url.Content("~/" + product.PhotoUrl): Url.Content("~/Admin/img/avator.png"))" alt="User Image" />
+							<img style="width:2rem;height:2rem;object-fit:cover" src="@(product != null && !string.IsNullOrEmpty(product.PhotoUrl)? Url.Content(product.PhotoUrl): Url.Content("/Admin/img/avator.png"))" alt="User Image" />
 						</td>
 						<td>@product.Name</td>
 						<td>@product.Code</td>

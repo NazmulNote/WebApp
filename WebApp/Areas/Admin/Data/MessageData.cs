@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 using Microsoft.Data.SqlClient;
 using WebApp.Areas.Admin.Models;
 using WebApp.Helper;
@@ -12,12 +13,11 @@ namespace WebApp.Areas.Admin.Data
             var configHelper = new ConnHelper();
             _connString = configHelper.GetConnString("DBConn");
         }
-        public MessageMDL GetMessage(int? ID)
+        public MessageMDL GetMessage(string? Action,int? ID)
         {
             try
             {
                 var Conn = new SqlConnection(_connString);
-                string Action = "SelectById";
                 var viewModel = new MessageMDL();
                 SqlCommand cmd = new SqlCommand("SP_Message", Conn);
                 cmd.CommandTimeout = 60000;
@@ -52,17 +52,18 @@ namespace WebApp.Areas.Admin.Data
                 throw new Exception("Error in Message data get: " + ex.Message);
             }
         }
-        public List<MessageMDL> GetMessageList()
+        public List<MessageMDL> GetMessageList(DateTime? FromDate,DateTime? ToDate, string? Action)
         {
             try
             {
                 var Conn = new SqlConnection(_connString);
-                string Action = "SelectAll";
                 var list = new List<MessageMDL>();
                 SqlCommand cmd = new SqlCommand("SP_Message", Conn);
                 cmd.CommandTimeout = 60000;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Action", Action);
+                cmd.Parameters.AddWithValue("@FromDate",FromDate);
+                cmd.Parameters.AddWithValue("@ToDate", ToDate);
                 Conn.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())

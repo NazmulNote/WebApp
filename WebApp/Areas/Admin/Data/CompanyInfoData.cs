@@ -37,6 +37,7 @@ namespace WebApp.Areas.Admin.Data
                         PhotoUrl = dr["PhotoUrl"].ToString(),
                         Address = dr["Address"].ToString(),
                         Email = dr["Email"].ToString(),
+                        EmailPassword = dr["EmailPassword"].ToString(),
                         Phone = dr["Phone"].ToString(),
                         FacebookUrl = dr["FacebookUrl"].ToString(),
                         TwitterUrl = dr["TwitterUrl"].ToString(),
@@ -76,6 +77,7 @@ namespace WebApp.Areas.Admin.Data
                 cmd.Parameters.AddWithValue("@PhotoUrl", viewModel.PhotoUrl);
                 cmd.Parameters.AddWithValue("@Address", viewModel.Address);
                 cmd.Parameters.AddWithValue("@Email", viewModel.Email);
+                cmd.Parameters.AddWithValue("@EmailPassword", viewModel.EmailPassword);
                 cmd.Parameters.AddWithValue("@Phone", viewModel.Phone);
                 cmd.Parameters.AddWithValue("@FacebookUrl", viewModel.FacebookUrl);
                 cmd.Parameters.AddWithValue("@TwitterUrl", viewModel.TwitterUrl);

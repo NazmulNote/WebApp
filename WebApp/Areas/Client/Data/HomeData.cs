@@ -121,6 +121,17 @@ namespace WebApp.Areas.Client.Data
                         ContactSliderUrl = dr["ContactSliderUrl"].ToString(),
                         ContactShortDesc = dr["ContactShortDesc"].ToString(),
                         ContactMap = dr["ContactMap"].ToString(),
+                        ClientSliderUrl = dr["ClientSliderUrl"].ToString(),
+                        ClientSliderTitle = dr["ClientSliderTitle"].ToString(),
+                        ClientSliderDesc = dr["ClientSliderDesc"].ToString(),
+                        ClientTitle = dr["ClientTitle"].ToString(),
+                        ClientDesc = dr["ClientDesc"].ToString(),
+                        ServiceSliderUrl = dr["ServiceSliderUrl"].ToString(),
+                        ServiceSliderTitle = dr["ServiceSliderTitle"].ToString(),
+                        ServiceSliderDesc = dr["ServiceSliderDesc"].ToString(),
+                        ServiceTitle = dr["ServiceTitle"].ToString(),
+                        ServiceDesc = dr["ServiceDesc"].ToString(),
+                        ServiceDetailsDesc = dr["ServiceDetailsDesc"].ToString(),
                         IsActive = Convert.ToBoolean(dr["IsActive"]),
                         InsertId = Convert.ToInt32(dr["InsertId"]),
                         InsertedByIP = dr["InsertedByIP"].ToString(),
@@ -281,6 +292,143 @@ namespace WebApp.Areas.Client.Data
             catch (Exception ex)
             {
                 throw new Exception("Error in Message " + Action + ": " + ex.Message);
+            }
+        }
+        public List<ClientMDL> GetClientList()
+        {
+            try
+            {
+                var Conn = new SqlConnection(_connString);
+                string Action = "SelectAll";
+                var list = new List<ClientMDL>();
+                SqlCommand cmd = new SqlCommand("SP_Client", Conn);
+                cmd.CommandTimeout = 60000;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Action", Action);
+                cmd.Parameters.AddWithValue("@IsActive", 1);
+
+                Conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    ClientMDL viewModel = new ClientMDL
+                    {
+                        ID = Convert.ToInt32(dr["ID"].ToString()),
+                        Name = dr["Name"].ToString()!,
+                        ContactPerson = dr["ContactPerson"]?.ToString(),
+                        Email = dr["Email"]?.ToString(),
+                        Phone = dr["Phone"]?.ToString(),
+                        CountryId = dr["CountryId"] == DBNull.Value ? null : Convert.ToInt32(dr["CountryId"]),
+                        CountryName = dr["CountryName"]?.ToString(),
+                        DistrictId = dr["DistrictId"] == DBNull.Value ? null : Convert.ToInt32(dr["DistrictId"]),
+                        DistrictName = dr["DistrictName"]?.ToString(),
+                        PoliceStationId = dr["PoliceStationId"] == DBNull.Value ? null : Convert.ToInt32(dr["PoliceStationId"]),
+                        PoliceStationName = dr["PoliceStationName"]?.ToString(),
+                        Address = dr["Address"]?.ToString(),
+                        Website = dr["Website"]?.ToString(),
+                        PhotoUrl = dr["PhotoUrl"]?.ToString(),
+                        ClientType = dr["ClientType"]?.ToString(),
+                        IsActive = Convert.ToBoolean(dr["IsActive"]),
+                        InsertId = Convert.ToInt32(dr["InsertId"].ToString()),
+                        InsertedByIP = dr["InsertedByIP"]?.ToString(),
+                        CreatedAt = dr["CreatedAt"] == DBNull.Value ? null : (DateTime?)Convert.ToDateTime(dr["CreatedAt"]),
+                        UpdatedAt = dr["UpdatedAt"] == DBNull.Value ? null : (DateTime?)Convert.ToDateTime(dr["UpdatedAt"]),
+                        UpdatedBy = dr["UpdatedBy"] == DBNull.Value ? null : (int?)Convert.ToInt32(dr["UpdatedBy"])
+                    };
+                    list.Add(viewModel);
+                }
+                Conn.Close();
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in Client Data List Get: " + ex.Message);
+            }
+        }
+        public List<ServiceMDL> GetServiceList(int? ServiceCatId)
+        {
+            try
+            {
+                var Conn = new SqlConnection(_connString);
+                string Action = "SelectAll";
+                var list = new List<ServiceMDL>();
+                SqlCommand cmd = new SqlCommand("sp_Service", Conn);
+                cmd.CommandTimeout = 60000;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Action", Action);
+                cmd.Parameters.AddWithValue("@IsActive", 1);
+                cmd.Parameters.AddWithValue("@ServiceCatId", ServiceCatId);
+                Conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    ServiceMDL viewModel = new ServiceMDL
+                    {
+                        ID = Convert.ToInt32(dr["ID"].ToString()),
+                        ServiceCatId = Convert.ToInt32(dr["ServiceCatId"].ToString()),
+                        ServiceCat = dr["ServiceCat"].ToString(),
+                        Name = dr["Name"].ToString(),
+                        ShortDesc = dr["ShortDesc"].ToString(),
+                        FullDesc = dr["FullDesc"].ToString(),
+                        PhotoUrl = dr["PhotoUrl"].ToString(),
+                        VideoUrl = dr["VideoUrl"].ToString(),
+                        IsActive = Convert.ToBoolean(dr["IsActive"]),
+                        InsertId = Convert.ToInt32(dr["InsertId"].ToString()),
+                        InsertedByIP = dr["InsertedByIP"].ToString(),
+                        CreatedAt = Convert.ToDateTime(dr["CreatedAt"].ToString()),
+                        UpdatedAt = Convert.ToDateTime(dr["UpdatedAt"].ToString()),
+                        UpdatedBy = Convert.ToInt32(dr["UpdatedBy"].ToString())
+                    };
+                    list.Add(viewModel);
+                }
+                Conn.Close();
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in Service List data get: " + ex.Message);
+            }
+        }
+        public ServiceMDL GetService(int? ID)
+        {
+            try
+            {
+                var Conn = new SqlConnection(_connString);
+                string Action = "SelectById";
+                var viewModel = new ServiceMDL();
+                SqlCommand cmd = new SqlCommand("sp_Service", Conn);
+                cmd.CommandTimeout = 60000;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Action", Action);
+                cmd.Parameters.AddWithValue("@ID", ID);
+                Conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    viewModel = new ServiceMDL
+                    {
+                        ID = Convert.ToInt32(dr["ID"].ToString()),
+                        ServiceCatId = Convert.ToInt32(dr["ServiceCatId"].ToString()),
+                        ServiceCat = dr["ServiceCat"].ToString(),
+                        Name = dr["Name"].ToString(),
+                        ShortDesc = dr["ShortDesc"].ToString(),
+                        FullDesc = dr["FullDesc"].ToString(),
+                        PhotoUrl = dr["PhotoUrl"].ToString(),
+                        VideoUrl = dr["VideoUrl"].ToString(),
+                        IsActive = Convert.ToBoolean(dr["IsActive"]),
+                        InsertId = Convert.ToInt32(dr["InsertId"].ToString()),
+                        InsertedByIP = dr["InsertedByIP"].ToString(),
+                        CreatedAt = Convert.ToDateTime(dr["CreatedAt"].ToString()),
+                        UpdatedAt = Convert.ToDateTime(dr["UpdatedAt"].ToString()),
+                        UpdatedBy = Convert.ToInt32(dr["UpdatedBy"].ToString())
+                    };
+                }
+                Conn.Close();
+                return viewModel;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in Service data get: " + ex.Message);
             }
         }
     }

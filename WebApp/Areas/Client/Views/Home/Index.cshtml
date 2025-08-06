@@ -82,12 +82,12 @@
 </section>
 <!-- Slide END-->
 <!--Start Home About-->
-<section class="section">
+<section class="section bg-light">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-5 col-md-6">
                 <div class="about-pic">
-                    <img src="@Url.Content(string.IsNullOrEmpty(Model.SiteInfo?.HAboutPhotoUrl) ? "~/Client/img/default/Home-about.jpg" : "~/" + Model.SiteInfo.HAboutPhotoUrl)" class="img-fluid" alt="">
+                    <img src="@Url.Content(string.IsNullOrEmpty(Model.SiteInfo?.HAboutPhotoUrl) ? "~/Client/img/default/Home-about.jpg" : Url.Content(Model.SiteInfo.HAboutPhotoUrl))" class="img-fluid" alt="">
                     <div class="watch-video about-video text-center">
                         <div class="project-video">
                             <div class="project-video-border">
@@ -121,8 +121,71 @@
     </div>
 </section>
 <!--End Home About-->
+<!--Product Category start-->
+<section class="section" style="padding-top:2rem">
+    <div class="container">
+        <h4 style="font-size: 24px; font-weight: 600; color: #2c3e50;padding-left: 10px;text-align:center">
+            🛒 Explore Our Product Categories
+        </h4>
+
+        <div class="row">
+            @if (Model.CatList != null)
+            {
+                foreach (var cat in Model.CatList)
+                {
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                        <article class="post mt-30">
+                            <div class="post-preview">
+                                <a asp-controller="Home" asp-action="Product" asp-route-CatId="@cat.ID" class="productImgCon"><img style="border-radius:10%" src="@(string.IsNullOrEmpty(cat.PhotoUrl)?"/Client/img/default/default.png":Url.Content(cat.PhotoUrl))" alt="" class="img-fluid mx-auto d-block"></a>
+                            </div>
+
+                            <div class="post-header">
+                                <h4 class="post-title"><a href="#">@cat.Name</a></h4>
+                                <ul class="post-meta">
+                                </ul>
+                                <span class="bar"></span>
+                                <div class="post-footer mb-0">
+                                    <p class="mb-0">@cat.Description</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+<!--Product category end-->
+<section class="section bg-cta-img">
+    <div class="bg-overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="cta-heading text-center text-white">
+                    <h3>Trending ideas and inventions always make us feel proud</h3>
+                    <div class="spacer-15"></div>
+                    <p class="mx-auto cta_details text-white-50">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="watch-video text-center">
+                    <div class="project-video">
+                        <div class="project-video-border">
+                            <div class="project-video-icon">
+                                <a href="https://www.youtube.com/watch?v=ToizAqT4Fw0" class="video-play-icon text-white text-center" title="Watch Now"><i class="mdi mdi-play play-icon play h2 mb-0 mx-auto"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <!--Start Subscribe --->
-<section class="section">
+@* <section class="section">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-12">
@@ -138,7 +201,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> *@
 <!--End Subscribe-->
 <!--Start Contact-->
 <section class="section-two bg-custom">

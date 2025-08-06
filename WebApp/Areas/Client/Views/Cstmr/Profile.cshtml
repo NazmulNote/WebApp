@@ -1,0 +1,185 @@
+﻿@using WebApp
+@model WebApp.Areas.Client.Models.ClientViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+	ViewData["Title"] = "Profile";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="/client/css/product.css" rel="stylesheet" />
+<link href="/admin/css/customadmin.css" rel="stylesheet" />
+<style>
+	.table th {
+		background-color: #a3c85e;
+		border-color: #a3c85e;
+	}
+
+	.Content_cScroll {
+		scrollbar-color: gray #f1f1f1;
+	}
+</style>
+<div id="tr_msg" class="tr_msg"></div>
+<section class="section" style="min-height:95vh">
+	<div class="container" style="margin-top:4rem!important">
+		<h3 class="mt-30">Customer Profile</h3>
+		<span class="bar"></span>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-body" id="HdrPView">
+
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="card">
+					<div class="card-body" id="DetPView">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded',function(){
+		GetHdrPView();
+	})
+	function GetHdrPView(ID) {
+		
+		$.ajax({
+			url: '@Url.Action("GetCustomerHdrPView", "Cstmr")',
+			type: 'GET',
+			data: { ID: ID },
+			success: function (html) {
+				 $("#HdrPView").html("");
+				 $("#HdrPView").html(html);
+				 GetDetPView();
+			},
+			error: function (error) {
+				console.log(error);
+				if (error.status === 401) location.href = '/SPanel1325/Login';
+				console.log("Error Get Customer Hdr PView");
+			}
+		});
+	}
+	function GetDetPView(ID) {
+		$.ajax({
+			url: '@Url.Action("GetCustomerDetPView", "Cstmr")',
+			type: 'GET',
+			data: { ID: ID },
+			success: function (html) {
+				 $("#DetPView").html("");
+				 $("#DetPView").html(html);
+			},
+			error: function (error) {
+				console.log("Error Get Customer det PView");
+				console.log(error);
+			}
+		});
+	}
+	function CustomerUpdate() {
+		var ImageFile = $("#Photo")[0].files[0];
+		var formData = new FormData();
+		if (ImageFile) {
+			formData.append("ImageFile", ImageFile);
+		}
+		var otherData = $('#CustomerUpdateForm').serializeArray();
+		$.each(otherData, function (index, item) {
+			formData.append(item.name, item.value);
+		});
+		var IsRequired = CheckRequiredField();
+		if (IsRequired == "NO") {
+			$.ajax({
+				url: '@Url.Action("CustomerUpdate", "Cstmr")',
+				type: 'POST',
+				data: formData,
+				contentType: false, // Important for FormData
+				processData: false, // Important for FormData
+				success: function (result) {
+					if (result == 0) {
+						Show_tr_msg("Update not completed successfully.");
+					}else if(result == -1){
+						Show_tr_msg("Already have an account with this email. Please log in or try another email.");
+					}
+					else if(result == -2){
+						Show_tr_msg("Passwords do not match!.");
+					}
+					else {
+						Show_tr_msg( "Registration completed successfully!");
+
+						setTimeout(function () {
+							// GetDetPView();
+							GetHdrPView();
+						}, 2000)
+						location.reload();
+					}
+				},
+				error: function (error) {
+				
+					console.log(error);
+				}
+			});
+		}
+	}
+	function CheckRequiredField() {
+		var Name = document.getElementById("Name");
+		var Email = document.getElementById("Email");
+		var Phone = document.getElementById("Phone");
+		var CountryId = document.getElementById("CountryId");
+		var DistrictId = document.getElementById("DistrictId");
+		var PoliceStationId = document.getElementById("PoliceStationId");
+		var Address = document.getElementById("Address")
+		var Password = document.getElementById("Password");
+		var ConfirmPassword = document.getElementById("ConfirmPassword");
+		if (Name.value == "" || Email.value == "" || Phone.value == "" || CountryId.value == "" || DistrictId.value == ""|| PoliceStationId.value == "" || Address.value == "" || Password.value == "" || ConfirmPassword.value == "") {
+			if (Name.value == "") { Name.style.border = "0.5px solid #ff00005c"; }
+			if (Email.value == "") { Email.style.border = "0.5px solid #ff00005c"; }
+			if (Phone.value == "") { Phone.style.border = "0.5px solid #ff00005c"; }
+			if (CountryId.value == "") { CountryId.style.border = "0.5px solid #ff00005c"; }
+			if (DistrictId.value == "") { DistrictId.style.border = "0.5px solid #ff00005c"; }
+			if (PoliceStationId.value == "") { PoliceStationId.style.border = "0.5px solid #ff00005c"; }
+			if (Address.value == "") { Address.style.border = "0.5px solid #ff00005c"; }
+			if (Password.value == "") { Password.style.border = "0.5px solid #ff00005c"; }
+			if (ConfirmPassword.value == "") { ConfirmPassword.style.border = "0.5px solid #ff00005c"; }
+
+			Show_tr_msg("Please fill up all required fields.");
+			return "YES";
+		} else {
+			return "NO"
+		}
+	}
+	function PhotoPreview() {
+		const PhotoPreview = document.getElementById('PhotoPreview');
+		const file = document.getElementById('Photo').files[0];
+		if (file) {
+			var maxFileSize = 512000; //in bytes
+			if (file.size <= maxFileSize) {
+
+				PhotoPreview.innerHTML = '';
+				const reader = new FileReader();
+				reader.onload = function (e) {
+					const img = document.createElement('img');
+					img.src = e.target.result;
+					img.alt = 'Uploaded Image';
+					img.style.maxWidth = '5rem';
+					img.style.maxHeight = '6rem';
+					img.style.objectFit = 'contain'
+					PhotoPreview.appendChild(img);
+				};
+				reader.readAsDataURL(file);
+			}
+			else {
+				Show_tr_msg( "The file size should be around 500KB.");
+				document.getElementById('Photo').value = "";
+			}
+		}
+	}
+	 function Show_tr_msg(message) {
+		const tr_msg = document.getElementById("tr_msg");
+		tr_msg.innerText = message;
+		tr_msg.style.display = "block";
+		setTimeout(() => {
+			tr_msg.style.display = "none";
+		}, 2000);
+	}
+</script>

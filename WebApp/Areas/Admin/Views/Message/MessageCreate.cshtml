@@ -53,6 +53,8 @@
 			});
 		}
 		function GetDetPView() {
+			var FromDate = document.getElementById("FromDate").value;
+			var ToDate = document.getElementById("ToDate").value;
 			Swal.fire({
 				position: "center",
 				html: '<i class="fa fa-spinner fa-spin" style="font-size: 2em;margin-top: 0.8em"></i><br><br>',
@@ -63,6 +65,7 @@
 			$.ajax({
 				url: '@Url.Action("GetMessageDetPView", "Message")',
 				type: 'GET',
+				data:{FromDate:FromDate,ToDate:ToDate},
 				success: function (html) {
 					 $("#DetPView").html("");
 					 $("#DetPView").html(html);

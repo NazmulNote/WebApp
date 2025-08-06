@@ -10,17 +10,31 @@
 			<div id="HAboutPhotoPreview">
 				<span style="font-size:0.7rem">Home About</span>
 				<img style="width:5rem;height:6rem;object-fit:contain"
-					 src="@( Model.SiteInfo != null && !string.IsNullOrEmpty(Model.SiteInfo.HAboutPhotoUrl) ? Url.Content("~/" + Model.SiteInfo.HAboutPhotoUrl) : Url.Content("~/Admin/img/avator.png"))"
+					 src="@( Model.SiteInfo != null && !string.IsNullOrEmpty(Model.SiteInfo.HAboutPhotoUrl) ? Url.Content(Model.SiteInfo.HAboutPhotoUrl) : Url.Content("/Admin/img/avator.png"))"
 					 alt="About Image" />
 			</div>
 			<div id="ContactSliderPreview">
 				<span style="font-size:0.7rem">Contact Slider</span>
 				<img style="width:5rem;height:6rem;object-fit:contain"
-					 src="@( Model.SiteInfo != null && !string.IsNullOrEmpty(Model.SiteInfo.ContactSliderUrl) ? Url.Content("~/" + Model.SiteInfo.ContactSliderUrl) : Url.Content("~/Admin/img/avator.png"))"
+					 src="@( Model.SiteInfo != null && !string.IsNullOrEmpty(Model.SiteInfo.ContactSliderUrl) ? Url.Content(Model.SiteInfo.ContactSliderUrl) : Url.Content("/Admin/img/avator.png"))"
+					 alt="About Image" />
+			</div>
+			<div id="ClientSliderPreview">
+				<span style="font-size:0.7rem">Client Slider</span>
+				<img style="width:5rem;height:6rem;object-fit:contain"
+					 src="@( Model.SiteInfo != null && !string.IsNullOrEmpty(Model.SiteInfo.ClientSliderUrl) ? Url.Content(Model.SiteInfo.ClientSliderUrl) : Url.Content("/Admin/img/avator.png"))"
+					 alt="About Image" />
+			</div>
+			<div id="ServiceSliderPreview">
+				<span style="font-size:0.7rem">Service Slider</span>
+				<img style="width:5rem;height:6rem;object-fit:contain"
+					 src="@( Model.SiteInfo != null && !string.IsNullOrEmpty(Model.SiteInfo.ServiceSliderUrl) ? Url.Content(Model.SiteInfo.ServiceSliderUrl) : Url.Content("/Admin/img/avator.png"))"
 					 alt="About Image" />
 			</div>
 			@Html.HiddenFor(model => model.SiteInfo.HAboutPhotoUrl)
 			@Html.HiddenFor(model => model.SiteInfo.ContactSliderUrl)
+			@Html.HiddenFor(model => model.SiteInfo.ClientSliderUrl)
+			@Html.HiddenFor(model => model.SiteInfo.ServiceSliderUrl)
 		</div>
 
 		<div class="col-lg-11 col-md-11 col-sm-12 col-12">
@@ -64,7 +78,9 @@
 						</div>
 					</div>
 				</div>
+				@* ---------------------------------------------------------------------------------- *@
 				<strong style="padding: 0;border-bottom: 2px solid lightgray;margin-bottom: 0.3rem;">Contact Page info</strong>
+
 				<div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-1">
 					<div class="form-group row">
 						@Html.LabelFor(model => model.SiteInfo.ContactSliderUrl, "Contact Slider:2000×1333px", htmlAttributes: new { @class = "col-sm-6 col-6 col-form-label" })
@@ -89,6 +105,111 @@
 						<div class="col-sm-10 col-10">
 							@Html.TextAreaFor(model => model.SiteInfo.ContactShortDesc, new { @id = "ContactShortDesc", @class = "form-control", placeholder = "Enter Contact Short Desc", rows = "2", required = "required" })
 							@Html.ValidationMessageFor(model => model.SiteInfo.ContactShortDesc, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				@* //--------------------------------------------------------------------------- *@
+				<strong style="padding: 0;border-bottom: 2px solid lightgray;margin-bottom: 0.3rem;">Client Page info</strong>
+
+				<div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.SiteInfo.ClientSliderUrl, "Client Slider:2000×1333px", htmlAttributes: new { @class = "col-sm-6 col-6 col-form-label" })
+						<div class="col-sm-6 col-6">
+							<input type="file" id="ClientSlider" name="ImageFile" class="form-control form-file" onchange="ClientSliderPreview()" />
+							@Html.ValidationMessageFor(model => model.SiteInfo.ClientSliderUrl, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.SiteInfo.ClientSliderTitle, "Client Slider Title:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.SiteInfo.ClientSliderTitle, new { htmlAttributes = new { id = "ClientSliderTitle", @class = "form-control", placeholder = "Enter Client Slider Title", required = "required" } })
+							@Html.ValidationMessageFor(model => model.SiteInfo.ClientSliderTitle, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.SiteInfo.ClientSliderDesc, "Client Slider Desc:", htmlAttributes: new { @class = "col-sm-2 col-2 col-form-label" })
+						<div class="col-sm-10 col-10">
+							@Html.TextAreaFor(model => model.SiteInfo.ClientSliderDesc, new { @id = "ClientSliderDesc", @class = "form-control", placeholder = "Enter Client Slider Desc", rows = "2", required = "required" })
+							@Html.ValidationMessageFor(model => model.SiteInfo.ClientSliderDesc, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.SiteInfo.ClientTitle, "Client Title:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.SiteInfo.ClientTitle, new { htmlAttributes = new { id = "ClientTitle", @class = "form-control", placeholder = "Enter Client Title", required = "required" } })
+							@Html.ValidationMessageFor(model => model.SiteInfo.ClientTitle, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.SiteInfo.ClientDesc, "Client Desc:", htmlAttributes: new { @class = "col-sm-2 col-2 col-form-label" })
+						<div class="col-sm-10 col-10">
+							@Html.TextAreaFor(model => model.SiteInfo.ClientDesc, new { @id = "ClientDesc", @class = "form-control", placeholder = "Enter Client Desc", rows = "2", required = "required" })
+							@Html.ValidationMessageFor(model => model.SiteInfo.ClientDesc, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				@* //--------------------------------------------------------------------------- *@
+				<strong style="padding: 0;border-bottom: 2px solid lightgray;margin-bottom: 0.3rem;">Service Page info</strong>
+
+				<div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.SiteInfo.ServiceSliderUrl, "Service Slider:2000×1333px", htmlAttributes: new { @class = "col-sm-6 col-6 col-form-label" })
+						<div class="col-sm-6 col-6">
+							<input type="file" id="ServiceSlider" name="ImageFile" class="form-control form-file" onchange="ServiceSliderPreview()" />
+							@Html.ValidationMessageFor(model => model.SiteInfo.ServiceSliderUrl, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.SiteInfo.ServiceSliderTitle, "Service Slider Title:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.SiteInfo.ServiceSliderTitle, new { htmlAttributes = new { id = "ServiceSliderTitle", @class = "form-control", placeholder = "Enter Service Slider Title", required = "required" } })
+							@Html.ValidationMessageFor(model => model.SiteInfo.ServiceSliderTitle, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.SiteInfo.ServiceSliderDesc, "Service Slider Desc:", htmlAttributes: new { @class = "col-sm-2 col-2 col-form-label" })
+						<div class="col-sm-10 col-10">
+							@Html.TextAreaFor(model => model.SiteInfo.ServiceSliderDesc, new { @id = "ServiceSliderDesc", @class = "form-control", placeholder = "Enter Service Slider Desc", rows = "2", required = "required" })
+							@Html.ValidationMessageFor(model => model.SiteInfo.ServiceSliderDesc, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.SiteInfo.ServiceTitle, "Service Title:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.SiteInfo.ServiceTitle, new { htmlAttributes = new { id = "ServiceTitle", @class = "form-control", placeholder = "Enter Service Title", required = "required" } })
+							@Html.ValidationMessageFor(model => model.SiteInfo.ServiceTitle, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.SiteInfo.ServiceDesc, "Service Desc:", htmlAttributes: new { @class = "col-sm-2 col-2 col-form-label" })
+						<div class="col-sm-10 col-10">
+							@Html.TextAreaFor(model => model.SiteInfo.ServiceDesc, new { @id = "ServiceDesc", @class = "form-control", placeholder = "Enter Service Desc", rows = "2", required = "required" })
+							@Html.ValidationMessageFor(model => model.SiteInfo.ServiceDesc, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.SiteInfo.ServiceDetailsDesc, "Service Details Desc:", htmlAttributes: new { @class = "col-sm-2 col-2 col-form-label" })
+						<div class="col-sm-10 col-10">
+							@Html.TextAreaFor(model => model.SiteInfo.ServiceDetailsDesc, new { @id = "ServiceDetailsDesc", @class = "form-control", placeholder = "Enter Service Details Desc", rows = "2", required = "required" })
+							@Html.ValidationMessageFor(model => model.SiteInfo.ServiceDetailsDesc, "", new { @class = "text-danger" })
 						</div>
 					</div>
 				</div>

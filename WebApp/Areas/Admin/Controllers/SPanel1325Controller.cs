@@ -177,10 +177,11 @@ namespace WebApp.Areas.Admin.Controllers
                 if (viewModel != null)
                 {
                     AdminUserMDL adminUser = new AdminUserMDL();
+                    AdminUserMDL existAdmin = new AdminUserMDL();
+                    existAdmin = _adminUserData.GetAdminUser(viewModel.AdminUser.Email, 0);
                     if (viewModel.AdminUser.ID == 0)
                     {
-                        adminUser = _adminUserData.GetAdminUser(viewModel.AdminUser.Email, 0);
-                        if (adminUser.ID <= 0)
+                        if (existAdmin.ID <= 0)
                         {
                             if (viewModel.AdminUser.Password == viewModel.AdminUser.ConfirmPassword)
                             {
@@ -216,44 +217,51 @@ namespace WebApp.Areas.Admin.Controllers
                     }
                     else
                     {
-                        if (viewModel.AdminUser.Password == viewModel.AdminUser.ConfirmPassword)
+                       if(viewModel.AdminUser.ID == existAdmin.ID || existAdmin.ID == 0)
                         {
-                            adminUser.ID = viewModel.AdminUser.ID;
-                            adminUser.Name = viewModel.AdminUser.Name;
-                            adminUser.UserName = viewModel.AdminUser.UserName;
-                            adminUser.EmpID = viewModel.AdminUser.EmpID;
-                            adminUser.Email = viewModel.AdminUser.Email;
-                            adminUser.PhoneNumber = viewModel.AdminUser.PhoneNumber;
-                            adminUser.ConfirmPassword = viewModel.AdminUser.ConfirmPassword;
-                            adminUser.Role = viewModel.AdminUser.Role;
-                            if (ImageFile != null && ImageFile.Length > 0)
+                            if (viewModel.AdminUser.Password == viewModel.AdminUser.ConfirmPassword)
                             {
-                                if (!string.IsNullOrEmpty(viewModel.AdminUser.PhotoUrl))
+                                adminUser.ID = viewModel.AdminUser.ID;
+                                adminUser.Name = viewModel.AdminUser.Name;
+                                adminUser.UserName = viewModel.AdminUser.UserName;
+                                adminUser.EmpID = viewModel.AdminUser.EmpID;
+                                adminUser.Email = viewModel.AdminUser.Email;
+                                adminUser.PhoneNumber = viewModel.AdminUser.PhoneNumber;
+                                adminUser.ConfirmPassword = viewModel.AdminUser.ConfirmPassword;
+                                adminUser.Role = viewModel.AdminUser.Role;
+                                if (ImageFile != null && ImageFile.Length > 0)
                                 {
-                                    var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", viewModel.AdminUser.PhotoUrl);
-                                    if (System.IO.File.Exists(imagePath))
+                                    if (!string.IsNullOrEmpty(viewModel.AdminUser.PhotoUrl))
                                     {
-                                        System.IO.File.Delete(imagePath);
-                                    }
+                                        var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", "../" + viewModel.AdminUser.PhotoUrl);
+                                        if (System.IO.File.Exists(imagePath))
+                                        {
+                                            System.IO.File.Delete(imagePath);
+                                        }
 
+                                    }
+                                    adminUser.PhotoUrl = UploadImage(adminUser.Name.ToString(), ImageFile);
                                 }
-                                adminUser.PhotoUrl = UploadImage(adminUser.Name.ToString(), ImageFile);
+                                else
+                                {
+                                    adminUser.PhotoUrl = viewModel.AdminUser.PhotoUrl;
+                                }
+                                adminUser.CanInsert = viewModel.AdminUser.CanInsert;
+                                adminUser.CanUpdate = viewModel.AdminUser.CanUpdate;
+                                adminUser.CanDelete = viewModel.AdminUser.CanDelete;
+                                adminUser.IsActive = viewModel.AdminUser.IsActive;
+                                adminUser.InsertId = 0;
+                                var result = _adminUserData.AdminUserSetUpdate(adminUser, "Update");
+                                return Json(result.ID);
                             }
                             else
                             {
-                                adminUser.PhotoUrl = viewModel.AdminUser.PhotoUrl;
+                                return Json(-2);
                             }
-                            adminUser.CanInsert = viewModel.AdminUser.CanInsert;
-                            adminUser.CanUpdate = viewModel.AdminUser.CanUpdate;
-                            adminUser.CanDelete = viewModel.AdminUser.CanDelete;
-                            adminUser.IsActive = viewModel.AdminUser.IsActive;
-                            adminUser.InsertId = 0;
-                            var result = _adminUserData.AdminUserSetUpdate(adminUser, "Update");
-                            return Json(result.ID);
                         }
                         else
                         {
-                            return Json(-2);
+                            return Json(-1);
                         }
                     }
                 }
@@ -279,7 +287,7 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 ImageFile.CopyTo(fileStream);
             }
-            imageName = $"../Admin/img/adminUsers/{fileName}";
+            imageName = $"/Admin/img/adminUsers/{fileName}";
             return imageName;
         }
     }

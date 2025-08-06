@@ -1,0 +1,192 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using (Html.BeginForm("ClientSetUpdate", "Client", FormMethod.Post, new { id = "ClientSetUpdateForm", enctype = "multipart/form-data" }))
+{
+	@Html.HiddenFor(model => model.Client.ID)
+
+	<div class="row">
+		<div class="col-lg-1 col-md-1 col-sm-12 col-12">
+			<div id="PhotoPreview">
+				<img style="width:5rem;height:6rem;object-fit:contain" src="@( Model.Client != null && !string.IsNullOrEmpty(Model.Client.PhotoUrl)? Url.Content("~/" + Model.Client.PhotoUrl): Url.Content("~/Admin/img/AdminUsers/avator.png"))" alt="User Image" />
+			</div>
+			@Html.HiddenFor(model => model.Client.PhotoUrl)
+		</div>
+		<div class="col-lg-11 col-md-11 col-sm-12 col-12">
+			<div class="row">
+				<!-- Name -->
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						<label class="col-sm-3 col-4 col-form-label">Name:<span class="requiredStar">*</span></label>
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Client.Name, new { htmlAttributes = new { id = "Name", @class = "form-control", placeholder = "Enter Full Name", required = "required" } })
+							@Html.ValidationMessageFor(model => model.Client.Name, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						<label class="col-sm-3 col-4 col-form-label">C.Person:<span class="requiredStar">*</span></label>
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Client.ContactPerson, new { htmlAttributes = new { id = "ContactPerson", @class = "form-control", placeholder = "Enter Contact Person", required = "required" } })
+							@Html.ValidationMessageFor(model => model.Client.ContactPerson, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<!-- Email -->
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						<label class="col-sm-3 col-4 col-form-label">Email:<span class="requiredStar">*</span></label>
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Client.Email, new { htmlAttributes = new { id = "Email", @class = "form-control", type = "email", placeholder = "Enter Email", required = "required" } })
+							@Html.ValidationMessageFor(model => model.Client.Email, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<!-- PhoneNumber -->
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						<label class="col-sm-3 col-4 col-form-label">Phone:<span class="requiredStar">*</span></label>
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Client.Phone, new { htmlAttributes = new { id = "Phone", @class = "form-control", placeholder = "Enter Phone Number", required = "required" } })
+							@Html.ValidationMessageFor(model => model.Client.Phone, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						<label class="col-sm-3 col-4 col-form-label">Website:<span class="requiredStar">*</span></label>
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Client.Website, new { htmlAttributes = new { id = "Website", @class = "form-control", placeholder = "Enter Website", required = "required" } })
+							@Html.ValidationMessageFor(model => model.Client.Website, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						<label class="col-sm-3 col-4 col-form-label">Address:<span class="requiredStar">*</span></label>
+						<div class="col-sm-9 col-8">
+							@Html.TextAreaFor(model => model.Client.Address, new { @id = "Address", @class = "form-control", placeholder = "Enter Address", required = "required", rows = "2" })
+							@Html.ValidationMessageFor(model => model.Client.Address, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Client.CountryId, "Country:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.DropDownListFor(model => model.Client.CountryId, (IEnumerable<SelectListItem>)ViewBag.CountryList, "Select Country", new { @class = "form-control", @id = "CountryId", required = "required" })
+							@Html.ValidationMessageFor(model => model.Client.CountryId, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Client.DistrictId, "District:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.DropDownListFor(model => model.Client.DistrictId, (IEnumerable<SelectListItem>)ViewBag.DistrictList, "Select District", new { @class = "form-control", @id = "DistrictId", required = "required" })
+							@Html.ValidationMessageFor(model => model.Client.DistrictId, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Client.PoliceStationId, "P.Station:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.DropDownListFor(model => model.Client.PoliceStationId, (IEnumerable<SelectListItem>)ViewBag.PoliceStationList, "Select Police Station", new { @class = "form-control", @id = "PoliceStationId", required = "required" })
+							@Html.ValidationMessageFor(model => model.Client.PoliceStationId, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+
+				<!-- Photo -->
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						<label class="col-sm-6 col-6 col-form-label">Logo-png : 540*280px<span class="requiredStar">*</span></label>
+						<div class="col-sm-6 col-6">
+							@Html.EditorFor(model => model.Client.Photo, new { htmlAttributes = new { id = "Photo", @class = "form-control form-file", placeholder = "Enter Role", Type = "file", onchange = "PhotoPreview()" } })
+							@Html.ValidationMessageFor(model => model.Client.Photo, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Client.ClientType, "ClientType:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Client.ClientType, new { htmlAttributes = new { id = "ClientType", @class = "form-control form-file", placeholder = "Enter Client Type", Type = "text" } })
+							@Html.ValidationMessageFor(model => model.Client.ClientType, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<!-- IsActive -->
+				<div class="col-lg-2 col-md-2 col-sm-6 col-12 mb-1 form-check">
+					<label class="form-check-label">
+						@Html.CheckBoxFor(m => m.Client.IsActive, new { @class = "form-check-input" }) Is Active
+					</label>
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-6 col-12 mb-1 form-check" style="text-align:right">
+					<button type="button" class="btn btn-sm btn-primary btn-user" onclick="ClientSetUpdate()">
+						Save
+					</button>
+					<a class="btn btn-sm btn-outline-primary" asp-controller="Client" asp-action="ClientCreate">Refresh</a>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+}
+<script type="text/javascript">
+	document.getElementById("Name").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("ContactPerson").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("Email").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("Phone").onchange = function () { this.style.border = "0.5px solid #dee2e6";GetDistrictByCountryId(); };
+	document.getElementById("Website").onchange = function () { this.style.border = "0.5px solid #dee2e6";GetPoliceStationByDistrictId(); };
+	document.getElementById("Address").onchange = function () { this.style.border = "0.5px solid #dee2e6";PasswordCheck(); };
+
+	function GetDistrictByCountryId(){
+		var CountryId = document.getElementById("CountryId").value;
+		$.ajax({
+			url: '@Url.Action("GetDistrictByCountryId", "Client")',
+			type: 'GET',
+			data: { ID: CountryId },
+			success: function (district) {
+
+				var districtDropdown = $('#DistrictId');
+				districtDropdown.empty();
+				districtDropdown.append($('<option>').text('Select District').attr('value', ''));
+				$.each(district, function (index, item) {
+					districtDropdown.append($('<option>', {value: item.value,text: item.text}));
+					// subCatDropdown.append($('<option>').text(item.Text).attr('value', item.Value));
+				});
+			},
+			error: function (error) {
+				if (error.status === 401) location.href = '/SPanel1325/Login';
+				console.log('Error fetching District');
+			}
+		});
+	}
+	function GetPoliceStationByDistrictId(){
+		var DistrictId = document.getElementById("DistrictId").value;
+		$.ajax({
+			url: '@Url.Action("GetPoliceStationByDistrictId", "Client")',
+			type: 'GET',
+			data: { ID: DistrictId },
+			success: function (policeStation) {
+
+				var policeStationDropdown = $('#PoliceStationId');
+				policeStationDropdown.empty();
+				policeStationDropdown.append($('<option>').text('Select Police Station').attr('value', ''));
+				$.each(policeStation, function (index, item) {
+					policeStationDropdown.append($('<option>', {value: item.value,text: item.text}));
+					// subCatDropdown.append($('<option>').text(item.Text).attr('value', item.Value));
+				});
+			},
+			error: function (error) {
+				if (error.status === 401) location.href = '/SPanel1325/Login';
+				console.log('Error fetching Police Station');
+			}
+		});
+	}
+</script>

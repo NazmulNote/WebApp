@@ -128,7 +128,7 @@ namespace WebApp.Areas.Admin.Controllers
                             {
                                 if (!string.IsNullOrEmpty(viewModel.Product.PhotoUrl))
                                 {
-                                    var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", viewModel.Product.PhotoUrl);
+                                    var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", "../" + viewModel.Product.PhotoUrl);
                                     if (System.IO.File.Exists(imagePath))
                                     {
                                         System.IO.File.Delete(imagePath);
@@ -175,7 +175,7 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 ImageFile.CopyTo(fileStream);
             }
-            imageName = $"../Admin/img/product/{fileName}";
+            imageName = $"/Admin/img/product/{fileName}";
             return imageName;
         }
 

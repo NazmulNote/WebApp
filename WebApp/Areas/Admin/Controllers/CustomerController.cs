@@ -78,10 +78,11 @@ namespace WebApp.Areas.Admin.Controllers
                 if (viewModel != null)
                 {
                     CustomerMDL customer = new CustomerMDL();
+                    CustomerMDL existCustomer = new CustomerMDL();
+                    existCustomer = _customerData.GetCustomer(viewModel.Customer.Email, 0);
                     if (viewModel.Customer.ID == 0)
-                    {
-                        customer = _customerData.GetCustomer(viewModel.Customer.Email, 0);
-                        if (customer.ID <= 0)
+                    {                    
+                        if (existCustomer.ID <= 0)
                         {
                             if (viewModel.Customer.Password == viewModel.Customer.ConfirmPassword)
                             {
@@ -115,42 +116,49 @@ namespace WebApp.Areas.Admin.Controllers
                     }
                     else
                     {
-                        if (viewModel.Customer.Password == viewModel.Customer.ConfirmPassword)
+                        if (viewModel.Customer.ID == existCustomer.ID || existCustomer.ID == 0)
                         {
-                            customer.ID = viewModel.Customer.ID;
-                            customer.Name = viewModel.Customer.Name;
-                            customer.Email = viewModel.Customer.Email;
-                            customer.Phone = viewModel.Customer.Phone;
-                            customer.CountryId = viewModel.Customer.CountryId;
-                            customer.DistrictId = viewModel.Customer.DistrictId;
-                            customer.PoliceStationId = viewModel.Customer.PoliceStationId;
-                            customer.Address = viewModel.Customer.Address;
-                            customer.Password = viewModel.Customer.Password;
-                            if (ImageFile != null && ImageFile.Length > 0)
+                            if (viewModel.Customer.Password == viewModel.Customer.ConfirmPassword)
                             {
-                                if (!string.IsNullOrEmpty(viewModel.Customer.PhotoUrl))
+                                customer.ID = viewModel.Customer.ID;
+                                customer.Name = viewModel.Customer.Name;
+                                customer.Email = viewModel.Customer.Email;
+                                customer.Phone = viewModel.Customer.Phone;
+                                customer.CountryId = viewModel.Customer.CountryId;
+                                customer.DistrictId = viewModel.Customer.DistrictId;
+                                customer.PoliceStationId = viewModel.Customer.PoliceStationId;
+                                customer.Address = viewModel.Customer.Address;
+                                customer.Password = viewModel.Customer.Password;
+                                if (ImageFile != null && ImageFile.Length > 0)
                                 {
-                                    var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", viewModel.Customer.PhotoUrl);
-                                    if (System.IO.File.Exists(imagePath))
+                                    if (!string.IsNullOrEmpty(viewModel.Customer.PhotoUrl))
                                     {
-                                        System.IO.File.Delete(imagePath);
-                                    }
+                                        var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", "../" + viewModel.Customer.PhotoUrl);
+                                        if (System.IO.File.Exists(imagePath))
+                                        {
+                                            System.IO.File.Delete(imagePath);
+                                        }
 
+                                    }
+                                    customer.PhotoUrl = UploadImage(customer.Name.ToString(), ImageFile);
                                 }
-                                customer.PhotoUrl = UploadImage(customer.Name.ToString(), ImageFile);
+                                else
+                                {
+                                    customer.PhotoUrl = viewModel.Customer.PhotoUrl;
+                                }
+                                customer.IsActive = viewModel.Customer.IsActive;
+                                customer.UpdatedBy = Convert.ToInt32(HttpContext.Session.GetString("AUserId"));
+                                var result = _customerData.CustomerSetUpdate(customer, "Update");
+                                return Json(result.ID);
                             }
                             else
                             {
-                                customer.PhotoUrl = viewModel.Customer.PhotoUrl;
+                                return Json(-2);
                             }
-                            customer.IsActive = viewModel.Customer.IsActive;
-                            customer.UpdatedBy = Convert.ToInt32(HttpContext.Session.GetString("AUserId"));
-                            var result = _customerData.CustomerSetUpdate(customer, "Update");
-                            return Json(result.ID);
                         }
                         else
                         {
-                            return Json(-2);
+                            return Json(-1);
                         }
                     }
                 }
@@ -176,7 +184,7 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 ImageFile.CopyTo(fileStream);
             }
-            imageName = $"../Admin/img/customer/{fileName}";
+            imageName = $"/Admin/img/customer/{fileName}";
             return imageName;
         }
         #region DropDown-------------------------------------------------

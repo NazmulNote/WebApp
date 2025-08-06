@@ -17,7 +17,7 @@
 				{
 					<tr>
 						<td class="text-center">
-							<img style="width:2rem;height:2rem;object-fit:cover" src="@( library != null && !string.IsNullOrEmpty(library.PhotoUrl)? Url.Content("~/" + library.PhotoUrl): Url.Content("~/Admin/img/avator.png"))" alt="User Image" />
+							<img style="width:2rem;height:2rem;object-fit:cover" src="@( library != null && !string.IsNullOrEmpty(library.PhotoUrl)? Url.Content(library.PhotoUrl): Url.Content("/Admin/img/avator.png"))" alt="User Image" />
 						</td>
 						<td>@library.Item</td>
 						<td>@library.ItemName</td>

@@ -1,0 +1,130 @@
+﻿@model WebApp.Areas.Client.Models.ClientViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Service";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="bg-half" style="background-image: url('@(string.IsNullOrEmpty(Model.SiteInfo.ServiceSliderUrl)?"/Client/img/default/slider.jpg":Url.Content(Model.SiteInfo.ServiceSliderUrl))');padding: 180px 0 120px">
+    <div class="bg-overlay"></div>
+    <div class="home-center">
+        <div class="home-desc-center">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <div class="page-next-level text-white">
+                            <h4 class="text-uppercase">@(string.IsNullOrEmpty(Model.SiteInfo.ServiceSliderTitle) ? "Our Expert Services":Model.SiteInfo.ServiceSliderTitle)</h4>
+                            @if (string.IsNullOrEmpty(Model.SiteInfo.ServiceSliderDesc))
+                            {
+                                <p>We deliver cutting-edge automation and mechanical solutions tailored to your industry's needs — combining innovation, reliability, and performance.</p>
+                            }
+                            else
+                            {
+                                <p>@Model.SiteInfo.ServiceSliderDesc</p>
+                            }
+                            <div class="page-next"> <a asp-controller="Home" asp-action="Index">Home</a><i class="mdi mdi-chevron-right"></i> &nbsp;<span>Services</span> </div>
+                        </div>
+                        <div class="mt-1">
+                            <a class="btn btn-custom mr-3" asp-controller="Home" asp-action="Contact">Contact Us</a>
+                            <a class="btn btn-outline-white" asp-controller="Home" asp-action="About">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-12">
+                <div class="section-title text-center">
+                    <h3>@(string.IsNullOrEmpty(Model.SiteInfo.ServiceTitle) ? "Our Portfolio":Model.SiteInfo.ServiceTitle)</h3>
+                    <div class="spacer-15"></div>
+                    @if (string.IsNullOrEmpty(Model.SiteInfo.ServiceDesc))
+                    {
+                        <p class="text-muted mb-0">Donec sodales sagittis magna. Excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</p>
+                    }
+                    else
+                    {
+                        <p class="text-muted mb-0">@Model.SiteInfo.ServiceDesc</p>
+                    }
+                    <div class="spacer-30"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="text-center">
+                    <ul class="col container-filter mt-30 portfolioFilter list-unstyled mb-0" id="filter">
+                        <li><a class="categories active" data-filter="*">All</a></li>
+
+                        @if(Model.ServiceList != null)
+                        {
+                            var serviceCats = Model.ServiceList.DistinctBy(x => x.ServiceCatId).ToList();
+                            foreach (var serviceCat in serviceCats)
+                            {
+                                <li><a class="categories" data-filter=".@(serviceCat.ServiceCat)">@serviceCat.ServiceCat</a></li>
+                            }
+                        }
+                        else
+                        {
+                            <li><a class="categories" data-filter=".marketing">Marketing</a></li>
+                            <li><a class="categories" data-filter=".finance">Finance</a></li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="port portfolio-masonry mt-3">
+            <div class="portfolioContainer row" style="position: relative; height: 734.224px;">
+                @if(Model.ServiceList != null)
+                {
+                    foreach(var service in Model.ServiceList)
+                    {
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-12 @(service.ServiceCat)" style="position: absolute; left: 760px; top: 0px;">
+                            <div class="owl-services img-service bg-light">
+                                <div class="img">
+                                    <img src="@(string.IsNullOrEmpty(service.PhotoUrl)?"../Client/img/default/service.jpg":service.PhotoUrl)" alt="service_img" class="img-fluid">
+                                </div>
+                                <div class="owl-service-head text-center">
+                                    <h4>@(string.IsNullOrEmpty(service.Name) ? "Best Advisors" : service.Name)</h4>
+
+                                    <p>@(string.IsNullOrEmpty(service.ShortDesc) ? "Best Advisors":service.ShortDesc)</p>
+                                    
+                                    <div class="mt-3">
+                                        <a asp-controller="Home" asp-action="ServiceDetails" asp-route-id="@service.ID" class="btn btn-outline-custom">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-12 account" style="position: absolute; left: 760px; top: 0px;">
+                        <div class="owl-services img-service bg-light">
+                            <div class="img">
+                                <img src="../Client/img/default/service.jpg" alt="service_img" class="img-fluid">
+                            </div>
+                            <div class="owl-service-head text-center">
+                                <a href="#"><h4>Best Advisors</h4></a>
+                                <p class="text-muted mb-0">I will give you a complete account of the system, and expound the actual teachings of the great explorer.</p>
+                                <div class="mt-3">
+                                    <a class="btn btn-outline-custom">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                
+            </div>
+        </div>
+        
+    </div>
+</section>
+

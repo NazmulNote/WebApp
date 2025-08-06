@@ -1,0 +1,66 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using (Html.BeginForm("SubscribeSetUpdate", "Message", FormMethod.Post, new { id = "SubscribeSetUpdateForm", enctype = "multipart/form-data" }))
+{
+	@Html.HiddenFor(model => model.Message.ID)
+
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-12">
+				<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Message.FromDate, "From:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Message.FromDate, new { htmlAttributes = new { @type = "date", id = "FromDate", @class = "form-control", placeholder = "Enter From Date", required = "required" } })
+							@Html.ValidationMessageFor(model => model.Message.FromDate, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.Message.ToDate, "To:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Message.ToDate, new { htmlAttributes = new { @type = "date", id = "ToDate", @class = "form-control", placeholder = "Enter To Date", required = "required" } })
+							@Html.ValidationMessageFor(model => model.Message.ToDate, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div></div>
+					<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+						<div class="form-group row">
+						@Html.LabelFor(model => model.Message.Email, "Email:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+							<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Message.Email, new { htmlAttributes = new { id = "Email", @class = "form-control", placeholder = "Enter Email", required = "required",@readonly = "readonly" } })
+							@Html.ValidationMessageFor(model => model.Message.Email, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+						<div class="form-group row ml-2">
+							<label class="form-check-label">
+							@Html.CheckBoxFor(model => model.Message.IsActive, new { @class = "form-check-input" }) Is Active
+							</label>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1 form-check" style="text-align:right">
+					<button type="button" class="btn btn-sm btn-primary btn-user" onclick="SubscribeSetUpdate()">
+							Save
+						</button>
+					<a class="btn btn-sm btn-outline-primary" asp-controller="Message" asp-action="SubscribeCreate">Refresh</a>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+
+}
+<script type="text/javascript">
+	   document.getElementById("FromDate").onchange = ()=>{
+			GetDetPView();
+		}
+		document.getElementById("ToDate").onchange = ()=>{
+			GetDetPView();
+		}
+	document.getElementById("Email").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+</script>

@@ -19,6 +19,7 @@ namespace WebApp.Areas.Admin.Models
         public string? PhotoUrl { get; set; }
         public IFormFile? Photo { get; set; }
         public string Password { get; set; } = null!;
+        [Compare("Password", ErrorMessage = "Passwords do not match.")]
         public string ConfirmPassword { get; set; } = null;
         public bool IsActive { get; set; }
         public int InsertId { get; set; }

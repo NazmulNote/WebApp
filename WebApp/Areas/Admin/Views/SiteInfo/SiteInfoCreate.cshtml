@@ -46,15 +46,26 @@
 	function SiteInfoSetUpdate() {
 		var HAboutPhotoUrl = $("#HAboutPhoto")[0].files[0];
 		var ContactSliderUrl = $("#ContactSlider")[0].files[0];
+		var ClientSliderUrl = $("#ClientSlider")[0].files[0];
+		var ServiceSliderUrl = $("#ServiceSlider")[0].files[0];
+
 
 		var formData = new FormData();
-
+		//-------------------------------HAboutPhotoUrl----1
 		if (HAboutPhotoUrl) {
 			formData.append("HAboutPhotoUrl", HAboutPhotoUrl);
 		}
-
+		//-----------------------------ContactSliderUrl----2
 		if (ContactSliderUrl) {
 			formData.append("ContactSliderUrl", ContactSliderUrl);
+		}
+		//-----------------------------ClientSliderUrl----3
+		if (ClientSliderUrl) {
+			formData.append("ClientSliderUrl", ClientSliderUrl);
+		}
+		//-----------------------------ServiceSliderUrl----4
+		if (ServiceSliderUrl) {
+			formData.append("ServiceSliderUrl", ServiceSliderUrl);
 		}
 		var otherData = $('#SiteInfoSetUpdateForm').serializeArray();
 		$.each(otherData, function (index, item) {
@@ -153,7 +164,7 @@
 					text: "The file size should be around 500KB.",
 					icon: "error"
 				});
-				document.getElementById('Photo').value = "";
+				document.getElementById('HAboutPhoto').value = "";
 			}
 		}
 	}
@@ -182,7 +193,65 @@
 					text: "The file size should be around 500KB.",
 					icon: "error"
 				});
-				document.getElementById('Photo').value = "";
+				document.getElementById('ContactSlider').value = "";
+			}
+		}
+	}
+	function ClientSliderPreview() {
+		const PhotoPreview = document.getElementById('ClientSliderPreview');
+		const file = document.getElementById('ClientSlider').files[0];
+		if (file) {
+			var maxFileSize = 512000; //in bytes
+			if (file.size <= maxFileSize) {
+
+				PhotoPreview.innerHTML = '';
+				const reader = new FileReader();
+				reader.onload = function (e) {
+					const img = document.createElement('img');
+					img.src = e.target.result;
+					img.alt = 'Uploaded Image';
+					img.style.maxWidth = '5rem';
+					img.style.maxHeight = '6rem';
+					img.style.objectFit = 'contain'
+					PhotoPreview.appendChild(img);
+				};
+				reader.readAsDataURL(file);
+			}
+			else {
+				Swal.fire({
+					text: "The file size should be around 500KB.",
+					icon: "error"
+				});
+				document.getElementById('ClientSlider').value = "";
+			}
+		}
+	}
+	function ServiceSliderPreview() {
+		const PhotoPreview = document.getElementById('ServiceSliderPreview');
+		const file = document.getElementById('ServiceSlider').files[0];
+		if (file) {
+			var maxFileSize = 512000; //in bytes
+			if (file.size <= maxFileSize) {
+
+				PhotoPreview.innerHTML = '';
+				const reader = new FileReader();
+				reader.onload = function (e) {
+					const img = document.createElement('img');
+					img.src = e.target.result;
+					img.alt = 'Uploaded Image';
+					img.style.maxWidth = '5rem';
+					img.style.maxHeight = '6rem';
+					img.style.objectFit = 'contain'
+					PhotoPreview.appendChild(img);
+				};
+				reader.readAsDataURL(file);
+			}
+			else {
+				Swal.fire({
+					text: "The file size should be around 500KB.",
+					icon: "error"
+				});
+				document.getElementById('ServiceSlider').value = "";
 			}
 		}
 	}

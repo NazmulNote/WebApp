@@ -1,0 +1,53 @@
+﻿.clientImgContainer {
+    height: 8rem;
+    width: 100%; 
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    .clientImgContainer img {
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: contain;
+    }
+.clientText{
+    color:darkgray
+}
+.cartCount {
+    position: absolute;
+    width: 2rem
+}
+.cartCountTgl {
+    display: block;
+}
+
+@media (min-width: 990px) {
+    .cartCountTgl {
+        display: none;
+    }
+}
+.signLogo {
+    height: 6rem;
+    border-radius: 100%;
+    width: 6rem;
+    object-fit: contain;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 0 20px 0px #808080db;
+}
+.signImg {
+   /* width: 1.5rem;
+    height: 1.5rem;*/
+    display: flex !important;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    padding: 0 !important;
+    margin-right: 0.5rem
+}
+    .signImg img {
+        width:2rem;
+        height:2rem;
+        object-fit: contain;
+        
+    }

@@ -1,0 +1,103 @@
+﻿ @model WebApp.Areas.Admin.Models.AdminViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using (Html.BeginForm("ServiceSetUpdate", "Service", FormMethod.Post, new { id = "ServiceSetUpdateForm", enctype = "multipart/form-data" }))
+{
+	@Html.HiddenFor(model => model.Service.ID)
+
+	<div class="row">
+		<div class="col-lg-1 col-md-1 col-sm-12 col-12">
+			<div id="PhotoPreview">
+				<img style="width:5rem;height:6rem;object-fit:contain" src="@( Model.Service != null && !string.IsNullOrEmpty(Model.Service.PhotoUrl)? Url.Content("~/" + Model.Service.PhotoUrl): Url.Content("~/Admin/img/AdminUsers/avator.png"))" alt="User Image" />
+			</div>
+			@Html.HiddenFor(model => model.Service.PhotoUrl)
+		</div>
+		<div class="col-lg-11 col-md-11 col-sm-12 col-12">
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						<label class="col-sm-3 col-4 col-form-label">Category:<span class="requiredStar">*</span></label>
+						<div class="col-sm-9 col-8">
+							@Html.DropDownListFor(model => model.Service.ServiceCatId, (IEnumerable<SelectListItem>)ViewBag.ServiceCatList, "Select Service Category", new { @class = "form-control", @id = "ServiceCatId", required = "required" })
+							@Html.ValidationMessageFor(model => model.Service.ServiceCatId, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						<label class="col-sm-3 col-4 col-form-label">Name:<span class="requiredStar">*</span></label>
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Service.Name, new { htmlAttributes = new { id = "Name", @class = "form-control", placeholder = "Enter Full Name", required = "required" } })
+							@Html.ValidationMessageFor(model => model.Service.Name, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						<label class="col-sm-3 col-4 col-form-label">Photo:800*533px<span class="requiredStar">*</span></label>
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Service.Photo, new { htmlAttributes = new { id = "Photo", @class = "form-control form-file", placeholder = "Enter Role", Type = "file", onchange = "PhotoPreview()" } })
+							@Html.ValidationMessageFor(model => model.Service.Photo, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						<label class="col-sm-3 col-4 col-form-label">Short Desc:<span class="requiredStar">*</span></label>
+						<div class="col-sm-9 col-8">
+							@Html.TextAreaFor(model => model.Service.ShortDesc, new { @id = "ShortDesc", @class = "form-control", placeholder = "Enter Short Desc", required = "required", rows = "2" })
+							@Html.ValidationMessageFor(model => model.Service.ShortDesc, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						<label class="col-sm-3 col-4 col-form-label">Video Url:</label>
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.Service.VideoUrl, new { htmlAttributes = new { id = "VideoUrl", @class = "form-control", placeholder = "Enter Video Url", required = "required" } })
+							@Html.ValidationMessageFor(model => model.Service.VideoUrl, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<!-- IsActive -->
+				<div class="col-lg-2 col-md2 col-sm-6 col-12 mb-1 form-check">
+					<label class="form-check-label">
+						@Html.CheckBoxFor(m => m.Service.IsActive, new { @class = "form-check-input" }) Is Active
+					</label>
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-6 col-12 mb-1 form-check" style="text-align:right">
+					<button type="button" class="btn btn-sm btn-primary btn-user" onclick="ServiceSetUpdate()">
+						Save
+					</button>
+					<a class="btn btn-sm btn-outline-primary" asp-controller="Service" asp-action="ServiceCreate">Refresh</a>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						<label class="" style="margin:0;padding:0">Full Desc:<span class="requiredStar">*</span></label>
+						<div class="col-sm-12 col-12">
+							@Html.TextAreaFor(model => model.Service.FullDesc, new { @id = "FullDesc", @class = "form-control", placeholder = "Enter Full Desc", required = "required", rows = "2" })
+							@Html.ValidationMessageFor(model => model.Service.FullDesc, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+	</div>
+
+}
+<script type="text/javascript">
+	ClassicEditor
+		.create(document.getElementById('FullDesc'))
+		.then(editor => {
+			 fullDescEditor = editor;
+		})
+		.catch(error => {
+			console.error('Description Editor Error:', error);
+		});
+	document.getElementById("ServiceCatId").onchange = function () { this.style.border = "0.5px solid #dee2e6";GetDetPView(); };
+	document.getElementById("Name").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("ShortDesc").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+
+</script>

@@ -1,0 +1,73 @@
+﻿@model WebApp.Areas.Client.Models.ClientViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Client";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="bg-half" style="background-image: url('@(string.IsNullOrEmpty(Model.SiteInfo.ClientSliderUrl)?"../client/img/default/slider.jpg":Model.SiteInfo.ClientSliderUrl)');padding: 180px 0 120px">
+    <div class="bg-overlay"></div>
+    <div class="home-center">
+        <div class="home-desc-center">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <div class="title-heading text-center">
+                            <h1>@(string.IsNullOrEmpty(Model.SiteInfo.ClientSliderTitle) ? "Happy Client":Model.SiteInfo.ClientSliderTitle)</h1>
+                            @if (string.IsNullOrEmpty(Model.SiteInfo.ClientSliderDesc))
+                            {
+                                <p class="text-white-50 mx-auto">About Happy Client....</p>
+                            }
+                            else
+                            {
+                                <p class="text-white-50 mx-auto">@Model.SiteInfo.ClientSliderDesc</p>
+                            }
+                            
+                            <div class="mt-3">
+                                <a asp-controller="Home" asp-action="Contact" class="btn btn-custom mr-3">Contact Us</a>
+                                <a asp-controller="Home" asp-action="About" class="btn btn-outline-white">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-12">
+                <div class="section-title text-center">
+                    <h3>@(string.IsNullOrEmpty(Model.SiteInfo.ClientTitle) ? "Happy Clients":Model.SiteInfo.ClientTitle)</h3>
+                    <div class="spacer-15"></div>
+                    <p class="text-muted mb-0">@(string.IsNullOrEmpty(Model.SiteInfo.ClientDesc)?"Happy Client Short Description here..":Model.SiteInfo.ClientDesc)</p>
+                    <div class="spacer-30"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            @if(Model.ClientList != null)
+            {
+                foreach(var client in Model.ClientList)
+                {
+                    <div class="col-lg-4">
+                        <div class="text-center img-thumbnail">
+                            <a target="_blank" href="@(string.IsNullOrEmpty(client.Website)?"#":client.Website)">
+                                <div class="client-drow p-2">
+                                    <div class="clientImgContainer">
+                                        <img src="@(string.IsNullOrEmpty(client.PhotoUrl)?"../Client/img/default/avator.png":client.PhotoUrl)" alt="" class="img-fluid">
+                                    </div>
+                                    <div class="clientText mt-2">
+                                        <h4>@client.Name</h4>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                }
+            }
+            
+        </div>
+    </div>
+</section>

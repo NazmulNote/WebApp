@@ -48,7 +48,7 @@
 			<div class="col-md-6">
 				<div class="custom-form mt-30">
 					<div id="message"></div>
-					@using (Html.BeginForm("MessageSetUpdate", "Home", FormMethod.Post, new { id = "MessageSetUpdateForm", enctype = "multipart/form-data" }))
+					@using (Html.BeginForm("MessageSet", "Home", FormMethod.Post, new { id = "MessageSetForm", enctype = "multipart/form-data" }))
 					{
 						<div class="row">
 							<div class="col-md-6">
@@ -74,7 +74,7 @@
 						</div>
 						<div class="row">
 							<div class="col-sm-12">
-								<input type="button" id="submit" name="send" class="submitBnt btn btn-custom w-100" value="Send Message" onclick="MessageSetUpdate()">
+								<input type="button" id="submit" name="send" class="submitBnt btn btn-custom w-100" value="Send Message" onclick="MessageSet()">
 								<div id="msg" style="color:green;font:bold"></div>
 							</div>
 						</div>
@@ -84,7 +84,7 @@
 		</div>
 
 		<div class="row mt-lg-5 mt-md-3 mt-sm-30">
-			<div class="col-lg-3 col-md-6">
+			<div class="col-lg-4 col-md-6">
 				<div class="contact-details text-center mt-30 p-20">
 					<div class="contact-icon">
 						<i class="fas fa-map-marker-alt"></i>
@@ -97,7 +97,7 @@
 				</div>
 			</div>
 
-			<div class="col-lg-3 col-md-6">
+			<div class="col-lg-4 col-md-6">
 				<div class="contact-details text-center mt-30 p-20">
 					<div class="contact-icon">
 						<i class="fas fa-envelope"></i>
@@ -110,7 +110,7 @@
 				</div>
 			</div>
 
-			<div class="col-lg-3 col-md-6">
+			@* <div class="col-lg-4 col-md-6">
 				<div class="contact-details text-center mt-30 p-20">
 					<div class="contact-icon">
 						<i class="fas fa-globe"></i>
@@ -121,9 +121,9 @@
 						<p class="mb-0"><a href="@(Model.CompanyInfo.Website)" class="text-muted">@Model.CompanyInfo.Website</a></p>
 					</div>
 				</div>
-			</div>
+			</div> *@
 
-			<div class="col-lg-3 col-md-6">
+			<div class="col-lg-4 col-md-6">
 				<div class="contact-details text-center mt-30 p-20">
 					<div class="contact-icon">
 						<i class="fas fa-phone"></i>
@@ -140,17 +140,17 @@
 </section>
 
 <script type="text/javascript">
-	function MessageSetUpdate() {
+	function MessageSet() {
 			var formData = new FormData();
 
-			var otherData = $('#MessageSetUpdateForm').serializeArray();
+			var otherData = $('#MessageSetForm').serializeArray();
 			$.each(otherData, function (index, item) {
 				formData.append(item.name, item.value);
 			});
 			var IsRequired = CheckRequiredField();
 			if (IsRequired == "NO") {
 				$.ajax({
-					url: '@Url.Action("MessageSetUpdate", "Home")',
+					url: '@Url.Action("MessageSet", "Home")',
 					type: 'POST',
 					data: formData,
 					contentType: false, // Important for FormData

@@ -140,7 +140,7 @@ namespace WebApp.Areas.Admin.Controllers
                         {
                             if (!string.IsNullOrEmpty(viewModel.TeamMember.PhotoUrl))
                             {
-                                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", viewModel.TeamMember.PhotoUrl);
+                                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", "../" + viewModel.TeamMember.PhotoUrl);
                                 if (System.IO.File.Exists(imagePath))
                                 {
                                     System.IO.File.Delete(imagePath);
@@ -173,7 +173,7 @@ namespace WebApp.Areas.Admin.Controllers
                     bool isDeleted = _teamMemberData.TeamMemberDelete(ID);
                     if (!string.IsNullOrEmpty(member.PhotoUrl))
                     {
-                        var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", member.PhotoUrl);
+                        var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", "../" + member.PhotoUrl);
                         if (System.IO.File.Exists(imagePath))
                         {
                             System.IO.File.Delete(imagePath);
@@ -210,7 +210,7 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 ImageFile.CopyTo(fileStream);
             }
-            imageName = $"../Admin/img/teamMember/{fileName}";
+            imageName = $"/Admin/img/teamMember/{fileName}";
             return imageName;
         }
     }

@@ -1,0 +1,223 @@
+﻿.dual_section {
+    display: flex;
+    min-height: 100vh;
+}
+
+.c_sidebar {
+    width: 250px;
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    position: sticky;
+    top: 5rem;
+    height: fit-content;
+    align-self: flex-start;
+    z-index: 10;
+}
+
+    .c_sidebar h3 {
+        margin-bottom: 10px;
+        font-size: 18px;
+        color: black;
+        border-bottom: 1px solid #ddd
+    }
+
+.c_category {
+    margin-bottom: 0px;
+}
+
+    .c_category button {
+        background: none;
+        border: none;
+        width: 100%;
+        text-align: left;
+        padding: 1px;
+        cursor: pointer;
+        color: #696666;
+    }
+
+.c_subcategory {
+    margin-left: 15px;
+    display: none;
+    padding-left: 10px;
+    border-left: 2px solid #ddd;
+}
+
+    .c_subcategory a {
+        display: block;
+        text-decoration: none;
+        color: #555;
+        padding: 5px 0;
+    }
+
+.c_main_content {
+    flex: 1;
+    padding: 20px;
+    position: relative;
+    top: 0;
+    transition: top 0.3s ease;
+}
+.c_main_content.move-top {
+    top: 5rem;
+}
+
+.c_TglBtn {
+    display: none;
+    position: fixed;
+    top: 5rem;
+    left: 10px;
+    z-index: 5000;
+    background-color: #333;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.c_close_btn {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: red;
+    color: white;
+    border: none;
+    font-size: 16px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .c_sidebar {
+        position: fixed;
+        top: 5rem;
+        left: 0;
+        height: 100%;
+        transform: translateX(-100%);
+        z-index: 1000;
+        background-color: #fff;
+        overflow-y: auto;
+    }
+
+        .c_sidebar.active {
+            transform: translateX(0);
+        }
+
+    .c_TglBtn {
+        display: block;
+    }
+
+    .c_close_btn {
+        display: block;
+    }
+
+    .dual_section {
+        flex-direction: column;
+    }
+
+    .c_main_content {
+        padding-top: 60px;
+    }
+}
+.element-sidebar li a{
+    line-height:0.7rem;
+}
+.main_cat{
+ 
+}
+    .main_cat a {
+        margin-bottom: 1px;
+        margin-right: -2px;
+    }
+.c_btn_small {
+    background-color: transparent;
+    font-size: 13px;
+    letter-spacing: 0.7px;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    border: 1px solid #a3c85e !important;
+    color: #a3c85e;
+    padding:0px 1px;
+}
+.element-sidebar li button {
+    line-height: 15px;
+    color: #696666;
+    transition: all 0.3s ease;
+}
+    .element-sidebar li button:hover {
+        color: #a3c85e;
+    }
+.productImgCon {
+    height: 16.7rem;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    .productImgCon img {
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: contain;
+    }
+.pDetailsImg {
+    max-height: 30rem;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    .pDetailsImg img {
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: contain;
+    }
+.descSpec > p {
+    padding:0
+}
+.childCat_btn_active {
+    background-color: #007bff; /* যেকোনো highlight কালার */
+    color: white;
+    font-weight: bold;
+}
+.tr_msg {
+    position: fixed;
+    top: 4rem;
+    right: 1rem;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 9999;
+    display: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    animation: fadein 0.5s, fadeout 0.5s 2s;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeout {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+

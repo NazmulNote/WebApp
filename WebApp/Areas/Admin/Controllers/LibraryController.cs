@@ -237,7 +237,7 @@ namespace WebApp.Areas.Admin.Controllers
                             {
                                 if (!string.IsNullOrEmpty(viewModel.Library.PhotoUrl))
                                 {
-                                    var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", viewModel.Library.PhotoUrl);
+                                    var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", "../" + viewModel.Library.PhotoUrl);
                                     if (System.IO.File.Exists(imagePath))
                                     {
                                         System.IO.File.Delete(imagePath);
@@ -283,7 +283,7 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 ImageFile.CopyTo(fileStream);
             }
-            imageName = $"../Admin/img/library/{fileName}";
+            imageName = $"/Admin/img/library/{fileName}";
             return imageName;
         }
         #region Dropdown-------------------------------------------

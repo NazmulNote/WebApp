@@ -1,0 +1,62 @@
+﻿@model WebApp.Areas.Admin.Models.AdminViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using (Html.BeginForm("CourierChargeSetUpdate", "CourierCharge", FormMethod.Post, new { id = "CourierChargeSetUpdateForm", enctype = "multipart/form-data" }))
+{
+	@Html.HiddenFor(model => model.CourierCharge.ID)
+
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-12">
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.CourierCharge.Location, "Location:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.CourierCharge.Location, new { htmlAttributes = new { id = "Location", @class = "form-control", placeholder = "Enter Location", required = "required" } })
+							@Html.ValidationMessageFor(model => model.CourierCharge.Location, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.CourierCharge.ChargeAmount, "Charge Amount:", htmlAttributes: new { @class = "col-sm-6 col-6 col-form-label" })
+						<div class="col-sm-6 col-6">
+							@Html.EditorFor(model => model.CourierCharge.ChargeAmount, new { htmlAttributes = new { id = "ChargeAmount", @class = "form-control", placeholder = "Enter Charge Amount", required = "required",@min = "0" } })
+							@Html.ValidationMessageFor(model => model.CourierCharge.ChargeAmount, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.CourierCharge.EstimatedDays, "Estimated Days:", htmlAttributes: new { @class = "col-sm-6 col-6 col-form-label" })
+						<div class="col-sm-6 col-6">
+							@Html.EditorFor(model => model.CourierCharge.EstimatedDays, new { htmlAttributes = new { id = "EstimatedDays", @class = "form-control", placeholder = "Enter Estimated Days", required = "required",@min="0" } })
+							@Html.ValidationMessageFor(model => model.CourierCharge.EstimatedDays, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-1">
+					<div class="form-group row ml-2">
+						<label class="form-check-label">
+							@Html.CheckBoxFor(model => model.CourierCharge.IsActive, new { @class = "form-check-input" }) Is Active
+						</label>
+					</div>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-6 col-12 mb-1 form-check" style="text-align:right">
+					<button type="button" class="btn btn-sm btn-primary btn-user" onclick="CourierChargeSetUpdate()">
+						Save
+					</button>
+					<a class="btn btn-sm btn-outline-primary" asp-controller="CourierCharge" asp-action="CourierChargeCreate">Refresh</a>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+}
+<script type="text/javascript">
+	document.getElementById("Location").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("ChargeAmount").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+	document.getElementById("EstimatedDays").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+</script>

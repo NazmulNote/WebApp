@@ -91,7 +91,7 @@ namespace WebApp.Areas.Admin.Controllers
                             {
                                 if (!string.IsNullOrEmpty(viewModel.Slider.PhotoUrl))
                                 {
-                                    var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", viewModel.Slider.PhotoUrl);
+                                    var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", "../" + viewModel.Slider.PhotoUrl);
                                     if (System.IO.File.Exists(imagePath))
                                     {
                                         System.IO.File.Delete(imagePath);
@@ -127,7 +127,7 @@ namespace WebApp.Areas.Admin.Controllers
                     bool isDeleted = _sliderData.SliderDelete(ID);
                     if (!string.IsNullOrEmpty(slider.PhotoUrl))
                     {
-                        var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", slider.PhotoUrl);
+                        var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", "../" + slider.PhotoUrl);
                         if (System.IO.File.Exists(imagePath))
                         {
                             System.IO.File.Delete(imagePath);
@@ -164,7 +164,7 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 ImageFile.CopyTo(fileStream);
             }
-            imageName = $"../Admin/img/home/{fileName}";
+            imageName = $"/Admin/img/home/{fileName}";
             return imageName;
         }
     }

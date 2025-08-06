@@ -1,0 +1,35 @@
+﻿@model WebApp.Areas.Client.Models.ClientViewModel;
+
+<div class="contentSticky">
+	<div class="table-sticky Content_cScroll" style="height:86vh">
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<tr class="sticky">
+					<th>SL</th>
+					<th>Order No</th></>
+					<th>Order Date</th>
+					<th>Status</th>
+					<th>Total Amount</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				@{
+					int i = 1;
+				}
+				@foreach (var order in Model.OrderProductList)
+				{
+					<tr>
+						<td class="text-center">@i</td>
+						<td>@order.OrderNo</td>
+						<td>@order.OrderDate</td>
+						<td>@order.Status</td>
+						<td>@order.TotalAmount</td>
+						<td class="text-center"><button class="btn c_btn_small" onclick="GetHdrPView(@order.ID)">View</button></td>
+					</tr>
+					i++;
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -32,5 +32,15 @@ namespace WebApp.Areas.Admin.Models
         public List<TeamMemberMDL>? TeamMemberList { get; set; }
         public MessageMDL? Message { get; set; }
         public List <MessageMDL>? MessageList { get;set; }
+        public ClientMDL? Client { get; set; }
+        public List<ClientMDL>? ClientList { get; set; }
+        public ServiceMDL? Service {  get; set; }
+        public List<ServiceMDL>? ServiceList { get; set; }
+        public CourierChargeMDL? CourierCharge { get; set; }
+        public List<CourierChargeMDL>? CourierChargeList {  get; set; }
+        public OrderProductMDL? OrderProduct { get; set; }
+        public List<OrderProductMDL>? OrderProductList { get; set; }
+        public OrderProductItemMDL? OrderProductItem { get; set; }
+        public List<OrderProductItemMDL>? OrderProductItemList { get; set; }
     }
 }

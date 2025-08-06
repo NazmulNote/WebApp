@@ -57,6 +57,7 @@ namespace WebApp.Areas.Admin.Controllers
                         company.Description = viewModel.CompanyInfo.Description;
                         company.Address = viewModel.CompanyInfo.Address;
                         company.Email = viewModel.CompanyInfo.Email;
+                        company.EmailPassword = viewModel.CompanyInfo.EmailPassword;
                         company.Phone = viewModel.CompanyInfo.Phone;
                         company.FacebookUrl = viewModel.CompanyInfo.FacebookUrl;
                         company.TwitterUrl = viewModel.CompanyInfo.TwitterUrl;
@@ -82,6 +83,7 @@ namespace WebApp.Areas.Admin.Controllers
                         company.Description = viewModel.CompanyInfo.Description;
                         company.Address = viewModel.CompanyInfo.Address;
                         company.Email = viewModel.CompanyInfo.Email;
+                        company.EmailPassword = viewModel.CompanyInfo.EmailPassword;
                         company.Phone = viewModel.CompanyInfo.Phone;
                         company.FacebookUrl = viewModel.CompanyInfo.FacebookUrl;
                         company.TwitterUrl = viewModel.CompanyInfo.TwitterUrl;
@@ -94,7 +96,7 @@ namespace WebApp.Areas.Admin.Controllers
                         {
                             if (!string.IsNullOrEmpty(viewModel.CompanyInfo.PhotoUrl))
                             {
-                                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", viewModel.CompanyInfo.PhotoUrl);
+                                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "image", "../" + viewModel.CompanyInfo.PhotoUrl);
                                 if (System.IO.File.Exists(imagePath))
                                 {
                                     System.IO.File.Delete(imagePath);
@@ -134,7 +136,7 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 ImageFile.CopyTo(fileStream);
             }
-            imageName = $"../Admin/img/home/{fileName}";
+            imageName = $"/Admin/img/home/{fileName}";
             return imageName;
         }
     }

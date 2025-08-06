@@ -200,3 +200,7 @@ footer.sticky-footer {
 .collapse{
     z-index: 10!important;
 }
+.requiredStar {
+    color: red!important;
+    font-size: 0.8rem;
+}

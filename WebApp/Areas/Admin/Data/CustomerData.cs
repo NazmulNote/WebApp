@@ -60,7 +60,7 @@ namespace WebApp.Areas.Admin.Data
                 throw new Exception("Error in Customer Data List Get: " + ex.Message);
             }
         }
-        public CustomerMDL GetCustomer(string Email, int ID)
+        public CustomerMDL GetCustomer(string? Email, int? ID)
         {
             try
             {

@@ -1,0 +1,94 @@
+﻿@model WebApp.Areas.Client.Models.ClientViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+     
+    var firstProduct = Model.ProductList?.FirstOrDefault();
+    int catId ;
+    string catName ="" ;
+    var subCats = Model.ProductList ;
+    var childCats = Model.ProductList;
+    if (firstProduct != null)
+    {
+         
+         catId = firstProduct.CatId;
+         catName = firstProduct.CatName;
+         subCats = Model.ProductList.DistinctBy(x => x.SubCatId).ToList();
+         childCats = Model.ProductList.DistinctBy(x => x.SubChildCatId).ToList();
+    }
+}
+<div class="row">
+    @if (Model.ProductList.Count() != 0)
+    {
+        <div class="col-md-12">
+            <span>@catName</span><i class="mdi mdi-chevron-right"></i> &nbsp;
+            @for (int i = 0; i < subCats.Count; i++)
+            {
+                <span>@subCats[i].SubCatName</span>
+                @if (i != subCats.Count - 1)
+                {
+                    <text>, </text>
+                }
+            }
+            <i class="mdi mdi-chevron-right"></i> &nbsp;
+            @for (int i = 0; i < childCats.Count; i++)
+            {
+                <span>@childCats[i].SubChildCatName</span>
+                @if (i != childCats.Count - 1)
+                {
+                    <text>,</text>
+                }
+            }
+        </div>
+    }
+    @if(Model.ProductList.Count() !=0)
+    {
+        foreach(var product in Model.ProductList)
+        {
+            <div class="col-lg-3 col-md-3 col-sm-6 col-6">
+                <article class="post mt-30">
+                    <div class="post-preview">
+                        <a asp-controller="Home" asp-action="ProductDetails" asp-route-ID="@product.ID" class="productImgCon"><img src="@(string.IsNullOrEmpty(product.PhotoUrl)?"/Client/img/default/default.png":Url.Content(product.PhotoUrl))" alt="" class="img-fluid mx-auto d-block"></a>
+                    </div>
+
+                    <div class="post-header">
+                        <h4 class="post-title"><a href="#">@product.Name</a></h4>
+                        <ul class="post-meta">
+                            <li><i class="mdi mdi-calendar"></i> <small>@product.SubChildCatName</small></li>
+                            <li>
+                                <i class="mdi mdi-tag-text-outline"></i>
+                                    <small>
+                                        @(product.Price == 0 ? "Ask for Price" : "৳ " + product.Price)
+                                    </small>
+                            </li>
+                        </ul>
+                        <span class="bar"></span>
+                        <div class="post-footer">
+                            <div class="likes">
+                                <ul class="post-meta">
+                                    <li><a style="cursor:pointer" onclick="AddToCart(@product.ID,'@product.Name',@product.Price)"><i class="mdi mdi-cart-plus"></i><small>Add Cart</small></a></li>
+                                </ul>
+                            </div>
+                            <div class="post-more"><a asp-controller="Home" asp-action="ProductDetails" asp-route-ID="@product.ID">Details <i class="mdi mdi-arrow-right"></i></a></div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="container">
+            <div class="row justify-content-center align-items-center" style="min-height: 20vh;">
+                <div class="col-md-8 col-lg-6">
+                    <div class="not-found-card shadow-lg rounded-3 p-4 text-center" style="background-color: #f8f9fa;">
+                        <h4 class="text-danger mb-2">We Couldn't Find Any Matching Products</h4>
+                        <p class="text-muted mb-3">Sorry, we couldn't find any products matching your search.</p>
+                        <a asp-controller="Home" asp-action="Contact" class="btn btn-outline-white">If you want, please message us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+    
+</div>

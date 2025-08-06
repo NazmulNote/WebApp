@@ -1,0 +1,229 @@
+﻿@model WebApp.Areas.Client.Models.ClientViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+	ViewData["Title"] = "Product";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="/client/css/product.css" rel="stylesheet" />
+<div id="tr_msg" class="tr_msg"></div>
+<section class="bg-half" style="background-image: url('/Client/img/default/slider.jpg');padding: 180px 0 120px" id="sliderSection">
+	<div class="bg-overlay"></div>
+	<div class="home-center">
+		<div class="home-desc-center">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-12">
+						<div class="page-next-level text-white">
+							<h4 class="text-uppercase">Empowering Industries with Smart Solutions</h4>
+							<p>Discover cutting-edge automation and engineering services designed to boost productivity and efficiency.</p>
+							<div class="page-next"> <a href="/">Home</a><i class="mdi mdi-chevron-right"></i> &nbsp;<span>Product</span> </div>
+						</div>
+						<div class="mt-1">
+							<a class="btn btn-custom mr-3" href="/Home/Contact">Contact Us</a>
+							<a class="btn btn-outline-white" href="/Home/About">Learn More</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<div class="c_TglBtn" id="c_TglBtn" onclick="openSidebar()">☰ Categories</div>
+<div class="dual_section" id="dual_section">
+	<div class="c_sidebar" id="c_sidebar">
+		<siv>
+			<button class="c_close_btn" onclick="closeSidebar()">×</button>
+			<h3>Categories:</h3>
+			@if (Model.CatList != null)
+			{
+				<div class="main_cat">
+					@foreach (var cat in Model.CatList)
+					{
+						<a class="btn c_btn_small" asp-controller="Home" asp-action="Product" asp-route-CatId="@cat.ID">@cat.Name</a>
+					}
+				</div>
+			}
+			<span class="bar"></span>
+			@if (Model.SubCatList != null)
+			{
+				int i = 1;
+				foreach (var subCat in Model.SubCatList)
+				{
+					<div class="c_category">
+						<button onclick="toggleSub(this)"><i class="pe-7s-angle-right-circle" style="font-weight:bold"></i> @subCat.Name</button>
+						<div class="c_subcategory element-sidebar" style="display:@(i==1?"block":"none")">
+							<ul class="list-unstyled">
+								<li><button data-sub="@subCat.ID" data-child="0" class="childCat_btn" onclick="ChildCatBtnActive(this);GetProductView(null,@subCat.ID,0);">All @subCat.Name</button></li>
+								@foreach (var child in subCat.SubChildCatList)
+								{
+									<li><button data-sub="@subCat.ID" data-child="@child.ID" class="childCat_btn" onclick="GetProductView(null,@subCat.ID,@child.ID);ChildCatBtnActive(this)"><b class="mdi mdi-chevron-right"></b>@child.Name</button></li>
+								}
+							</ul>
+						</div>
+					</div>
+					i++;
+				}
+			}
+		</siv>
+	</div>
+
+	<div class="c_main_content">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-6 col-md-12">
+					<div class="section-title">
+						<h3>All Products</h3>
+						<div class="spacer-15"></div>
+						<p class="text-muted mb-0">Donec sodales sagittis magna. Excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</p>
+						<div class="spacer-30"></div>
+					</div>
+				</div>
+			</div>
+			<div id="productView"></div>
+		</div>
+
+	</div>
+</div>
+<script>
+	   const urlParams = new URLSearchParams(window.location.search);
+	   const catId_url = urlParams.get('CatId') || 0;
+	   const subCatId_url = urlParams.get('subCatId') || 0;
+	   const childId_url = urlParams.get('childId') || 0;
+
+		 document.addEventListener('DOMContentLoaded', function () {
+			 GetProductView(catId_url, subCatId_url, childId_url);
+			 setTimeout(function () {
+				 const selector = `.childCat_btn[data-sub="${subCatId_url}"][data-child="${childId_url}"]`;
+				 const targetBtn = document.querySelector(selector);
+				 if (targetBtn) {
+					 ChildCatBtnActive(targetBtn);
+
+					 // parent subcategory খোলা আছে কি না নিশ্চিত করুন
+					 const parentSub = targetBtn.closest('.c_subcategory');
+					 if (parentSub) parentSub.style.display = 'block';
+				 }
+			 }, 100);
+
+		 });
+	// -------------------------------------------------------Cart start
+	   function AddToCart(id,name,price)
+	   {
+
+			let cart = JSON.parse(localStorage.getItem("cd_temp")) || [];
+
+			let existing = cart.find(p => p.id === id);
+			if (existing) {
+				existing.qty += 1;
+			} else {
+				cart.push({ id: id, name: name, price: price, qty: 1 });
+			}
+
+			localStorage.setItem("cd_temp", JSON.stringify(cart));
+
+			// Optional: Show success message
+			Show_tr_msg("Product added to cart!");
+
+			// Optional: update cart item count
+			UpdateCartCount();
+	   }
+	   function UpdateCartCount() {
+		  let cart = JSON.parse(localStorage.getItem("cd_temp")) || [];
+		  let count = cart.reduce((total, item) => total + item.qty, 0);
+		  document.querySelectorAll(".cartCount").forEach(el=>{
+			  el.innerText = count;
+		  })
+	  }
+     function Show_tr_msg(message) {
+		const tr_msg = document.getElementById("tr_msg");
+		tr_msg.innerText = message;
+		tr_msg.style.display = "block";
+
+		// Remove after 3s
+		setTimeout(() => {
+			tr_msg.style.display = "none";
+		}, 2000);
+	}
+	//--------------------------------------------------------Cart end
+
+	 function GetProductView(catId,subCatId,childId) {
+		 $.ajax({
+			 url: '@Url.Action("ProductView", "Home")',
+			 type: 'GET',
+			 data:{catId:catId,subCatId:subCatId,childId:childId},
+			 success: function (html) {
+				  $("#productView").html("");
+				  $("#productView").html(html);
+				   if(catId ==null){
+					   var newUrl = '?CatId=' + catId_url + '&subCatId=' + subCatId + '&childId=' + (childId ==null?0:childId);
+					   history.pushState(null, '', newUrl);
+
+					   ScrollTo();
+					   if (window.innerWidth <= 768) {
+						   closeSidebar();
+						}
+				   }else{
+
+				   }
+			 },
+			 error: function (error) {
+				 console.log("Error Get Product View View");
+				 console.log(error);
+			 }
+		 });
+	 }
+
+	 // ---------------------------------------------------
+	 function ChildCatBtnActive(button){
+		 document.querySelectorAll(".childCat_btn").forEach( (btn)=>{
+			 btn.classList.remove("childCat_btn_active");
+		 })
+		 button.classList.add("childCat_btn_active");
+	 }
+	 function SetUrlParams(){
+		 history.pushState(null, null, '?subCatId=' + subCatId);
+	 }
+	 function ScrollTo(){
+		 $('html, body').animate({
+							 scrollTop: $('#dual_section').offset().top - 80
+						}, 500); // ৫০০ মিলিসেকেন্ডে স্ক্রল হবে
+	 }
+	 function toggleSub(btn) {
+	   const sub = btn.nextElementSibling;
+	   sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+	 }
+
+	 function openSidebar() {
+	   document.getElementById('c_sidebar').classList.add('active');
+	   document.getElementById('c_TglBtn').style.display = 'none';
+	 }
+
+	 function closeSidebar() {
+	   document.getElementById('c_sidebar').classList.remove('active');
+	   document.getElementById('c_TglBtn').style.display = 'block';
+	 }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

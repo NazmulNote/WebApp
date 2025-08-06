@@ -1,0 +1,171 @@
+﻿@model WebApp.Areas.Client.Models.ClientViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+	ViewData["Title"] = "Sign Up";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section" style="background:#a8cb6738">
+	<div class="container" style="margin-top:4rem">
+		<div class="row justify-content-center">
+			<div class="col-md-6 col-lg-6">
+				<div class="bg-white p-20 rounded box-shadow">
+					@* <div class="text-center">
+						<h4><a asp-controller="Home" asp-action="Index"><img class="signLogo" src="@(string.IsNullOrEmpty(Model.CompanyInfo.PhotoUrl)?"Client/img/default/default.png":Url.Content(Model.CompanyInfo.PhotoUrl))" height="40" alt="logo"></a></h4>
+						<div class="spacer-15"></div>
+					</div> *@
+					<div class="text-center">
+						<h5 class="alert-success">@ViewBag.Success</h5>
+						<h5 class="alert-danger">@ViewBag.Error</h5>
+					</div>
+					@using (Html.BeginForm("SignUp", "Cstmr", FormMethod.Post, new { id = "signUp", @class = "login-form", enctype = "multipart/form-data" }))
+					{
+						<div class="row">
+							<div class="col-lg-12 mt-2">
+								<div id="PhotoPreview">
+									<img style="width:5rem;height:6rem;object-fit:contain" src="@( Model.Customer != null && !string.IsNullOrEmpty(Model.Customer.PhotoUrl)? Url.Content(Model.Customer.PhotoUrl): Url.Content("/Client/img/default/avator.png"))" alt="User Image" />
+								</div>
+								@Html.HiddenFor(model => model.Customer.PhotoUrl)
+							</div>
+							<div class="col-lg-6 mt-2">
+								<label class="">First name</label>
+								@Html.EditorFor(model => model.Customer.Name, new { htmlAttributes = new { @type = "text", @id = "Name", @placeholder = "Enter Name..", @class = "form-control", @required = "require" } })
+							</div>
+							<div class="col-lg-6 mt-2">
+								<label class="">Email</label>
+								@Html.EditorFor(model => model.Customer.Email, new { htmlAttributes = new { @type = "mail", @id = "Email", @placeholder = "Enter Email..", @class = "form-control", @required = "require" } })
+							</div>
+							<div class="col-lg-6 mt-2">
+								<label class="">Phone</label>
+								@Html.EditorFor(model => model.Customer.Phone, new { htmlAttributes = new { id = "Phone", @class = "form-control", placeholder = "Enter Phone Number", required = "required" } })
+							</div>
+							<div class="col-lg-6 mt-2">
+								<label class="">Country</label>
+								@Html.DropDownListFor(model => model.Customer.CountryId, (IEnumerable<SelectListItem>)ViewBag.CountryList, "Select Country", new { @class = "form-control", @id = "CountryId", required = "required" })
+							</div>
+							<div class="col-lg-6 mt-2">
+								<label class="">District</label>
+								@Html.DropDownListFor(model => model.Customer.DistrictId, (IEnumerable<SelectListItem>)ViewBag.DistrictList, "Select District", new { @class = "form-control", @id = "DistrictId", required = "required" })
+							</div>
+							<div class="col-lg-6 mt-2">
+								<label class="">Police Station</label>
+								@Html.DropDownListFor(model => model.Customer.PoliceStationId, (IEnumerable<SelectListItem>)ViewBag.PoliceStationList, "Select Police Station", new { @class = "form-control", @id = "PoliceStationId", required = "required" })
+							</div>
+							<div class="col-lg-12 mt-2">
+								<label class="">Address</label>
+								@Html.TextAreaFor(model => model.Customer.Address, new { @id = "Address", @class = "form-control", placeholder = "Enter Address", required = "required", rows = "2" })
+							</div>
+							<div class="col-lg-6 mt-2">
+								<label class="">Password</label>
+								@Html.EditorFor(model => model.Customer.Password, new { htmlAttributes = new { @type = "password", @id = "Password", @placeholder = "Enter Password..", @class = "form-control", @required = "require", @minLength = "6", @maxLength = "15" } })
+							</div>
+							<div class="col-lg-6 mt-2">
+								<label class="">Confirm Password</label>
+								@Html.EditorFor(model => model.Customer.ConfirmPassword, new { htmlAttributes = new { @type = "password", @id = "ConfirmPassword", @placeholder = "Enter Confirm Password..", @class = "form-control", @required = "require" } })
+								@Html.ValidationMessageFor(model => model.Customer.ConfirmPassword, "", new { @class = "text-danger" })
+							</div>
+							<div class="col-lg-6 mt-2">
+								@Html.EditorFor(model => model.Customer.Photo, new { htmlAttributes = new { id = "Photo", @class = "form-control form-file", placeholder = "Enter Role", Type = "file", onchange = "PhotoPreview()" } })
+							</div>
+							<div class="col-lg-6 mt-2">
+								<div class="custom-control custom-checkbox">
+									<input type="checkbox" class="custom-control-input" id="customCheck1" required>
+									<label class="custom-control-label" for="customCheck1">I Accept <a href="#">Terms And Condition</a></label>
+								</div>
+							</div>
+							<div class="col-lg-12 mt-4 mb-3">
+								<button class="btn btn-custom w-100">Register</button>
+							</div>
+							<div class="mx-auto">
+								<p class="mb-0 mt-2"><small class="text-dark mr-2">Already have an account ?</small> <a asp-controller="Cstmr" asp-action="SignIn" class="text-dark font-weight-bold">Sign in</a></p>
+							</div>
+						</div>
+					}
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script type="text/javascript">
+	document.getElementById("CountryId").onchange = ()=>{
+		GetDistrictByCountryId();
+	}
+	document.getElementById("DistrictId").onchange = () =>{
+		GetPoliceStationByDistrictId();
+	}
+	function GetDistrictByCountryId(){
+		var CountryId = document.getElementById("CountryId").value;
+		$.ajax({
+			url: '@Url.Action("GetDistrictByCountryId", "Customer")',
+			type: 'GET',
+			data: { ID: CountryId },
+			success: function (district) {
+
+				var districtDropdown = $('#DistrictId');
+				districtDropdown.empty();
+				districtDropdown.append($('<option>').text('Select District').attr('value', ''));
+				$.each(district, function (index, item) {
+					districtDropdown.append($('<option>', {value: item.value,text: item.text}));
+					// subCatDropdown.append($('<option>').text(item.Text).attr('value', item.Value));
+				});
+			},
+			error: function (error) {
+				if (error.status === 401) location.href = '/SPanel1325/Login';
+				console.log('Error fetching District');
+			}
+		});
+	}
+	function GetPoliceStationByDistrictId(){
+		var DistrictId = document.getElementById("DistrictId").value;
+		$.ajax({
+			url: '@Url.Action("GetPoliceStationByDistrictId", "Customer")',
+			type: 'GET',
+			data: { ID: DistrictId },
+			success: function (policeStation) {
+
+				var policeStationDropdown = $('#PoliceStationId');
+				policeStationDropdown.empty();
+				policeStationDropdown.append($('<option>').text('Select Police Station').attr('value', ''));
+				$.each(policeStation, function (index, item) {
+					policeStationDropdown.append($('<option>', {value: item.value,text: item.text}));
+					// subCatDropdown.append($('<option>').text(item.Text).attr('value', item.Value));
+				});
+			},
+			error: function (error) {
+				if (error.status === 401) location.href = '/SPanel1325/Login';
+				console.log('Error fetching Police Station');
+			}
+		});
+	}
+	function PhotoPreview() {
+		const PhotoPreview = document.getElementById('PhotoPreview');
+		const file = document.getElementById('Photo').files[0];
+		if (file) {
+			var maxFileSize = 512000; //in bytes
+			if (file.size <= maxFileSize) {
+
+				PhotoPreview.innerHTML = '';
+				const reader = new FileReader();
+				reader.onload = function (e) {
+					const img = document.createElement('img');
+					img.src = e.target.result;
+					img.alt = 'Uploaded Image';
+					img.style.maxWidth = '5rem';
+					img.style.maxHeight = '6rem';
+					img.style.objectFit = 'contain'
+					PhotoPreview.appendChild(img);
+				};
+				reader.readAsDataURL(file);
+			}
+			else {
+				Swal.fire({
+					text: "The file size should be around 500KB.",
+					icon: "error"
+				});
+				document.getElementById('Photo').value = "";
+			}
+		}
+	}
+</script>

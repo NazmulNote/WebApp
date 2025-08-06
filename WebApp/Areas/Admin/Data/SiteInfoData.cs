@@ -37,6 +37,17 @@ namespace WebApp.Areas.Admin.Data
                         ContactSliderUrl = dr["ContactSliderUrl"].ToString(),
                         ContactShortDesc = dr["ContactShortDesc"].ToString(),
                         ContactMap = dr["ContactMap"].ToString(),
+                        ClientSliderUrl = dr["ClientSliderUrl"].ToString(),
+                        ClientSliderTitle = dr["ClientSliderTitle"].ToString(),
+                        ClientSliderDesc = dr["ClientSliderDesc"].ToString(),
+                        ClientTitle = dr["ClientTitle"].ToString(),
+                        ClientDesc = dr["ClientDesc"].ToString(),
+                        ServiceSliderUrl = dr["ServiceSliderUrl"].ToString(),
+                        ServiceSliderTitle = dr["ServiceSliderTitle"].ToString(),
+                        ServiceSliderDesc = dr["ServiceSliderDesc"].ToString(),
+                        ServiceTitle = dr["ServiceTitle"].ToString(),
+                        ServiceDesc = dr["ServiceDesc"].ToString(),
+                        ServiceDetailsDesc = dr["ServiceDetailsDesc"].ToString(),
                         IsActive = Convert.ToBoolean(dr["IsActive"]),
                         InsertId = Convert.ToInt32(dr["InsertId"]),
                         InsertedByIP = dr["InsertedByIP"].ToString(),
@@ -71,6 +82,17 @@ namespace WebApp.Areas.Admin.Data
                 cmd.Parameters.AddWithValue("@ContactSliderUrl", viewModel.ContactSliderUrl);
                 cmd.Parameters.AddWithValue("@ContactShortDesc", viewModel.ContactShortDesc);
                 cmd.Parameters.AddWithValue("@ContactMap", viewModel.ContactMap);
+                cmd.Parameters.AddWithValue("@ClientSliderUrl", viewModel.ClientSliderUrl);
+                cmd.Parameters.AddWithValue("@ClientSliderTitle", viewModel.ClientSliderTitle);
+                cmd.Parameters.AddWithValue("@ClientSliderDesc", viewModel.ClientSliderDesc);
+                cmd.Parameters.AddWithValue("@ClientTitle", viewModel.ClientTitle);
+                cmd.Parameters.AddWithValue("@ClientDesc", viewModel.ClientDesc);
+                cmd.Parameters.AddWithValue("@ServiceSliderUrl", viewModel.ServiceSliderUrl);
+                cmd.Parameters.AddWithValue("@ServiceSliderTitle", viewModel.ServiceSliderTitle);
+                cmd.Parameters.AddWithValue("@ServiceSliderDesc", viewModel.ServiceSliderDesc);
+                cmd.Parameters.AddWithValue("@ServiceTitle", viewModel.ServiceTitle);
+                cmd.Parameters.AddWithValue("@ServiceDesc", viewModel.ServiceDesc);
+                cmd.Parameters.AddWithValue("@ServiceDetailsDesc", viewModel.ServiceDetailsDesc);
                 cmd.Parameters.AddWithValue("@IsActive", viewModel.IsActive);
                 cmd.Parameters.AddWithValue("@InsertId", viewModel.InsertId);
                 cmd.Parameters.AddWithValue("@InsertedByIP", viewModel.InsertedByIP);

@@ -4,36 +4,29 @@ wwwroot\Admin\css\sb-admin-2.min.css
 wwwroot\Admin\img\about\AboutPhoto16072025165750.jpg
 wwwroot\Admin\img\about\SliderPhoto16072025165719.jpg
 wwwroot\Admin\img\adminUsers\avator.png
-wwwroot\Admin\img\adminUsers\Cat26062025162657.jpg
-wwwroot\Admin\img\adminUsers\Nazmul haque17052025190036.png
-wwwroot\Admin\img\adminUsers\nazmul haque17052025232011.png
-wwwroot\Admin\img\adminUsers\Nazmul17052025173807.jpg
-wwwroot\Admin\img\adminUsers\Nazmul17052025232105.png
-wwwroot\Admin\img\adminUsers\nazmul28062025203742.png
 wwwroot\Admin\img\avator.png
-wwwroot\Admin\img\customer\Nazmul13072025154227.jpg
-wwwroot\Admin\img\home\CompanyLogo14072025170118.jpg
+wwwroot\Admin\img\avator_.png
+wwwroot\Admin\img\client\Pran RFL18072025200218.png
+wwwroot\Admin\img\client\RM Automation & Technologies18072025200159.png
+wwwroot\Admin\img\client\SM-Tradin18072025200228.png
+wwwroot\Admin\img\customer\Nazmul06082025190929.jpg
+wwwroot\Admin\img\home\ClientSlider18072025225955.jpg
+wwwroot\Admin\img\home\CompanyLogo24072025163329.png
 wwwroot\Admin\img\home\ContactSlider17072025190951.jpg
 wwwroot\Admin\img\home\HomeAbout14072025194428.jpg
+wwwroot\Admin\img\home\ServiceSlider20072025173411.jpg
 wwwroot\Admin\img\home\Slider13072025211658.jpg
 wwwroot\Admin\img\home\Slider13072025211729.jpg
 wwwroot\Admin\img\home\Slider13072025211826.jpg
-wwwroot\Admin\img\library\Cat01072025222542.png
-wwwroot\Admin\img\library\Cat26062025163051.png
-wwwroot\Admin\img\library\Cat26062025163136.jpg
-wwwroot\Admin\img\library\Cat26062025165339.jpg
-wwwroot\Admin\img\library\Cat28062025203907.png
-wwwroot\Admin\img\library\ServiceCat03072025154919.png
-wwwroot\Admin\img\library\ServiceCat06072025200735.png
-wwwroot\Admin\img\library\SubCat15072025140316.jpg
-wwwroot\Admin\img\library\SubCat27062025000249.png
-wwwroot\Admin\img\library\SubChildCat03072025232218.jpg
-wwwroot\Admin\img\library\SubChildCat27062025163329.jpg
-wwwroot\Admin\img\product\305072025194141.png
-wwwroot\Admin\img\product\LG-26206072025003650.png
-wwwroot\Admin\img\product\LG-26208072025180215.png
-wwwroot\Admin\img\product\t06072025003040.png
-wwwroot\Admin\img\product\transformer 500kva15072025140828.png
+wwwroot\Admin\img\library\Cat05082025164818.png
+wwwroot\Admin\img\library\Cat05082025164848.jpg
+wwwroot\Admin\img\library\Cat05082025164902.jpg
+wwwroot\Admin\img\service\Machine Fabrication19072025202714.jpg
+wwwroot\Admin\img\service\Maintenance & Overhauling19072025202804.jpg
+wwwroot\Admin\img\service\Mechanical Design Services19072025202848.jpg
+wwwroot\Admin\img\service\PLC Programming19072025202027.jpg
+wwwroot\Admin\img\service\SCADA & HMI Design19072025202102.jpg
+wwwroot\Admin\img\service\Sensor & Actuator Integration19072025202727.jpg
 wwwroot\Admin\img\teamMember\Md. Manik 17072025171949.jpg
 wwwroot\Admin\img\teamMember\Nazmul Haque17072025165437.png
 wwwroot\Admin\js\ckeditor.js
@@ -1757,6 +1750,7 @@ wwwroot\Admin\vendor\jquery-easing\jquery.easing.min.js
 wwwroot\Admin\vendor\sweetalert\sweetalert2@11.js
 wwwroot\Client\css\AjaxLoader.html
 wwwroot\Client\css\bootstrap.min.css
+wwwroot\Client\css\customClient.css
 wwwroot\Client\css\default.css
 wwwroot\Client\css\fontawesome.css
 wwwroot\Client\css\fonts\slick.html
@@ -1770,6 +1764,7 @@ wwwroot\Client\css\owl.carousel.min.css
 wwwroot\Client\css\owl.theme.css
 wwwroot\Client\css\owl.transitions.css
 wwwroot\Client\css\pe-icon-7-stroke.css
+wwwroot\Client\css\product.css
 wwwroot\Client\css\slick.css
 wwwroot\Client\css\slick-theme.css
 wwwroot\Client\css\style.css
@@ -1805,7 +1800,12 @@ wwwroot\Client\fonts\Pe-icon-7-strokebb1d.woff
 wwwroot\Client\fonts\Pe-icon-7-stroked41d.eot
 wwwroot\Client\fonts\slick.ttf
 wwwroot\Client\fonts\slick.woff
+wwwroot\Client\img\default\avator.png
+wwwroot\Client\img\default\default.png
 wwwroot\Client\img\default\home-about.jpg
+wwwroot\Client\img\default\man.jpg
+wwwroot\Client\img\default\product.jpg
+wwwroot\Client\img\default\service.jpg
 wwwroot\Client\img\default\slider.jpg
 wwwroot\Client\img\default\team-1.jpg
 wwwroot\Client\js\app.js

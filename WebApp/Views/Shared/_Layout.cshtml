@@ -1,13 +1,18 @@
 ﻿@model WebApp.Areas.Client.Models.ClientViewModel;
 @using WebApp.Areas.Client.Data
-@using WebApp.Areas.Admin.Data
+@* @using WebApp.Areas.Admin.Data *@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 @{
-	HomeData homeData = new HomeData();
-	LibraryData libraryData = new LibraryData();
-	var CompanyInfo = homeData.GetCompanyInfo();
-	var Category = libraryData.GetLibraryList("Cat", null, null);
+	HomeData _homeData = new HomeData();
+	CustomerData _customerData = new CustomerData();
+	ProductViewData _productViewData = new ProductViewData();
+	var CompanyInfo = _homeData.GetCompanyInfo();
+	var Category = _productViewData.GetCategoryList();
+	var customerId = HttpContextAccessor?.HttpContext?.Session.GetString("CustomerID");
+	var customerData = _customerData.GetCustomer(null, Convert.ToInt32(customerId));
+	var customerName = customerData.Name;
+	var customerPhoto = customerData.PhotoUrl;
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +45,7 @@
 	<link href="~/Client/css/style.css" rel="stylesheet">
 	<link href="~/Client/css/menu.css" rel="stylesheet">
 	<link href="~/Client/css/default.css" rel="stylesheet">
-
+	<link href="~/client/css/customclient.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -82,9 +87,11 @@
 					<h3 style="margin-top:0.7rem" height="20">RMAT</h3>
 				</a>
 			</div>
+
 			<!-- End Logo container-->
 			<div class="menu-extras">
-				<div class="menu-item">
+				<div class="menu-item" style="display:flex;justify-content:center;align-items:center">
+					<a asp-controller="Home" asp-action="Cart" class="cartCountTgl" style="font-size:1rem;margin-right:1.6rem;color:#535353"><i class="mdi mdi-cart"></i><strong class="cartCount"></strong></a>
 					<!-- Mobile menu toggle-->
 					<a class="navbar-toggle">
 						<div class="lines">
@@ -96,7 +103,6 @@
 					<!-- End mobile menu toggle-->
 				</div>
 			</div>
-
 			<div id="navigation">
 				<!-- Navigation Menu-->
 				<ul class="navigation-menu">
@@ -114,7 +120,7 @@
 							{
 								foreach (var item in Category)
 								{
-									<li><a asp-controller="Home" asp-action="Product" asp-route-ID="@item.ID">@item.ItemName</a></li>
+									<li><a asp-controller="Home" asp-action="Product" asp-route-CatId="@item.ID">@item.Name</a></li>
 								}
 							}
 						</ul>
@@ -143,6 +149,27 @@
 
 						</div>
 					</li>
+					<li class="has-submenu d-none d-md-inline-block">
+						<a asp-controller="Home" asp-action="Cart" style="font-size:1rem"><i class="mdi mdi-cart"></i><strong class="cartCount"></strong></a>
+					</li>
+					@if (customerId == null)
+					{
+						<li class="has-submenu">
+							<a asp-controller="Cstmr" asp-action="SignIn"><i class="mdi mdi-login"></i>Sign In</a>
+						</li>
+					}
+					else
+					{
+						<li class="has-submenu">
+							<a href="javascript:void(0)" class="signImg"><img src="@(string.IsNullOrEmpty(customerPhoto) ? "/client/img/default/avator.png":Url.Content(customerPhoto))" /></a>
+							<span class="menu-arrow"></span>
+							<ul class="submenu">
+								<li style="padding-left: 0.5rem;border-bottom: 1px solid lightgray;">@customerName</li>
+								<li><a asp-controller="Cstmr" asp-action="Profile">Profile</a></li>
+								<li><a asp-controller="Cstmr" asp-action="SignOut">Sign Out</a></li>
+							</ul>
+						</li>
+					}
 				</ul>
 				<!-- End navigation menu-->
 			</div>
@@ -164,7 +191,7 @@
 					<div class="col-lg-3 col-md-12 col-sm-12">
 						<div class="">
 							<a asp-controller="Home" asp-action="Index" class="logo">
-								<img src="@(CompanyInfo.PhotoUrl)" alt="missing_logo" height="40">
+								<img src="@Url.Content(CompanyInfo.PhotoUrl)" alt="missing_logo" height="40">
 								<h5>@CompanyInfo.CompanyCode</h5>
 							</a>
 						</div>
@@ -215,10 +242,12 @@
 							<p class="text-footer-clr">Subscribe to our email newsletter to receive useful articles and special offers.</p>
 							<div class="subscribed-form">
 								<div class="subcribed-form">
-									<form action="#">
-										<input name="email" type="email" placeholder="Your Email" id="email" required="">
-										<button type="submit" class=""><span class="fab fa-telegram-plane"></span></button>
-									</form>
+									@using (Html.BeginForm("Subscripbe", "Home", new { id = "SubscribeSetForm", enctype = "multipart/form-data" }))
+									{
+										<input name="email" type="email" placeholder="Your Email" id="sbEmail" required="">
+										<button type="button" class="" onclick="SubscribeSet()"><span class="fab fa-telegram-plane"></span></button>
+									}
+									<div id="footerMsg" style="color:white;font:bold"></div>
 								</div>
 							</div>
 						</div>
@@ -272,5 +301,61 @@
 	<!--custom script-->
 	<script src="~/Client/js/app.js"></script>
 	@await RenderSectionAsync("Scripts", required: false)
+	<script type="text/javascript">
+		function SubscribeSet() {
+				var Email = document.getElementById("sbEmail").value;
+				var IsRequired = CheckRequiredFieldSubscribe();
+				if (IsRequired == "NO") {
+					$.ajax({
+						url: '@Url.Action("SubscribeSet", "Home")',
+						type: 'POST',
+						data: {Email:Email},
+						success: function (result) {
+							if (result == 0) {
+								var msg = document.getElementById("footerMsg");
+								msg.innerText="";
+								msg.innerText = "Subscription failed."
+							}
+							else {
+								var msg = document.getElementById("footerMsg");
+								msg.innerText="";
+								msg.innerText = "Thank you for subscribing! Our team will contact you shortly."
+								document.getElementById("Email").value = "";
+
+							}
+						},
+						error: function (error) {
+							console.log(error);
+						}
+					});
+				}
+			}
+		function CheckRequiredFieldSubscribe() {
+				var Email = document.getElementById("sbEmail");
+				if (Email.value == "") {
+					if (Email.value == "") { Email.style.border = "2px solid #ff00005c"; }
+
+					var msg = document.getElementById("footerMsg");
+					msg.innerText="";
+					msg.innerText = "Enter your email to continue."
+						return "YES";
+				} else {
+					return "NO"
+				}
+			}
+
+		document.getElementById("sbEmail").onchange = function () { this.style.border = "0.5px solid #dee2e6"; };
+
+		document.addEventListener("DOMContentLoaded", () => {
+			const cart = JSON.parse(localStorage.getItem("cd_temp")) || [];
+			const count = cart.reduce((total, item) => total + item.qty, 0);
+			if(count !=0){
+				document.querySelectorAll(".cartCount").forEach(el => {
+				el.innerText = count;
+			});
+			}
+
+		});
+	</script>
 </body>
 </html>

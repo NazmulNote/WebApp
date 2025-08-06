@@ -36,12 +36,36 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWJvdXRQYWdlXF9HZXRBYm91dFBhZ2VIZHJQVmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Client/ClientCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2xpZW50XENsaWVudENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Client/_GetClientDetPView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2xpZW50XF9HZXRDbGllbnREZXRQVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Client/_GetClientHdrPView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2xpZW50XF9HZXRDbGllbnRIZHJQVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/CompanyInfo/CompanyInfoCreate.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ29tcGFueUluZm9cQ29tcGFueUluZm9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/CompanyInfo/_GetCompanyInfoHdrPView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ29tcGFueUluZm9cX0dldENvbXBhbnlJbmZvSGRyUFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/CourierCharge/CourierChargeCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ291cmllckNoYXJnZVxDb3VyaWVyQ2hhcmdlQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/CourierCharge/_GetCourierChargeDetPView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ291cmllckNoYXJnZVxfR2V0Q291cmllckNoYXJnZURldFBWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/CourierCharge/_GetCourierChargeHdrPView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ291cmllckNoYXJnZVxfR2V0Q291cmllckNoYXJnZUhkclBWaWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Customer/CustomerCreate.cshtml]
@@ -144,12 +168,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWVzc2FnZVxNZXNzYWdlQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Message/SubscribeCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWVzc2FnZVxTdWJzY3JpYmVDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Message/_GetMessageDetPView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWVzc2FnZVxfR2V0TWVzc2FnZURldFBWaWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Message/_GetMessageHdrPView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWVzc2FnZVxfR2V0TWVzc2FnZUhkclBWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Message/_GetSubscribeDetPView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWVzc2FnZVxfR2V0U3Vic2NyaWJlRGV0UFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Message/_GetSubscribeHdrPView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWVzc2FnZVxfR2V0U3Vic2NyaWJlSGRyUFZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/ProductPurchase/ProductPurchaseCreate.cshtml]
@@ -174,6 +210,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Product/_GetProductHdrPView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxfR2V0UHJvZHVjdEhkclBWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Service/ServiceCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2VydmljZVxTZXJ2aWNlQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Service/_GetServiceDetPView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2VydmljZVxfR2V0U2VydmljZURldFBWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/Service/_GetServiceHdrPView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2VydmljZVxfR2V0U2VydmljZUhkclBWaWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Admin/Views/SiteInfo/SiteInfoCreate.cshtml]
@@ -256,8 +304,36 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVmVuZG9yXF9HZXRWZW5kb3JIZHJQVmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Client/Views/Cstmr/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXENzdG1yXFByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Client/Views/Cstmr/SignIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXENzdG1yXFNpZ25Jbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Client/Views/Cstmr/SignUp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXENzdG1yXFNpZ25VcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Client/Views/Cstmr/_GetCustomerDetPView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXENzdG1yXF9HZXRDdXN0b21lckRldFBWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Client/Views/Cstmr/_GetCustomerHdrPView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXENzdG1yXF9HZXRDdXN0b21lckhkclBWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Client/Views/Home/About.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEhvbWVcQWJvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Client/Views/Home/Cart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEhvbWVcQ2FydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Client/Views/Home/Client.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEhvbWVcQ2xpZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Client/Views/Home/Contact.cshtml]
@@ -266,6 +342,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Client/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEhvbWVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Client/Views/Home/Product.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEhvbWVcUHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Client/Views/Home/ProductDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEhvbWVcUHJvZHVjdERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Client/Views/Home/Service.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEhvbWVcU2VydmljZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Client/Views/Home/ServiceDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEhvbWVcU2VydmljZURldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Nazmul PC/Projects/WebApp/WebApp/Areas/Client/Views/Home/_ProductView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEhvbWVcX1Byb2R1Y3RWaWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Nazmul PC/Projects/WebApp/WebApp/Views/Home/Index.cshtml]

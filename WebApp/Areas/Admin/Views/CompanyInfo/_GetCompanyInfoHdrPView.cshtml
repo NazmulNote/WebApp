@@ -7,7 +7,7 @@
 	<div class="row">
 		<div class="col-lg-1 col-md-1 col-sm-12 col-12">
 			<div id="PhotoPreview">
-				<img style="width:5rem;height:6rem;object-fit:contain" src="@( Model.CompanyInfo != null && !string.IsNullOrEmpty(Model.CompanyInfo.PhotoUrl)? Url.Content("~/" + Model.CompanyInfo.PhotoUrl): Url.Content("~/Admin/img/avator.png"))" alt="User Image" />
+				<img style="width:5rem;height:6rem;object-fit:contain" src="@( Model.CompanyInfo != null && !string.IsNullOrEmpty(Model.CompanyInfo.PhotoUrl)? Url.Content(Model.CompanyInfo.PhotoUrl): Url.Content("/Admin/img/avator.png"))" alt="User Image" />
 			</div>
 			@Html.HiddenFor(model => model.CompanyInfo.PhotoUrl)
 		</div>
@@ -66,6 +66,15 @@
 						<div class="col-sm-9 col-8">
 							@Html.EditorFor(model => model.CompanyInfo.Email, new { htmlAttributes = new { id = "Email", @class = "form-control", placeholder = "Enter Email", required = "required" } })
 							@Html.ValidationMessageFor(model => model.CompanyInfo.Email, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-1">
+					<div class="form-group row">
+						@Html.LabelFor(model => model.CompanyInfo.EmailPassword, "E.Pswd:", htmlAttributes: new { @class = "col-sm-3 col-4 col-form-label" })
+						<div class="col-sm-9 col-8">
+							@Html.EditorFor(model => model.CompanyInfo.EmailPassword, new { htmlAttributes = new { id = "EmailPassword", @class = "form-control", placeholder = "Enter Email Password", required = "required" } })
+							@Html.ValidationMessageFor(model => model.CompanyInfo.EmailPassword, "", new { @class = "text-danger" })
 						</div>
 					</div>
 				</div>
